@@ -1,0 +1,4 @@
+.nav-link:hover {
+  transform: scale(1.5); /* Make the text 10% larger */
+  transition: transform 0.3s ease-in; /* Animation timing */
+}

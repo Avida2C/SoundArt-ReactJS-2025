@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 export default function Artists() {
   return (
-    <Container>
+    <Container className="mt-4">
       <Row>
         <Col>
           <h1>Artists</h1>

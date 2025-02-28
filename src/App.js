@@ -4,6 +4,7 @@ import Artists from "./pages/Artists"; // Ensure these components exist
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/News" element={<News />} />
         <Route path="/Contact" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

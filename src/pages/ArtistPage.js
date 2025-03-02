@@ -14,7 +14,7 @@ export default function ArtistPage() {
   return (
     <Container className="mt-4">
       <Row>
-        <Col md={12} className="text-center">
+        <Col md={12}>
           <h1>{artist.name}</h1>
           <Image src={artist.image} alt={artist.name} fluid />
         </Col>

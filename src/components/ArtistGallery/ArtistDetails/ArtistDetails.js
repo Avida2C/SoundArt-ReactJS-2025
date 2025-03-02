@@ -17,7 +17,8 @@ export default function ArtistDetails({ artist }) {
   return (
     <Container className="artist-gallery position-relative" style={containerStyle}>
       <ArtistName name={artist.name} />
-      <ArtistBio bio={artist.bio} />
+      <ArtistBio bio={artist.bio} artistId={artist.id} />
+
     </Container>
   );
 }

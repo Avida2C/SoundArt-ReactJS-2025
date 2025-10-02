@@ -1,0 +1,102 @@
+.artist-item p {
+    width: 16vh;
+    height: 20vh;
+    text-align: center;
+    background-color: #fec132;
+    color: white;
+  }
+  
+  /* animation */
+  .artist-item p {
+    margin: 0; /* Adjust as needed */
+    padding: 10px; /* Adjust as needed */
+    background: rgba(254, 193, 50, 0.9); /* Semi-transparent background */
+    color: white;
+    text-align: center;
+    transform: translateY(100%); /* Start off-screen */
+    transition: transform 0.3s ease, height 0.3s ease, background-color 0.3s ease; /* Smooth transition for transform, height, and background color */
+  }
+  
+  .artist-item:hover p,
+  .artist-item.active p {
+    transform: translateY(0%); /* Move to original position */
+    height: 100%; /* Expand to full height */
+    background: rgba(254, 193, 50, 0.75); /* Semi-transparent background */
+  }
+  
+  /* Optional: if you want to differentiate the active item even more */
+  .artist-item.active p {
+    background: rgba(
+      254,
+      193,
+      50,
+      1
+    ); /* Optional: different background for active item */
+  }
+  
+  .artist-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.2em;
+    padding-bottom: 0.6em;
+    padding-top: 0.6em;
+    overflow-y: hidden !important;
+  }
+  
+
+
+  .artist-gallery {
+    height: 65vh;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  
+  .artist-name{
+    margin-left: 1em;
+  }
+  
+  .artist-name, .artist-bio {
+    display: block; /* Ensure they are block-level elements */
+    width: 100%; /* Use the full width */
+  }
+  
+  .artist-gallery h1 {
+    color: rgba(254, 193, 50, 0.75);
+    font-weight: 600;
+    font-size: 7vh;
+  }
+  
+  .artist-bio {
+      background-color: rgba(0, 0, 0, 0.45);
+      padding: 0.5em;
+      align-self: end;
+      width: 100%; 
+  
+      
+    }
+  
+    .artist-bio p {
+      color: rgba(254, 193, 50, 1);
+    }
+    
+    .artist-bio button {
+      background-color: rgba(254, 193, 50, 1);
+      color: black;
+      padding: 0.5em;
+      font-weight: bold;
+      border: 0;
+      width: 100%;
+    }
+  
+    .artist-bio button:hover {
+      /* Define your gradient for the hover state */
+      background-image: linear-gradient(90deg, #ffd000 0%, #ffa600 100%);
+    }
+  
+    .truncate-bio {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5; /* Number of lines you want to display */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }

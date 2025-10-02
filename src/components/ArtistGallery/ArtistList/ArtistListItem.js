@@ -1,6 +1,6 @@
 export default function ArtistListItem({ artist, isSelected, onClick }) {
   const itemStyle = {
-    backgroundImage: `url(${artist.image})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL}${artist.image})`, // ✅ Fix for images in public folder
     backgroundSize: "cover",
     backgroundPosition: "top",
     backgroundRepeat: "no-repeat",

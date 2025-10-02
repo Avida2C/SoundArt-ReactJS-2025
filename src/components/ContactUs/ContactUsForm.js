@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Row, Form, Container, Col, Button } from "react-bootstrap";
-import "./contactUs.css";
 
 export default function ContactUsForm() {
     const [messageSent, setMessageSent] = useState(false);
@@ -12,31 +10,30 @@ export default function ContactUsForm() {
     };
 
     return (
-        <Container className="contact-us-form px-5">
-            <Row>
-                <Col>
-                    <h1>Contact Us</h1>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group className="mb-3" controlId="formFullName">
-                            <Form.Label>Full Name</Form.Label>
-                            <Form.Control type="text" placeholder="Full Name" required />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formEmailAddress">
-                            <Form.Label>Email Address</Form.Label>
-                            <Form.Control type="email" placeholder="Email Address" required />
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formMessage">
-                            <Form.Label>Message</Form.Label>
-                            <Form.Control as="textarea" rows={3} placeholder="Message" required />
-                        </Form.Group>
-                        <Button variant="warning" type="submit" className="w-100 fw-semibold">
-                            Submit
-                        </Button>
-                        {/* Success Message */}
-                        {messageSent && <p className="text-danger mt-2 text-center">Your message has been sent! We will contact you shortly.</p>}
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+        <div className="container contact-us-form px-5">
+  <div className="row">
+    <div className="col">
+      <h1>Contact Us</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="formFullName" className="form-label">Full Name</label>
+          <input type="text" className="form-control" id="formFullName" placeholder="Full Name" required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="formEmailAddress" className="form-label">Email Address</label>
+          <input type="email" className="form-control" id="formEmailAddress" placeholder="Email Address" required />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="formMessage" className="form-label">Message</label>
+          <textarea className="form-control" id="formMessage" rows="3" placeholder="Message" required></textarea>
+        </div>
+        <button type="submit" className="btn btn-warning w-100 fw-semibold">Submit</button>
+        {/* Success Message */}
+        {messageSent && <p className="text-danger mt-2 text-center">Your message has been sent! We will contact you shortly.</p>}
+      </form>
+    </div>
+  </div>
+</div>
+
     );
 }

@@ -1,0 +1,131 @@
+/* Contact Page Styles */
+
+.contact-us-form {
+  background-color: #EDEDED;
+  margin-top: 5em;
+  padding: 2em;
+  padding-left: 2em;
+  border-radius: var(--border-radius);
+}
+
+.contact-us-form form {
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-us-form form input,
+.contact-us-form form textarea,
+.contact-us-form form select {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid #dee2e6;
+  transition: var(--transition);
+}
+
+.contact-us-form form input:focus,
+.contact-us-form form textarea:focus,
+.contact-us-form form select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.contact-us-form form button {
+  border-radius: var(--border-radius-sm);
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+/* Contact Cards */
+.contact-card {
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+  border: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Quick Links Section */
+.quick-links-card {
+  background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.quick-link-item {
+  text-align: center;
+  padding: 1rem;
+  transition: var(--transition);
+}
+
+.quick-link-item:hover {
+  transform: translateY(-3px);
+}
+
+.quick-link-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Form Type Selector */
+.form-type-selector {
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition);
+}
+
+.form-type-selector:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+/* Artist-specific form fields */
+.artist-form-fields {
+  background: rgba(255, 193, 7, 0.05);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Success Message */
+.alert-success {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border: 1px solid #c3e6cb;
+  border-radius: var(--border-radius-sm);
+  color: #155724;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-us-form {
+    margin-top: 2em;
+    padding: 1.5em;
+  }
+  
+  .contact-card {
+    margin-bottom: 1rem;
+  }
+  
+  .quick-link-item {
+    padding: 0.75rem;
+  }
+  
+  .quick-link-icon {
+    font-size: 1.5rem;
+  }
+}

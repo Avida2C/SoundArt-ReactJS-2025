@@ -5,8 +5,8 @@ const articlesData = [
     title: "See rare photos of the Beatles before they were famous!",
     author: "Molly Enking",
     date: "06/10/2022",
-    image1: "/images/beatles-photo-1.jpg",
-    image2: "/images/beatles-photo-2.jpg",
+    image1: "/images/beatles01.jpg",
+    image2: "/images/beatles02.jpg",
     content: [
       "In 1961, shortly before their rise to fame, the Beatles played a local gig at the Cavern Club in Liverpool. Now, rare photos of the group—including original drummer Pete Best—from that performance have been discovered...",
       "The newly discovered photos feature John Lennon, 20, and Paul McCartney, 19, singing and playing guitar..."
@@ -17,59 +17,47 @@ const articlesData = [
     title: "How The Beatles Changed Rock Music",
     author: "John Doe",
     date: "15/05/2021",
-    image1: "/images/beatles-history-1.jpg",
-    image2: "/images/beatles-history-2.jpg",
+    image1: "/images/thebeatles1967.jpg",
+    image2: "/images/The_Fabs.JPG",
     content: [
       "The Beatles revolutionized rock music by blending pop, classical, and psychedelic elements...",
       "Their influence on modern music can still be heard today in various genres..."
     ]
   },
   {
-    id: 6,
-    title: "Doechii Named 2025 Woman of the Year by Billboard",
-    author: "Associated Press",
-    date: "10/03/2025",
-    image1: "/images/doechii-1.jpg",
-    image2: "/images/doechii-2.jpg",
+    id: 3,
+    title: "Queen's Legacy Continues to Inspire",
+    author: "Music Weekly",
+    date: "20/03/2024",
+    image1: "/images/Queen01.jpg",
+    image2: "/images/Queen02.jpg",
     content: [
-      "Doechii has been honored as Billboard's 2025 Woman of the Year, joining the ranks of past recipients like Taylor Swift and Lady Gaga. This accolade follows her recent Grammy win for Best Rap Album, making her only the third woman to receive this honor in that category.",
-      "She will be celebrated at the Billboard Women in Music Awards on March 29, alongside other honorees such as aespa and Blackpink's Jennie. Her breakout mixtape, 'Alligator Bites Never Heal,' was recognized as one of the best albums of 2024 for its versatile blend of smooth R&B and sharp flows."
+      "Queen's music continues to inspire new generations of musicians and fans worldwide. Their theatrical performances and timeless hits remain as relevant today as they were decades ago.",
+      "The band's influence can be seen in modern rock, pop, and even electronic music, proving that great music transcends time and genre boundaries."
     ]
   },
   {
-    id: 7,
-    title: "David Foster Shares New Song from His Upcoming Betty Boop Musical",
-    author: "People Magazine",
-    date: "11/03/2025",
-    image1: "/images/david-foster-betty-boop-1.jpg",
-    image2: "/images/david-foster-betty-boop-2.jpg",
+    id: 4,
+    title: "Metallica's Impact on Heavy Metal",
+    author: "Metal Head",
+    date: "15/02/2024",
+    image1: "/images/Metallica.jpg",
+    image2: "/images/party01.jpg",
     content: [
-      "David Foster, a 16-time Grammy winner, is set to release 'Something to Shout About,' a new single from his forthcoming Broadway show, 'Boop! The Musical.' The song features Jasmine Amy Rogers as Betty Boop.",
-      "The musical opens on April 5 at the Broadhurst Theatre in New York City, with previews beginning on March 11. Foster reveals that the song, originally placed early in the first act, was moved to serve as the '11 o'clock number' to heighten excitement. The project has been in the making for over a decade, marking Foster's first foray into musical theater."
+      "Metallica has been one of the most influential bands in heavy metal history, pioneering the thrash metal genre and bringing metal to mainstream audiences.",
+      "Their complex compositions, powerful performances, and dedication to their craft have earned them a place among the greatest bands of all time."
     ]
   },
   {
-    id: 8,
-    title: "King Charles III's Playlist Features Beyoncé",
-    author: "Los40",
-    date: "10/03/2025",
-    image1: "/images/king-charles-playlist-1.jpg",
-    image2: "/images/king-charles-playlist-2.jpg",
+    id: 5,
+    title: "The Evolution of Rock Music",
+    author: "Rock History",
+    date: "10/01/2024",
+    image1: "/images/ACDC.jpg",
+    image2: "/images/pinkfloyd.jpg",
     content: [
-      "King Charles III has released a surprising playlist titled 'The King's Music Room' in collaboration with Apple Music, revealing his wide range of musical tastes. The collection includes songs from various genres and eras, highlighting both classics and contemporary hits from the 1930s to the present.",
-      "Artists featured range from Bob Marley and Kylie Minogue to Beyoncé and Davido. King Charles expressed that music has been a significant part of his life, helping to evoke memories and provide comfort. This playlist offers a personal insight into the monarch's musical influences and is available on Apple Music."
-    ]
-  },
-  {
-    id: 9,
-    title: "FKA Twigs Announces 'Eusexua' Tour Dates",
-    author: "Wikipedia",
-    date: "16/01/2025",
-    image1: "/images/fka-twigs-eusexua-tour-1.jpg",
-    image2: "/images/fka-twigs-eusexua-tour-2.jpg",
-    content: [
-      "FKA Twigs has announced her upcoming 'Eusexua Tour' in support of her third studio album, 'Eusexua.' The tour is set to start on March 8, 2025, in Prague, Czech Republic, and will conclude at the Down the Rabbit Hole festival in the Netherlands in early July 2025.",
-      "The tour includes 21 shows across Europe and North America, with additional dates added due to high demand. This marks her return to touring after her 2019 'Magdalene Tour' was cut short."
+      "Rock music has evolved dramatically over the decades, from its blues roots to the diverse subgenres we see today. Each era has brought new sounds, techniques, and cultural movements.",
+      "From the early days of Chuck Berry and Elvis Presley to modern rock bands, the genre continues to reinvent itself while maintaining its core energy and rebellious spirit."
     ]
   }
 ];

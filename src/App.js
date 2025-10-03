@@ -6,8 +6,12 @@ import Home from "./pages/Home";
 import Footer from "./components/Navigation/Footer";
 import ArtistGallery from "./components/ArtistGallery/ArtistGallery";
 import ArtistPage from "./pages/Artist/ArtistPage";
+import News from "./pages/News";
 import ArticlePage from "./pages/Article/ArticlePage";
-import MoreArticles from "./pages/Article/MoreArticles";
+import Concerts from "./pages/Concerts";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import NotFound from "./pages/NotFound";
 
 import "./App.css";
 
@@ -18,12 +22,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} /> {/* ✅ Corrected */}
         <Route path="/artists" element={<Artists />} />
-        <Route path="/news" element={<ArticlePage />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/concerts" element={<Concerts />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/artist-gallery" element={<ArtistGallery />} /> {/* ✅ Changed route */}
         <Route path="/artist/:id" element={<ArtistPage />} />
         <Route path="/article/:id" element={<ArticlePage />} />
-        <Route path="/more-articles" element={<MoreArticles />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

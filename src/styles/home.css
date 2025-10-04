@@ -1,3 +1,40 @@
+/* Home page specific styles (restored placeholder) */
+
+.hero-section {
+  min-height: 70vh;
+}
+
+.hero-bg {
+  background: radial-gradient(ellipse at top left, rgba(255,193,7,0.15), transparent 50%),
+              radial-gradient(ellipse at bottom right, rgba(255,143,0,0.15), transparent 50%);
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.news-thumbnail {
+  width: 88px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.artist-card-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.artist-overlay-gradient {
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.85) 100%);
+}
+
+.cta-dark-bg {
+  background: linear-gradient(135deg, #111 0%, #1e1e1e 100%);
+}
+
+.icon-large { font-size: 2rem; }
+.icon-xl { font-size: 3rem; }
+
 /* Homepage Specific Styles */
 
 /* Hero Section */

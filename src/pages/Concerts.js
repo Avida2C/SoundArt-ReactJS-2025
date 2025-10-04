@@ -1,175 +1,132 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Concerts() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCity, setSelectedCity] = useState("all");
-  const [selectedDate, setSelectedDate] = useState("all");
-  const [sortBy, setSortBy] = useState("date");
+  const { isAuthenticated } = useAuth();
+  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // Comprehensive concerts data
-  const concertsData = [
-    {
+  // Sample concerts data
+  const concerts = [
+    { 
       id: 1,
-      artist: "The Beatles",
-      date: "2024-12-15",
-      venue: "Madison Square Garden",
-      city: "New York, NY",
-      country: "USA",
+      artist: "The Beatles", 
+      date: "2024-12-15", 
+      venue: "Madison Square Garden", 
+      city: "New York, NY", 
       price: "$150-500",
-      status: "Sold Out",
       image: "/images/thebeatles1967.jpg",
+      status: "Sold Out",
       genre: "Rock",
       description: "Experience the magic of The Beatles in this once-in-a-lifetime tribute concert featuring rare performances and classic hits."
     },
-    {
+    { 
       id: 2,
-      artist: "Queen",
-      date: "2024-12-20",
-      venue: "Wembley Stadium",
-      city: "London, UK",
-      country: "UK",
+      artist: "Queen", 
+      date: "2024-12-20", 
+      venue: "Wembley Stadium", 
+      city: "London, UK", 
       price: "£200-800",
-      status: "Limited",
       image: "/images/Queen_band.jpg",
-      genre: "Rock",
-      description: "Queen + Adam Lambert bring their spectacular show to Wembley Stadium with all the greatest hits and theatrical performances."
-    },
-    {
-      id: 3,
-      artist: "Metallica",
-      date: "2025-01-10",
-      venue: "Staples Center",
-      city: "Los Angeles, CA",
-      country: "USA",
-      price: "$200-600",
-      status: "Available",
-      image: "/images/Metallica.jpg",
-      genre: "Metal",
-      description: "Metallica returns to Los Angeles with their explosive live show featuring tracks from their latest album and classic thrash metal hits."
-    },
-    {
-      id: 4,
-      artist: "AC/DC",
-      date: "2025-01-25",
-      venue: "Sydney Opera House",
-      city: "Sydney, Australia",
-      country: "Australia",
-      price: "A$180-550",
-      status: "Available",
-      image: "/images/ACDC.jpg",
-      genre: "Rock",
-      description: "AC/DC brings their thunderous rock show to the iconic Sydney Opera House for an unforgettable night of high-voltage rock."
-    },
-    {
-      id: 5,
-      artist: "Pink Floyd",
-      date: "2025-02-14",
-      venue: "Royal Albert Hall",
-      city: "London, UK",
-      country: "UK",
-      price: "£150-400",
-      status: "Available",
-      image: "/images/pinkfloyd.jpg",
-      genre: "Progressive Rock",
-      description: "A tribute to Pink Floyd featuring their greatest hits performed with stunning visuals and immersive sound experience."
-    },
-    {
-      id: 6,
-      artist: "Led Zeppelin",
-      date: "2025-02-28",
-      venue: "Hollywood Bowl",
-      city: "Los Angeles, CA",
-      country: "USA",
-      price: "$250-700",
       status: "Limited",
-      image: "/images/thumbnail01.jpg",
       genre: "Rock",
-      description: "Experience the legendary sound of Led Zeppelin in this spectacular tribute concert featuring all their greatest hits."
+      description: "Join us for an epic Queen tribute featuring the greatest hits and spectacular stage production."
     },
-    {
-      id: 7,
-      artist: "The Rolling Stones",
-      date: "2025-03-15",
-      venue: "Accor Arena",
-      city: "Paris, France",
-      country: "France",
-      price: "€180-600",
+    { 
+      id: 3,
+      artist: "Metallica", 
+      date: "2025-01-10", 
+      venue: "Staples Center", 
+      city: "Los Angeles, CA", 
+      price: "$200-600",
+      image: "/images/Metallica.jpg",
       status: "Available",
-      image: "/images/thumbnail02.jpg",
-      genre: "Rock",
-      description: "The Rolling Stones bring their timeless rock and roll to Paris with Mick Jagger's electrifying stage presence."
-    },
-    {
-      id: 8,
-      artist: "Black Sabbath",
-      date: "2025-03-30",
-      venue: "Tokyo Dome",
-      city: "Tokyo, Japan",
-      country: "Japan",
-      price: "¥25,000-80,000",
-      status: "Available",
-      image: "/images/thumbnail03.jpg",
       genre: "Metal",
-      description: "Black Sabbath tribute featuring the heavy metal pioneers' most iconic songs in the heart of Tokyo."
+      description: "Heavy metal legends Metallica bring their thunderous sound to Los Angeles in this must-see concert."
+    },
+    { 
+      id: 4,
+      artist: "AC/DC", 
+      date: "2025-01-25", 
+      venue: "Sydney Opera House", 
+      city: "Sydney, Australia", 
+      price: "A$180-550",
+      image: "/images/ACDC.jpg",
+      status: "Available",
+      genre: "Rock",
+      description: "Rock and roll thunder down under! AC/DC tribute band brings the high voltage energy to Sydney."
+    },
+    { 
+      id: 5,
+      artist: "Led Zeppelin", 
+      date: "2025-02-14", 
+      venue: "Royal Albert Hall", 
+      city: "London, UK", 
+      price: "£250-750",
+      image: "/images/Led_Zeppelin.jpg",
+      status: "Available",
+      genre: "Rock",
+      description: "Experience the legendary sound of Led Zeppelin in this spectacular tribute performance."
+    },
+    { 
+      id: 6,
+      artist: "Pink Floyd", 
+      date: "2025-03-01", 
+      venue: "Hollywood Bowl", 
+      city: "Los Angeles, CA", 
+      price: "$180-450",
+      image: "/images/Pink_Floyd.jpg",
+      status: "Limited",
+      genre: "Progressive Rock",
+      description: "A mesmerizing tribute to Pink Floyd featuring their greatest hits and stunning visual effects."
+    },
+    { 
+      id: 7,
+      artist: "The Rolling Stones", 
+      date: "2025-03-15", 
+      venue: "Tokyo Dome", 
+      city: "Tokyo, Japan", 
+      price: "¥25,000-80,000",
+      image: "/images/Rolling_Stones.jpg",
+      status: "Available",
+      genre: "Rock",
+      description: "Rock and roll legends tribute featuring the greatest hits from The Rolling Stones."
+    },
+    { 
+      id: 8,
+      artist: "Nirvana", 
+      date: "2025-04-05", 
+      venue: "Accor Arena", 
+      city: "Paris, France", 
+      price: "€120-400",
+      image: "/images/Nirvana.jpg",
+      status: "Available",
+      genre: "Grunge",
+      description: "Relive the grunge era with this powerful tribute to Nirvana and their iconic sound."
     }
   ];
 
-  const cities = ["all", "New York, NY", "London, UK", "Los Angeles, CA", "Sydney, Australia", "Paris, France", "Tokyo, Japan"];
-  const dates = ["all", "December 2024", "January 2025", "February 2025", "March 2025"];
+  const genres = ['all', ...new Set(concerts.map(concert => concert.genre))];
 
-  const filteredConcerts = useMemo(() => {
-    let filtered = [...concertsData];
-
-    // Search filter
-    if (searchTerm) {
-      filtered = filtered.filter(concert =>
-        concert.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        concert.venue.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        concert.city.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
-
-    // City filter
-    if (selectedCity !== "all") {
-      filtered = filtered.filter(concert => concert.city === selectedCity);
-    }
-
-    // Date filter
-    if (selectedDate !== "all") {
-      const [month, year] = selectedDate.split(" ");
-      filtered = filtered.filter(concert => {
-        const concertDate = new Date(concert.date);
-        return concertDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) === selectedDate;
-      });
-    }
-
-    // Sort
-    if (sortBy === "date") {
-      filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
-    } else if (sortBy === "artist") {
-      filtered.sort((a, b) => a.artist.localeCompare(b.artist));
-    } else if (sortBy === "price") {
-      filtered.sort((a, b) => {
-        const priceA = parseInt(a.price.replace(/[^0-9]/g, ''));
-        const priceB = parseInt(b.price.replace(/[^0-9]/g, ''));
-        return priceA - priceB;
-      });
-    }
-
-    return filtered;
-  }, [searchTerm, selectedCity, selectedDate, sortBy]);
+  const filteredConcerts = concerts.filter(concert => {
+    const matchesFilter = selectedFilter === 'all' || concert.genre === selectedFilter;
+    const matchesSearch = concert.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         concert.venue.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         concert.city.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
 
   const getStatusBadge = (status) => {
     switch (status) {
-      case "Sold Out":
-        return "bg-danger";
-      case "Limited":
-        return "bg-warning text-dark";
-      case "Available":
-        return "bg-success";
+      case 'Sold Out':
+        return 'bg-danger';
+      case 'Limited':
+        return 'bg-warning text-dark';
+      case 'Available':
+        return 'bg-success';
       default:
-        return "bg-secondary";
+        return 'bg-secondary';
     }
   };
 
@@ -183,18 +140,18 @@ export default function Concerts() {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <h1 className="display-4 fw-bold mb-4">
-                Upcoming <span className="text-warning">Concerts</span>
+                Live <span className="text-warning">Concerts</span>
               </h1>
               <p className="lead mb-4">
-                Don't miss the chance to see legendary artists live! From The Beatles to Queen, discover amazing concerts and get your tickets today.
+                Experience the magic of legendary artists in spectacular tribute concerts. From The Beatles to Queen, don't miss these unforgettable performances.
               </p>
               <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-warning btn-lg">
-                  <i className="bi bi-ticket-perforated me-2"></i>Buy Tickets
+                <button className="btn btn-warning btn-lg" onClick={() => document.querySelector('.concerts-section').scrollIntoView({ behavior: 'smooth' })}>
+                  <i className="bi bi-ticket-perforated me-2"></i>View Concerts
                 </button>
-                <button className="btn btn-outline-light btn-lg">
-                  <i className="bi bi-bell me-2"></i>Get Alerts
-                </button>
+                <Link to="/artists" className="btn btn-outline-light btn-lg">
+                  <i className="bi bi-music-note me-2"></i>Explore Artists
+                </Link>
               </div>
             </div>
             <div className="col-lg-6 text-center">
@@ -221,75 +178,56 @@ export default function Concerts() {
         </div>
       </section>
 
-      {/* Search and Filter Section */}
-      <section className="py-4 bg-light">
+          {/* Search and Filter Section */}
+          <section className="py-4 bg-light">
+            <div className="container">
+              <div className="row g-3 align-items-center">
+                <div className="col-lg-6">
+                  <div className="input-group">
+                    <span className="input-group-text">
+                      <i className="bi bi-search"></i>
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Search concerts by artist, venue, or city..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="d-flex gap-2 flex-wrap">
+                    <span className="align-self-center text-muted">Filter by genre:</span>
+                    {genres.map(genre => (
+                      <button
+                        key={genre}
+                        className={`btn btn-sm ${selectedFilter === genre ? 'btn-warning' : 'btn-outline-warning'}`}
+                        onClick={() => setSelectedFilter(genre)}
+                      >
+                        {genre === 'all' ? 'All' : genre}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+      {/* Concerts Section */}
+      <section className="py-5 concerts-section">
         <div className="container">
-          <div className="row g-3 align-items-center">
-            <div className="col-lg-4">
-              <div className="input-group">
-                <span className="input-group-text"><i className="bi bi-search"></i></span>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search artists, venues, or cities..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="col-lg-2">
-              <select 
-                className="form-select" 
-                value={selectedCity} 
-                onChange={(e) => setSelectedCity(e.target.value)}
-              >
-                <option value="all">All Cities</option>
-                {cities.slice(1).map(city => (
-                  <option key={city} value={city}>{city}</option>
-                ))}
-              </select>
-            </div>
-            <div className="col-lg-2">
-              <select 
-                className="form-select" 
-                value={selectedDate} 
-                onChange={(e) => setSelectedDate(e.target.value)}
-              >
-                <option value="all">All Dates</option>
-                {dates.slice(1).map(date => (
-                  <option key={date} value={date}>{date}</option>
-                ))}
-              </select>
-            </div>
-            <div className="col-lg-2">
-              <select 
-                className="form-select" 
-                value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value)}
-              >
-                <option value="date">Sort by Date</option>
-                <option value="artist">Sort by Artist</option>
-                <option value="price">Sort by Price</option>
-              </select>
-            </div>
-            <div className="col-lg-2">
-              <div className="text-end">
-                <span className="text-muted">
-                  {filteredConcerts.length} concerts found
-                </span>
-              </div>
+          <div className="row mb-5">
+            <div className="col-12 text-center">
+              <h2 className="display-5 fw-bold mb-3">Upcoming Concerts</h2>
+              <p className="lead text-muted">Don't miss these legendary performances</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Concerts Grid */}
-      <section className="py-5">
-        <div className="container">
+          
           <div className="row g-4">
             {filteredConcerts.map((concert) => (
               <div key={concert.id} className="col-lg-6 col-xl-4">
-                <div className="card h-100 shadow-sm border-0 concert-card">
+                <div className="card h-100 shadow-sm border-0">
                   <div className="position-relative">
                     <img 
                       src={concert.image} 
@@ -303,59 +241,50 @@ export default function Concerts() {
                       </span>
                     </div>
                     <div className="position-absolute top-0 start-0 m-2">
-                      <span className="badge bg-dark text-warning">
+                      <span className="badge bg-dark bg-opacity-75">
                         {concert.genre}
                       </span>
                     </div>
                   </div>
-                  
                   <div className="card-body d-flex flex-column">
                     <h5 className="card-title fw-bold">{concert.artist}</h5>
-                    
-                    <div className="mb-3">
-                      <p className="text-muted mb-1">
-                        <i className="bi bi-geo-alt me-2 text-warning"></i>
-                        {concert.venue}
-                      </p>
-                      <p className="text-muted mb-1">
-                        <i className="bi bi-geo-alt-fill me-2 text-warning"></i>
-                        {concert.city}, {concert.country}
-                      </p>
-                      <p className="text-muted mb-1">
-                        <i className="bi bi-calendar-event me-2 text-warning"></i>
-                        {new Date(concert.date).toLocaleDateString('en-US', { 
-                          weekday: 'long',
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric'
-                        })}
-                      </p>
-                      <p className="text-muted mb-3">
-                        <i className="bi bi-currency-dollar me-2 text-warning"></i>
-                        {concert.price}
-                      </p>
-                    </div>
-
+                    <p className="text-muted mb-2">
+                      <i className="bi bi-geo-alt me-1"></i>{concert.venue}
+                    </p>
+                    <p className="text-muted mb-2">
+                      <i className="bi bi-geo me-1"></i>{concert.city}
+                    </p>
+                    <p className="text-muted mb-2">
+                      <i className="bi bi-calendar me-1"></i>
+                      {new Date(concert.date).toLocaleDateString('en-US', { 
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long', 
+                        day: 'numeric'
+                      })}
+                    </p>
+                    <p className="text-muted mb-3">
+                      <i className="bi bi-currency-dollar me-1"></i>{concert.price}
+                    </p>
                     <p className="card-text text-muted small flex-grow-1">
                       {concert.description}
                     </p>
-
-                    <div className="mt-auto">
-                      {concert.status === "Sold Out" ? (
-                        <button className="btn btn-outline-secondary w-100" disabled>
-                          <i className="bi bi-x-circle me-2"></i>Sold Out
-                        </button>
-                      ) : (
-                        <div className="d-grid gap-2">
-                          <button className="btn btn-warning">
-                            <i className="bi bi-ticket-perforated me-2"></i>Get Tickets
-                          </button>
-                          <button className="btn btn-outline-warning btn-sm">
-                            <i className="bi bi-heart me-2"></i>Add to Wishlist
-                          </button>
+                        <div className="mt-auto">
+                          {concert.status === 'Sold Out' ? (
+                            <button className="btn btn-outline-secondary w-100" disabled>
+                              <i className="bi bi-x-circle me-2"></i>Sold Out
+                            </button>
+                          ) : (
+                            <button className="btn btn-warning w-100">
+                              <i className="bi bi-ticket-perforated me-2"></i>Get Tickets
+                            </button>
+                          )}
+                          {isAuthenticated && (
+                            <button className="btn btn-outline-warning btn-sm w-100 mt-2">
+                              <i className="bi bi-heart me-2"></i>Add to Wishlist
+                            </button>
+                          )}
                         </div>
-                      )}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -364,86 +293,87 @@ export default function Concerts() {
 
           {filteredConcerts.length === 0 && (
             <div className="text-center py-5">
-              <i className="bi bi-search text-muted" style={{fontSize: '4rem'}}></i>
-              <h3 className="text-muted mt-3">No concerts found</h3>
-              <p className="text-muted">Try adjusting your search criteria</p>
+              <i className="bi bi-search text-muted mb-3 d-block" style={{fontSize: '3rem'}}></i>
+              <h4 className="text-muted">No concerts found</h4>
+              <p className="text-muted">Try adjusting your search or filter criteria</p>
             </div>
           )}
         </div>
       </section>
 
-      {/* Concert Alert Signup */}
+      {/* Concert Alert Section */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <div className="card bg-warning text-dark border-0 shadow-lg">
-                <div className="card-body text-center p-5">
-                  <h3 className="card-title mb-3">
-                    <i className="bi bi-bell-fill me-2"></i>Never Miss a Concert!
-                  </h3>
-                  <p className="card-text mb-4">
-                    Get notified when your favorite artists announce new concerts in your area. Be the first to know about exclusive pre-sales and special offers.
-                  </p>
-                  <div className="row g-3 justify-content-center">
-                    <div className="col-md-4">
-                      <input 
-                        type="email" 
-                        className="form-control" 
-                        placeholder="Your email address"
-                      />
-                    </div>
-                    <div className="col-md-3">
-                      <select className="form-select">
-                        <option>All Cities</option>
-                        {cities.slice(1).map(city => (
-                          <option key={city}>{city}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="col-md-3">
-                      <button className="btn btn-dark w-100">
-                        <i className="bi bi-envelope me-2"></i>Subscribe
-                      </button>
-                    </div>
-                  </div>
-                  <p className="small mt-3 mb-0">
-                    <i className="bi bi-shield-check me-1"></i>
-                    We respect your privacy. Unsubscribe anytime.
-                  </p>
+            <div className="col-lg-8 text-center">
+              <h3 className="fw-bold mb-3">
+                <i className="bi bi-bell text-warning me-2"></i>
+                Never Miss a Concert
+              </h3>
+              <p className="lead text-muted mb-4">
+                Get notified when your favorite artists announce new concerts in your area
+              </p>
+              <div className="row g-3 justify-content-center">
+                <div className="col-md-6">
+                  <input 
+                    type="email" 
+                    className="form-control form-control-lg" 
+                    placeholder="Enter your email address"
+                  />
+                </div>
+                <div className="col-md-3">
+                  <button className="btn btn-warning btn-lg w-100">
+                    <i className="bi bi-envelope me-2"></i>Subscribe
+                  </button>
                 </div>
               </div>
+              <small className="text-muted mt-3 d-block">
+                We'll only send you concert alerts for artists you're interested in.
+              </small>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Featured Venues Section */}
       <section className="py-5">
         <div className="container">
-          <div className="row text-center">
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">{concertsData.length}+</h3>
-                <p className="mb-0">Upcoming Concerts</p>
+          <div className="row mb-5">
+            <div className="col-12 text-center">
+              <h3 className="fw-bold mb-3">Featured Venues</h3>
+              <p className="text-muted">Iconic venues where legends perform</p>
+            </div>
+          </div>
+          
+          <div className="row g-4">
+            <div className="col-lg-4 col-md-6">
+              <div className="card border-0 shadow-sm h-100 text-center">
+                <div className="card-body p-4">
+                  <i className="bi bi-building text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
+                  <h5 className="card-title">Madison Square Garden</h5>
+                  <p className="card-text text-muted">New York, NY</p>
+                  <small className="text-muted">The world's most famous arena</small>
+                </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">15+</h3>
-                <p className="mb-0">Legendary Artists</p>
+            <div className="col-lg-4 col-md-6">
+              <div className="card border-0 shadow-sm h-100 text-center">
+                <div className="card-body p-4">
+                  <i className="bi bi-building text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
+                  <h5 className="card-title">Wembley Stadium</h5>
+                  <p className="card-text text-muted">London, UK</p>
+                  <small className="text-muted">The home of British music</small>
+                </div>
               </div>
             </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">7</h3>
-                <p className="mb-0">Countries</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">24/7</h3>
-                <p className="mb-0">Ticket Support</p>
+            <div className="col-lg-4 col-md-6">
+              <div className="card border-0 shadow-sm h-100 text-center">
+                <div className="card-body p-4">
+                  <i className="bi bi-building text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
+                  <h5 className="card-title">Hollywood Bowl</h5>
+                  <p className="card-text text-muted">Los Angeles, CA</p>
+                  <small className="text-muted">Iconic outdoor amphitheater</small>
+                </div>
               </div>
             </div>
           </div>
@@ -452,3 +382,5 @@ export default function Concerts() {
     </div>
   );
 }
+
+

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArtistGallery from "../../components/ArtistGallery/ArtistGallery";
+import ArtistGallery from "../../assets/components/ArtistGallery/ArtistGallery";
 import "../../styles/artists.css";
 
 export default function Artists() {
@@ -93,8 +93,8 @@ export default function Artists() {
       {/* Artists Gallery Section */}
       <section className="py-5 artist-gallery-section">
         <div className="container">
-  <ArtistGallery />
-</div>
+          <ArtistGallery />
+        </div>
       </section>
 
       {/* Upcoming Concerts Section */}

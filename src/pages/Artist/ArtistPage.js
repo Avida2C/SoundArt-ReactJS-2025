@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import artists from "../../data/Artist/artistData";
-import ReviewsSection from "../../components/Reviews/ReviewsSection";
+import { useAuth } from "../../contexts/AuthContext";
+import { LoginGate } from "../../components/auth";
+import artists from "../../assets/data/Artist/artistData";
+import ReviewsSection from "../../assets/components/Reviews/ReviewsSection";
 import "../../styles/artists.css";
 
 export default function ArtistPage() {
   const { id } = useParams();
+  const { isAuthenticated } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const selectedArtist = artists.find((a) => a.id === Number(id));
 
@@ -13,7 +16,7 @@ export default function ArtistPage() {
   const getArtistDetails = (artist) => {
     const details = {
       1: { // The Beatles
-        fullBio: "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr. They are regarded as the most influential band of all time and were integral to the development of 1960s counterculture and popular music's recognition as an art form. Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated elements of classical music and traditional pop in innovative ways; the band also explored music styles ranging from folk and Indian music to psychedelia and hard rock. As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised many aspects of the music industry and were often publicized as leaders of the era's youth and sociocultural movements. Led by primary songwriters Lennon and McCartney, the Beatles evolved from Lennon's previous group, the Quarrymen, and built their reputation playing clubs in Liverpool and Hamburg over three years from 1960, initially with Stuart Sutcliffe playing bass. The core trio of Lennon, McCartney and Harrison, together since 1958, went through a succession of drummers, including Pete Best, before asking Starr to join them in 1962. Manager Brian Epstein moulded them into a professional act, and producer George Martin guided and developed their recordings, greatly expanding their domestic success after signing to EMI Records and achieving their first hit, 'Love Me Do', in late 1962. As their popularity grew into the intense fan frenzy dubbed 'Beatlemania', the band acquired the nickname 'the Fab Four', with Epstein, Martin or another member of the band's entourage sometimes informally referred to as a 'fifth Beatle'.",
+        fullBio: "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr. They are regarded as the most influential band of all time and were integral to the development of 1960s counterculture and popular music's recognition as an art form. Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated elements of classical music and traditional pop in innovative ways; the band also explored music styles ranging from folk and Indian music to psychedelia and hard rock. As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised many aspects of the music industry and were often publicized as leaders of the era's youth and sociocultural movements. Led by primary songwriters Lennon and McCartney, the Beatles evolved from Lennon's previous group, the Quarrymen, and built their reputation playing clubs in Liverpool and Hamburg over three years from 1960, initially with Stuart Sutcliffe playing bass. The core trio of Lennon, McCartney and Harrison, together since 1958, went through a succession of drummers, including Pete Best, before asking Starr to join them in 1962. Manager Brian Epstein moulded them into a professional act, and producer George Martin guided and developed their recordings, greatly expanding their domestic success after signing to EMI Records and achieving their first hit, 'Love Me Do', in late 1962.",
         discography: [
           { year: "1963", title: "Please Please Me", type: "Studio Album", image: "/images/beatles01.jpg", releaseDate: "March 22, 1963" },
           { year: "1963", title: "With the Beatles", type: "Studio Album", image: "/images/beatles02.jpg", releaseDate: "November 22, 1963" },
@@ -196,7 +199,7 @@ export default function ArtistPage() {
           <div className="position-relative">
             <img
               src={selectedArtist.image}
-        alt={selectedArtist.name}
+              alt={selectedArtist.name}
               className="img-fluid rounded shadow"
               style={{width: '100%', height: '400px', objectFit: 'cover'}}
             />
@@ -240,10 +243,12 @@ export default function ArtistPage() {
               <i className="bi bi-play-circle me-2"></i>
               Listen Now
             </button>
-            <button className="btn btn-outline-warning btn-lg">
-              <i className="bi bi-heart me-2"></i>
-              Follow
-            </button>
+            {isAuthenticated && (
+              <button className="btn btn-outline-warning btn-lg">
+                <i className="bi bi-heart me-2"></i>
+                Follow
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -705,9 +710,11 @@ export default function ArtistPage() {
                                 <i className="bi bi-ticket-perforated me-2"></i>Get Tickets
                               </button>
                             )}
-                            <button className="btn btn-outline-warning btn-sm">
-                              <i className="bi bi-heart me-2"></i>Add to Wishlist
-                            </button>
+                            {isAuthenticated && (
+                              <button className="btn btn-outline-warning btn-sm">
+                                <i className="bi bi-heart me-2"></i>Add to Wishlist
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -749,7 +756,26 @@ export default function ArtistPage() {
 
             {activeTab === 'reviews' && (
               <div>
-                <ReviewsSection artistId={selectedArtist.id} artistName={selectedArtist.name} />
+                {isAuthenticated ? (
+                  <ReviewsSection artistId={selectedArtist.id} artistName={selectedArtist.name} />
+                ) : (
+                  <div className="text-center py-5">
+                    <i className="bi bi-lock-fill text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
+                    <h4 className="mb-3">Reviews & Ratings</h4>
+                    <p className="text-muted mb-4">
+                      Sign in to read reviews from fellow fans and share your own thoughts about this artist.
+                    </p>
+                    <button 
+                      className="btn btn-warning"
+                      onClick={() => {
+                        // This would trigger the auth modal
+                        window.location.href = '/social';
+                      }}
+                    >
+                      <i className="bi bi-box-arrow-in-right me-2"></i>Sign In to View Reviews
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

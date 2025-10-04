@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArtistCTA from "../components/ArtistGallery/ArtistCTA";
-import articlesData from "../data/Articles/articlesData";
-import artistData from "../data/Artist/artistData";
+import ArtistCTA from "../assets/components/ArtistGallery/ArtistCTA";
+import articlesData from "../assets/data/Articles/articlesData";
+import artistData from "../assets/data/Artist/artistData";
 import "../styles/home.css";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
             <div className="col-lg-6">
               <div className="hero-content text-white">
                 <h1 className="display-3 fw-bold mb-4">
-                  Welcome to <span className="text-warning">SoundArt</span>
+                  Welcome to <span className="brand-text">Sound<span className="brand-accent">Art</span></span>
                 </h1>
                 <p className="lead mb-4">
                   Discover the legends of music, explore rare stories, and dive deep into the world of iconic artists and bands that shaped generations.
@@ -213,66 +213,6 @@ export default function Home() {
             </div>
           </div>
           <ArtistCTA />
-        </div>
-      </section>
-
-      {/* Get Featured as Artist Section */}
-      <section className="py-5">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="card border-0 shadow-lg cta-dark-bg">
-                <div className="card-body text-white p-5">
-                  <div className="row align-items-center">
-                    <div className="col-lg-8">
-                      <h3 className="card-title mb-3">
-                        <i className="bi bi-star-fill text-warning me-2"></i>
-                        Get Featured as an Artist
-                      </h3>
-                      <p className="card-text mb-4">
-                        Are you a musician or band looking to reach a wider audience? Join our platform and get featured alongside legendary artists like The Beatles, Queen, and Metallica. Showcase your music, connect with fans, and grow your following.
-                      </p>
-                      <div className="row g-3">
-                        <div className="col-md-4">
-                          <div className="text-center">
-                            <i className="bi bi-music-note-beamed text-warning mb-2 d-block icon-large"></i>
-                            <h6>Upload Music</h6>
-                            <small className="text-muted">Share your tracks</small>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div className="text-center">
-                            <i className="bi bi-people text-warning mb-2 d-block icon-large"></i>
-                            <h6>Build Fanbase</h6>
-                            <small className="text-muted">Connect with listeners</small>
-                          </div>
-                        </div>
-                        <div className="col-md-4">
-                          <div className="text-center">
-                            <i className="bi bi-graph-up text-warning mb-2 d-block icon-large"></i>
-                            <h6>Grow Your Career</h6>
-                            <small className="text-muted">Reach new heights</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-4 text-center">
-                      <div className="p-4">
-                        <i className="bi bi-mic text-warning mb-3 d-block icon-xl"></i>
-                        <h5 className="mb-3">Ready to Get Started?</h5>
-                        <Link to="/contact" className="btn btn-warning btn-lg mb-3 w-100">
-                          <i className="bi bi-plus-circle me-2"></i>Apply Now
-                        </Link>
-                        <p className="small text-muted mb-0">
-                          Free to join • No setup fees • Start earning today
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -30,7 +29,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="col-lg-2 col-md-6 mb-4">
+          <div className="col-lg-3 col-md-6 mb-4">
             <h6 className="text-warning mb-3">Quick Links</h6>
             <ul className="list-unstyled">
               <li className="mb-2">
@@ -51,27 +50,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Categories */}
-          <div className="col-lg-2 col-md-6 mb-4">
-            <h6 className="text-warning mb-3">Categories</h6>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <a href="#" className="text-light text-decoration-none footer-link">Rock</a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="text-light text-decoration-none footer-link">Pop</a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="text-light text-decoration-none footer-link">Metal</a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="text-light text-decoration-none footer-link">Classic</a>
-              </li>
-            </ul>
-          </div>
-
           {/* Contact Info */}
-          <div className="col-lg-4 mb-4">
+          <div className="col-lg-5 mb-4">
             <h6 className="text-warning mb-3">Contact Info</h6>
             <div className="mb-2">
               <i className="bi bi-envelope me-2 text-warning"></i>
@@ -105,3 +85,4 @@ export default function Footer() {
     </footer>
   );
 }
+

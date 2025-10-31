@@ -1,0 +1,78 @@
+:root{
+  --sa-bg-900:#171717;
+  --sa-text-100:#e7e7e7;
+  --sa-text-300:#cfcfcf;
+  --sa-accent:#FFB300;
+  --sa-divider:#353535;
+}
+
+.bg-dark-900{ background:var(--sa-bg-900)!important; }
+.text-light-100{ color:var(--sa-text-100)!important; }
+.text-light-300{ color:var(--sa-text-300)!important; }
+.text-accent{ color:var(--sa-accent)!important; }
+
+.sa-footer{ padding:64px 0 28px; }
+
+/* Brand */
+.sa-brand{
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.1;
+}
+
+/* Intro text */
+.sa-intro{
+  max-width: 560px;
+  color: var(--sa-text-300);
+  margin: 0;
+}
+
+/* SOCIAL ICONS (transparent background, solid yellow icons) */
+.sa-socials{
+  display: flex;
+}
+
+.sa-social{
+  color: var(--sa-accent);
+  font-size: 26px;
+  transition: transform .2s ease, color .2s ease;
+  text-decoration: none;
+}
+.sa-social:hover{
+  transform: translateY(-2px);
+  color: #FFB300; /* lighter yellow on hover */
+}
+
+/* Quick Links + Contact */
+.sa-heading{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sa-links li{
+  margin: 10px 0;
+}
+.sa-link{
+  color: var(--sa-text-100);
+  text-decoration: none;
+  font-size: 18px;
+}
+.sa-link:hover{ color: var(--sa-accent); }
+
+.sa-contact-row{
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  font-size: 18px;
+  color: var(--sa-text-100);
+}
+
+/* Divider */
+.sa-divider{
+  border: none;
+  height: 1px;
+  background: var(--sa-divider);
+}
+
+

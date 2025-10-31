@@ -1,88 +1,88 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { RiInstagramFill } from "react-icons/ri";
+import { SiYoutubeshorts } from "react-icons/si";
+import "./footer.css"; // add the CSS below
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-light py-5 mt-5">
+    <footer className="sa-footer bg-dark-900 text-light-300">
       <div className="container">
-        <div className="row">
-          {/* Company Info */}
-          <div className="col-lg-4 mb-4">
-            <h5 className="text-warning mb-3">SoundArt</h5>
-            <p className="text-light">
-              Discover amazing artists, read the latest music news, and connect with the music community.
+        <div className="row gy-5">
+          {/* Brand / Intro */}
+          <div className="col-lg-5">
+            <h1 className="sa-brand mb-3">
+              <span className="text-light-100">Sound</span>
+              <span className="text-accent">Art</span>
+            </h1>
+
+            <p className="sa-intro">
+              Discover the legends of music, explore rare stories,
+              and dive deep into the world of iconic artists and
+              bands that shaped generations.
             </p>
-            <div className="d-flex gap-3">
-              <a href="#" className="text-warning">
-                <i className="bi bi-facebook fs-4"></i>
+
+            <div className="d-flex gap-3 mt-4">
+              <a href="#" aria-label="YouTube" className="sa-social">
+                <SiYoutubeshorts className="mb-1" />
               </a>
-              <a href="#" className="text-warning">
-                <i className="bi bi-twitter fs-4"></i>
+              <a href="#" aria-label="Instagram" className="sa-social">
+                <RiInstagramFill className="mb-1"/>
               </a>
-              <a href="#" className="text-warning">
-                <i className="bi bi-instagram fs-4"></i>
+              <a href="#" aria-label="Twitter/X" className="sa-social">
+                <i className="bi bi-twitter"></i>
               </a>
-              <a href="#" className="text-warning">
-                <i className="bi bi-youtube fs-4"></i>
+              <a href="#" aria-label="Facebook" className="sa-social">
+                <i className="bi bi-facebook"></i>
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="col-lg-3 col-md-6 mb-4">
-            <h6 className="text-warning mb-3">Quick Links</h6>
-            <ul className="list-unstyled">
-              <li className="mb-2">
-                <Link to="/" className="text-light text-decoration-none footer-link">Home</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/artists" className="text-light text-decoration-none footer-link">Artists</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/news" className="text-light text-decoration-none footer-link">News</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/concerts" className="text-light text-decoration-none footer-link">Concerts</Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/contact" className="text-light text-decoration-none footer-link">Contact</Link>
-              </li>
+          <div className="col-lg-3 col-md-6">
+            <h6 className="sa-heading text-accent mb-3">Quick Links</h6>
+            <ul className="sa-links list-unstyled">
+              <li><Link to="/" className="sa-link">Home</Link></li>
+              <li><Link to="/artists" className="sa-link">Artists</Link></li>
+              <li><Link to="/news" className="sa-link">News</Link></li>
+              <li><Link to="/concerts" className="sa-link">Concerts</Link></li>
+              <li><Link to="/contact" className="sa-link">Contact</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
-          <div className="col-lg-5 mb-4">
-            <h6 className="text-warning mb-3">Contact Info</h6>
-            <div className="mb-2">
-              <i className="bi bi-envelope me-2 text-warning"></i>
-              <span className="text-light">info@soundart.com</span>
-            </div>
-            <div className="mb-2">
-              <i className="bi bi-telephone me-2 text-warning"></i>
-              <span className="text-light">(356) 1234 1234</span>
-            </div>
-            <div className="mb-2">
-              <i className="bi bi-geo-alt me-2 text-warning"></i>
-              <span className="text-light">112, Roy Buildings, JC Roads, RY</span>
+          <div className="col-lg-4">
+            <h6 className="sa-heading text-accent mb-3">Contact Info</h6>
+
+            <div className="sa-contact">
+              <div className="sa-contact-row">
+                <i className="bi bi-envelope text-accent me-2"></i>
+                <span>info@soundart.com</span>
+              </div>
+              <div className="sa-contact-row">
+                <i className="bi bi-telephone text-accent me-2"></i>
+                <span>(356) 1234 1234</span>
+              </div>
+              <div className="sa-contact-row">
+                <i className="bi bi-geo-alt text-accent me-2"></i>
+                <span>112, Roy Buildings, JC Roads, RY</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <hr className="my-4" />
+        {/* Bottom bar */}
+        <hr className="sa-divider my-4" />
         <div className="row align-items-center">
           <div className="col-md-6">
-            <p className="text-light mb-0">
-              © 2024 SoundArt. All rights reserved.
-            </p>
+            <p className="mb-0">© 2024 SoundArt. All rights reserved.</p>
           </div>
-          <div className="col-md-6 text-md-end">
-            <Link to="/privacy-policy" className="text-light text-decoration-none footer-link me-3">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-light text-decoration-none footer-link">Terms of Service</Link>
+          <div className="col-md-6 text-md-end mt-3 mt-md-0">
+            <Link to="/privacy-policy" className="sa-link me-4">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="sa-link">Terms of Service</Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

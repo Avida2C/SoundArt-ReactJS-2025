@@ -26,7 +26,7 @@ export default function HeroSection({
       <div className="container text-white">
         <div className="row justify-content-center">
           <div className="col-lg-8 text-center">
-            <h1 className="display-4 fw-bold mb-4">
+            <div className="display-4 fw-bold mb-4" style={{ fontFamily: 'Aptos, sans-serif' }}>
               {titleHighlight ? (
                 titleHighlight === "SoundArt" ? (
                   <>
@@ -40,7 +40,7 @@ export default function HeroSection({
               ) : (
                 title
               )}
-            </h1>
+            </div>
             {description && (
               <p className="lead mb-4">{description}</p>
             )}

@@ -87,6 +87,13 @@ p {
 /* Target all h1 elements with maximum specificity */
 * h1,
 h1,
+/* Hero section title should use Aptos font */
+section .display-4,
+.hero-section .display-4,
+[style*="background"][style*="#191919"] .display-4 {
+  font-family: "Aptos", sans-serif !important;
+}
+
 h1.display-1,
 h1.display-2,
 h1.display-3,
@@ -121,6 +128,13 @@ h1,
 .display-5,
 .display-6 {
   font-family: "AntiquaStd", "Times New Roman", "Times", serif !important;
+}
+
+/* Hero section display-4 should use Aptos font */
+section[style*="#191919"] .display-4,
+section .display-4,
+div.display-4[style*="fontFamily"] {
+  font-family: "Aptos", sans-serif !important;
 }
 
 /* Premium Text Effects */

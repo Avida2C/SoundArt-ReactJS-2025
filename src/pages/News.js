@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { HeroSection } from "../components/layout";
+import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
 import { useDebounce } from "../hooks";
 import { formatNumber } from "../utils/helpers";
@@ -116,50 +118,11 @@ export default function News() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4">
-                Music <span className="text-warning">News</span>
-              </h1>
-              <p className="lead mb-4">
-                Stay updated with the latest stories, rare discoveries, and fascinating insights from the world of legendary music artists.
-              </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-warning btn-lg" onClick={() => document.querySelector('.search-section').scrollIntoView({ behavior: 'smooth' })}>
-                  <i className="bi bi-newspaper me-2"></i>Explore Articles
-                </button>
-                <Link to="/" className="btn btn-outline-light btn-lg">
-                  <i className="bi bi-house me-2"></i>Back to Home
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-6 text-center">
-              <div className="position-relative">
-                <div className="hero-glow position-absolute" style={{
-                  width: '300px',
-                  height: '300px',
-                  background: 'radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%)',
-                  borderRadius: '50%',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: -1
-                }}></div>
-                <img 
-                  src="/images/thebeatles1967.jpg" 
-                  alt="Music News" 
-                  className="img-fluid rounded-4 shadow-lg"
-                  style={{maxHeight: '300px', objectFit: 'cover'}}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={heroData.news.title}
+        titleHighlight={heroData.news.titleHighlight}
+        description={heroData.news.description}
+      />
 
       {/* Categories integrated into Search/Filter section below */}
 

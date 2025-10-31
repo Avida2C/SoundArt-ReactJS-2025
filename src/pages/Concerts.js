@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { HeroSection } from "../components/layout";
+import { heroData } from "../data/heroData";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function Concerts() {
@@ -133,50 +135,11 @@ export default function Concerts() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4">
-                Live <span className="text-warning">Concerts</span>
-              </h1>
-              <p className="lead mb-4">
-                Experience the magic of legendary artists in spectacular tribute concerts. From The Beatles to Queen, don't miss these unforgettable performances.
-              </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-warning btn-lg" onClick={() => document.querySelector('.concerts-section').scrollIntoView({ behavior: 'smooth' })}>
-                  <i className="bi bi-ticket-perforated me-2"></i>View Concerts
-                </button>
-                <Link to="/artists" className="btn btn-outline-light btn-lg">
-                  <i className="bi bi-music-note me-2"></i>Explore Artists
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-6 text-center">
-              <div className="position-relative">
-                <div className="hero-glow position-absolute" style={{
-                  width: '300px',
-                  height: '300px',
-                  background: 'radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%)',
-                  borderRadius: '50%',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: -1
-                }}></div>
-                <img 
-                  src="/images/thebeatles1967.jpg" 
-                  alt="Live Concerts" 
-                  className="img-fluid rounded-4 shadow-lg"
-                  style={{maxHeight: '300px', objectFit: 'cover'}}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={heroData.concerts.title}
+        titleHighlight={heroData.concerts.titleHighlight}
+        description={heroData.concerts.description}
+      />
 
           {/* Search and Filter Section */}
           <section className="py-4 bg-light">

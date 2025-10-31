@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HeroSection } from "../../components/layout";
+import { heroData } from "../../data/heroData";
 import ArtistGallery from "../../components/ArtistGallery/ArtistGallery";
 import "../../styles/artists.css";
 
@@ -44,50 +46,11 @@ export default function Artists() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <h1 className="display-4 fw-bold mb-4">
-                Discover <span className="text-warning">Legendary Artists</span>
-              </h1>
-              <p className="lead mb-4">
-                Explore the icons who shaped music history. From The Beatles to Queen, discover their stories, music, and legacy. Browse our complete collection of legendary artists.
-              </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-warning btn-lg" onClick={() => document.querySelector('.artist-gallery-section').scrollIntoView({ behavior: 'smooth' })}>
-                  <i className="bi bi-music-note me-2"></i>Browse Artists
-                </button>
-                <Link to="/concerts" className="btn btn-outline-light btn-lg">
-                  <i className="bi bi-ticket-perforated me-2"></i>View Concerts
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-6 text-center">
-              <div className="position-relative">
-                <div className="hero-glow position-absolute" style={{
-                  width: '300px',
-                  height: '300px',
-                  background: 'radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%)',
-                  borderRadius: '50%',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: -1
-                }}></div>
-                <img 
-                  src="/images/thebeatles1967.jpg" 
-                  alt="Music Legends" 
-                  className="img-fluid rounded-4 shadow-lg"
-                  style={{maxHeight: '300px', objectFit: 'cover'}}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={heroData.artists.title}
+        titleHighlight={heroData.artists.titleHighlight}
+        description={heroData.artists.description}
+      />
 
 
       {/* Artists Gallery Section */}

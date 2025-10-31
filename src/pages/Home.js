@@ -1,47 +1,61 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArtistCTA from "../components/ArtistGallery/ArtistCTA";
+import { HeroSection, CTASection, StatsSection } from "../components/layout";
+import ArtistCard from "../components/ArtistGallery/ArtistCard";
+import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
 import artistData from "../data/Artist/artistData";
 import "../styles/home.css";
 
 export default function Home() {
   const featuredArticle = articlesData[0];
-  const featuredArtists = artistData.slice(0, 4);
+  const featuredArtists = artistData.slice(0, 3);
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="hero-section position-relative overflow-hidden">
-        <div className="hero-bg position-absolute w-100 h-100"></div>
-        <div className="hero-overlay position-absolute w-100 h-100"></div>
-        
-        <div className="container py-5">
-          <div className="row align-items-center min-vh-75">
-            <div className="col-lg-6">
-              <div className="text-white">
-                <h1 className="display-4 mb-4">
-                  Welcome to <span className="brand-text">Sound<span className="brand-accent">Art</span></span>
-                </h1>
-                <p className="lead mb-4">
-                  Discover the legends of music, explore rare stories, and dive deep into the world of iconic artists and bands that shaped generations.
-                </p>
-                <div className="d-flex gap-3 flex-wrap">
-                  <Link to="/artists" className="btn btn-warning btn-lg px-4 py-3">
-                    <i className="bi bi-music-note me-2"></i>Explore Artists
-                  </Link>
-                  <Link to="/news" className="btn btn-outline-light btn-lg px-4 py-3">
-                    <i className="bi bi-newspaper me-2"></i>Latest News
-                  </Link>
-                </div>
-              </div>
-            </div>
+      <HeroSection
+        title={heroData.home.title}
+        titleHighlight={heroData.home.titleHighlight}
+        description={heroData.home.description}
+        buttons={heroData.home.buttons}
+      />
+
+      {/* Legendary Artists Section */}
+      <section className="pt-5 pb-5">
+        <div className="container">
+          <div className="row mb-5">
+            <div className="col-12 text-center">
+              <h2 className="display-5 fw-bold mb-3">Legendary Artists</h2>
+              <p className="lead text-muted mb-0">Explore the icons who defined music history</p>
             </div>
           </div>
+          
+          <div className="row g-4 mb-5">
+            {featuredArtists.map((artist) => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
+          </div>
+          
+          <div>
+            <Link to="/artists" className="cta-bar d-block text-decoration-none w-100 text-uppercase">
+              <i className="bi bi-music-note me-2"></i>Discover All Artists
+            </Link>
+          </div>
+        </div>
       </section>
-      
 
-      {/* Featured News Section */}
+      {/* Stats Section */}
+      <StatsSection
+        stats={[
+          { number: "50+", label: "Legendary Artists" },
+          { number: "100+", label: "Exclusive Stories" },
+          { number: "1000+", label: "Rare Photos" },
+          { number: "24/7", label: "Music Discovery" }
+        ]}
+      />
+
+      {/* Latest Stories Section */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row mb-5">
@@ -115,114 +129,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Artists Section */}
-      <section className="py-5">
-        <div className="container">
-          <div className="row mb-5">
-            <div className="col-12 text-center">
-              <h2 className="display-5 fw-bold mb-3">Legendary Artists</h2>
-              <p className="lead text-muted">Explore the icons who defined music history</p>
-            </div>
-          </div>
-          
-          <div className="row g-4">
-            {featuredArtists.map((artist) => (
-              <div key={artist.id} className="col-lg-3 col-md-6">
-                <div className="artist-card card border-0 shadow-lg overflow-hidden h-100">
-                  <div className="position-relative">
-                    <img 
-                      src={artist.image} 
-                      className="card-img-top artist-card-image" 
-                      alt={artist.name}
-                    />
-                    <div className="artist-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-end">
-                      <div className="p-3 text-white w-100 artist-overlay-gradient">
-                        <h5 className="card-title fw-bold mb-2">{artist.name}</h5>
-                        <p className="card-text small mb-3">
-                          {artist.bio.substring(0, 100)}...
-                        </p>
-                        <Link to={`/artist/${artist.id}`} className="btn btn-warning btn-sm">
-                          Explore Artist
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="mt-5">
-            <Link to="/artists" className="cta-bar d-block text-decoration-none">
-              <span className="me-2">🎵</span> Discover All Artists
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-5 bg-dark text-white">
-        <div className="container">
-          <div className="row text-center">
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">50+</h3>
-                <p className="mb-0">Legendary Artists</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">100+</h3>
-                <p className="mb-0">Exclusive Stories</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">1000+</h3>
-                <p className="mb-0">Rare Photos</p>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 mb-4">
-              <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">24/7</h3>
-                <p className="mb-0">Music Discovery</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Artist CTA Section */}
-      <section className="py-5 bg-light">
-        <div className="container">
-          <div className="row mb-5">
-            <div className="col-12 text-center">
-              <h2 className="display-5 fw-bold mb-3">Discover Music Legends</h2>
-              <p className="lead text-muted">Explore our featured artist and discover new music icons</p>
-            </div>
-          </div>
-          <ArtistCTA />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-5 cta-dark-bg">
-        <div className="container text-center text-white">
-          <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <h2 className="display-5 fw-bold mb-4">Ready to Explore Music History?</h2>
-              <p className="lead mb-4">
-                Join thousands of music lovers discovering rare stories, exclusive content, and the legends that shaped our world.
-              </p>
-              <div className="d-flex gap-3 justify-content-center flex-wrap">
-                <Link to="/artists" className="btn btn-warning btn-lg px-5 py-3">
-                  <i className="bi bi-music-note me-2"></i>Start Exploring
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Explore CTA Section */}
+      <CTASection
+        title="Ready to Explore Music History?"
+        description="Join thousands of music lovers discovering rare stories, exclusive content, and the legends that shaped our world."
+        buttons={[
+          {
+            to: "/artists",
+            text: "Start Exploring",
+            icon: "bi bi-music-note",
+            variant: "btn-warning"
+          }
+        ]}
+      />
     </div>
   );
 }

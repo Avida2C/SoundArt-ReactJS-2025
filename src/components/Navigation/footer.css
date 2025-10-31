@@ -21,6 +21,12 @@
   line-height: 1.1;
 }
 
+/* Art part of SoundArt in footer - different font */
+.sa-brand .text-accent {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800; /* ExtraBold */
+}
+
 /* Intro text */
 .sa-intro{
   max-width: 560px;

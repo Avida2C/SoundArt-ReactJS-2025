@@ -1,29 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HeroSection } from "../components/layout";
+import { heroData } from "../data/heroData";
 
 export default function TermsOfService() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h1 className="display-4 fw-bold mb-4">
-                Terms of <span className="text-warning">Service</span>
-              </h1>
-              <p className="lead mb-4">
-                Please read these terms carefully before using our services. By using SoundArt, you agree to be bound by these terms.
-              </p>
-              <p className="text-muted">
-                Last updated: December 2024
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={heroData.terms.title}
+        titleHighlight={heroData.terms.titleHighlight}
+        description={heroData.terms.description}
+      />
 
       {/* Content Section */}
       <section className="py-5">

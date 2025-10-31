@@ -40,6 +40,21 @@ export const heroData = {
     title: "Live",
     titleHighlight: "Concerts",
     description: "Experience the magic of legendary artists in spectacular tribute concerts. From The Beatles to Queen, don't miss these unforgettable performances."
+  },
+  contact: {
+    title: "Get in",
+    titleHighlight: "Touch",
+    description: "Have questions or want to get in touch? We'd love to hear from you. Reach out to us through any of the channels below."
+  },
+  privacy: {
+    title: "Privacy",
+    titleHighlight: "Policy",
+    description: "We respect your privacy and are committed to protecting your personal data. This policy explains how we collect, use, and safeguard your information."
+  },
+  terms: {
+    title: "Terms of",
+    titleHighlight: "Service",
+    description: "Please read these terms carefully before using our service. By accessing or using SoundArt, you agree to be bound by these terms."
   }
 };
 

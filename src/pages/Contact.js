@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { HeroSection } from "../components/layout";
+import { heroData } from "../data/heroData";
 import ContactUsDetails from "../components/ContactUs/ContactUsDetails";
 import "../styles/contact.css";
 
@@ -51,23 +53,14 @@ export default function Contact() {
         setConsent(false);
     };
     return (
-        <div className="container mt-4">
-            {/* Hero Section - consistent gradient theme */}
-            <section className="py-5 mb-4" style={{
-                background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
-                borderRadius: '0.5rem'
-            }}>
-                <div className="container text-white">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8 text-center">
-                            <h1 className="display-5 fw-bold mb-3">
-                                Contact <span className="text-warning">Us</span>
-                            </h1>
-                            <p className="lead mb-0 text-muted">We'd love to hear from you. Tell us how we can help.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div>
+            {/* Hero Section */}
+            <HeroSection
+                title={heroData.contact.title}
+                titleHighlight={heroData.contact.titleHighlight}
+                description={heroData.contact.description}
+            />
+            <div className="container mt-4">
 
             {/* Contact Info Cards (previous style) */}
             <ContactUsDetails />
@@ -194,6 +187,7 @@ export default function Contact() {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

@@ -1,29 +1,17 @@
 import React from "react";
+import { HeroSection } from "../components/layout";
+import { heroData } from "../data/heroData";
 import { Link } from "react-router-dom";
 
 export default function PrivacyPolicy() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h1 className="display-4 fw-bold mb-4">
-                Privacy <span className="text-warning">Policy</span>
-              </h1>
-              <p className="lead mb-4">
-                Your privacy is important to us. This policy explains how we collect, use, and protect your information.
-              </p>
-              <p className="text-muted">
-                Last updated: December 2024
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        title={heroData.privacy.title}
+        titleHighlight={heroData.privacy.titleHighlight}
+        description={heroData.privacy.description}
+      />
 
       {/* Content Section */}
       <section className="py-5">

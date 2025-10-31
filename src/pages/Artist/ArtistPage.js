@@ -170,6 +170,10 @@ export default function ArtistPage() {
 
   const artistDetails = getArtistDetails(selectedArtist);
 
+  // Photos-only: label the tab as Photos
+  const hasPhotos = Array.isArray(artistDetails.photos) && artistDetails.photos.length > 0;
+  const mediaTabLabel = 'Photos';
+
   // Helper function to format play counts
   const formatPlayCount = (count) => {
     if (count >= 1000000000) {
@@ -278,15 +282,7 @@ export default function ArtistPage() {
                 className={`nav-link ${activeTab === 'media' ? 'active' : ''}`}
                 onClick={() => setActiveTab('media')}
               >
-                Media
-              </button>
-            </li>
-            <li className="nav-item">
-              <button 
-                className={`nav-link ${activeTab === 'photos' ? 'active' : ''}`}
-                onClick={() => setActiveTab('photos')}
-              >
-                Photos
+                {mediaTabLabel}
               </button>
             </li>
             <li className="nav-item">
@@ -400,51 +396,29 @@ export default function ArtistPage() {
 
             {activeTab === 'media' && (
               <div>
-                <h3 className="mb-4">Media</h3>
-                <div className="row g-4">
-                  {artistDetails.media.map((item, index) => (
-                    <div key={index} className="col-lg-6">
-                      <div className="card">
-                        <div className="card-body">
-                          <div className="d-flex align-items-start">
-                            <div className="flex-shrink-0 me-3">
-                              <i className="bi bi-play-circle-fill text-warning fs-2"></i>
-                            </div>
-                            <div className="flex-grow-1">
-                              <h5 className="card-title">{item.title}</h5>
-                              <p className="card-text text-muted">{item.description}</p>
-                              <span className="badge bg-secondary">{item.type}</span>
+                <h3 className="mb-4">{mediaTabLabel}</h3>
+                {hasPhotos && (
+                  <div>
+                    <div className="row g-4">
+                      {artistDetails.photos.map((photo, index) => (
+                        <div key={index} className="col-lg-4 col-md-6">
+                          <div className="card h-100 shadow-sm">
+                            <img 
+                              src={photo.image} 
+                              className="card-img-top" 
+                              alt={photo.title}
+                              style={{height: '250px', objectFit: 'cover'}}
+                            />
+                            <div className="card-body">
+                              <h6 className="card-title">{photo.title}</h6>
+                              <p className="card-text text-muted small">{photo.description}</p>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'photos' && (
-              <div>
-                <h3 className="mb-4">Photos</h3>
-                <div className="row g-4">
-                  {artistDetails.photos.map((photo, index) => (
-                    <div key={index} className="col-lg-4 col-md-6">
-                      <div className="card h-100 shadow-sm">
-                        <img 
-                          src={photo.image} 
-                          className="card-img-top" 
-                          alt={photo.title}
-                          style={{height: '250px', objectFit: 'cover'}}
-                        />
-                        <div className="card-body">
-                          <h6 className="card-title">{photo.title}</h6>
-                          <p className="card-text text-muted small">{photo.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -756,26 +730,7 @@ export default function ArtistPage() {
 
             {activeTab === 'reviews' && (
               <div>
-                {isAuthenticated ? (
-                  <ReviewsSection artistId={selectedArtist.id} artistName={selectedArtist.name} />
-                ) : (
-                  <div className="text-center py-5">
-                    <i className="bi bi-lock-fill text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
-                    <h4 className="mb-3">Reviews & Ratings</h4>
-                    <p className="text-muted mb-4">
-                      Sign in to read reviews from fellow fans and share your own thoughts about this artist.
-                    </p>
-                    <button 
-                      className="btn btn-warning"
-                      onClick={() => {
-                        // This would trigger the auth modal
-                        window.location.href = '/social';
-                      }}
-                    >
-                      <i className="bi bi-box-arrow-in-right me-2"></i>Sign In to View Reviews
-                    </button>
-                  </div>
-                )}
+                <ReviewsSection artistId={selectedArtist.id} artistName={selectedArtist.name} />
               </div>
             )}
           </div>

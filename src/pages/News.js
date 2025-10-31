@@ -161,10 +161,24 @@ export default function News() {
         </div>
       </section>
 
+      {/* Categories integrated into Search/Filter section below */}
+
+      {/* Title for Articles above filtering */}
+      <section className="pt-4">
+        <div className="container">
+          <div className="row mb-3">
+            <div className="col-12 text-center">
+              <h2 className="display-5 fw-bold mb-2">Latest Stories</h2>
+              <p className="lead text-muted mb-0">Discover fascinating stories from the world of music legends</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
           {/* Search and Filter Section */}
           <section className="py-4 bg-light search-section">
             <div className="container">
-              <div className="row g-3 align-items-center">
+            <div className="row g-3 align-items-center">
                 <div className="col-lg-4">
                   <div className="input-group">
                     <span className="input-group-text">
@@ -218,6 +232,7 @@ export default function News() {
                     </small>
                   </div>
                 </div>
+            {/* Category chips removed per request; dropdown retained above */}
               </div>
             </div>
           </section>
@@ -225,12 +240,7 @@ export default function News() {
       {/* Articles Section */}
       <section className="py-5">
         <div className="container">
-          <div className="row mb-5">
-            <div className="col-12 text-center">
-              <h2 className="display-5 fw-bold mb-3">Latest Stories</h2>
-              <p className="lead text-muted">Discover fascinating stories from the world of music legends</p>
-            </div>
-          </div>
+          
           
           {currentArticles.length === 0 ? (
             <div className="text-center py-5">
@@ -367,39 +377,7 @@ export default function News() {
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-5">
-        <div className="container">
-          <div className="row mb-5">
-            <div className="col-12 text-center">
-              <h3 className="fw-bold mb-3">Browse by Category</h3>
-              <p className="text-muted">Explore stories by your favorite artists and topics</p>
-            </div>
-          </div>
-          
-          <div className="row g-4">
-            {categories.slice(1).map((category, index) => (
-              <div key={category} className="col-lg-3 col-md-6">
-                <div className="card border-0 shadow-sm h-100 text-center">
-                  <div className="card-body p-4">
-                    <i className={`bi bi-${getCategoryIcon(category)} text-warning mb-3 d-block`} style={{fontSize: '3rem'}}></i>
-                    <h5 className="card-title">{category}</h5>
-                    <p className="card-text text-muted">
-                      {articlesData.filter(article => article.category === category).length} articles
-                    </p>
-                    <button 
-                      className="btn btn-outline-warning"
-                      onClick={() => setSelectedCategory(category)}
-                    >
-                      Explore
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Categories integrated into search section */}
     </div>
   );
 }

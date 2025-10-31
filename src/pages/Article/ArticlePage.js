@@ -211,102 +211,83 @@ export default function ArticlePage() {
                 <i className="bi bi-chat-dots me-2"></i>Comments
               </h3>
               
-              {isAuthenticated ? (
-                <>
-                  {/* Comment Form */}
-                  <div className="card mb-4">
-                    <div className="card-body">
-                      <h6 className="card-title">Leave a Comment</h6>
-                      <form>
-                        <div className="mb-3">
-                          <textarea 
+              {/* Show comment form only when authenticated; always show existing comments */}
+              {isAuthenticated && (
+                <div className="card mb-4">
+                  <div className="card-body">
+                    <h6 className="card-title">Leave a Comment</h6>
+                    <form>
+                      <div className="mb-3">
+                        <textarea 
+                          className="form-control" 
+                          rows="4" 
+                          placeholder="Share your thoughts about this article..."
+                        ></textarea>
+                      </div>
+                      <div className="row g-3">
+                        <div className="col-md-6">
+                          <input 
+                            type="text" 
                             className="form-control" 
-                            rows="4" 
-                            placeholder="Share your thoughts about this article..."
-                          ></textarea>
+                            placeholder="Your name"
+                          />
                         </div>
-                        <div className="row g-3">
-                          <div className="col-md-6">
-                            <input 
-                              type="text" 
-                              className="form-control" 
-                              placeholder="Your name"
-                            />
-                          </div>
-                          <div className="col-md-6">
-                            <input 
-                              type="email" 
-                              className="form-control" 
-                              placeholder="Your email"
-                            />
-                          </div>
-                        </div>
-                        <button type="submit" className="btn btn-warning mt-3">
-                          <i className="bi bi-send me-2"></i>Post Comment
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-
-                  {/* Sample Comments */}
-                  <div className="comments-list">
-                    <div className="card mb-3">
-                      <div className="card-body">
-                        <div className="d-flex align-items-start">
-                          <div className="flex-shrink-0 me-3">
-                            <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                              <i className="bi bi-person-fill text-dark"></i>
-                            </div>
-                          </div>
-                          <div className="flex-grow-1">
-                            <div className="d-flex justify-content-between align-items-start mb-2">
-                              <h6 className="mb-0">Music Lover</h6>
-                              <small className="text-muted">2 hours ago</small>
-                            </div>
-                            <p className="mb-0">Amazing article! I never knew these details about The Beatles. Thanks for sharing this fascinating story.</p>
-                          </div>
+                        <div className="col-md-6">
+                          <input 
+                            type="email" 
+                            className="form-control" 
+                            placeholder="Your email"
+                          />
                         </div>
                       </div>
-                    </div>
-
-                    <div className="card mb-3">
-                      <div className="card-body">
-                        <div className="d-flex align-items-start">
-                          <div className="flex-shrink-0 me-3">
-                            <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                              <i className="bi bi-person-fill text-dark"></i>
-                            </div>
-                          </div>
-                          <div className="flex-grow-1">
-                            <div className="d-flex justify-content-between align-items-start mb-2">
-                              <h6 className="mb-0">Beatles Fan</h6>
-                              <small className="text-muted">5 hours ago</small>
-                            </div>
-                            <p className="mb-0">These rare photos are incredible! It's amazing to see them before they became famous. Great find!</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                      <button type="submit" className="btn btn-warning mt-3">
+                        <i className="bi bi-send me-2"></i>Post Comment
+                      </button>
+                    </form>
                   </div>
-                </>
-              ) : (
-                <div className="text-center py-5">
-                  <i className="bi bi-lock-fill text-warning mb-3 d-block" style={{fontSize: '3rem'}}></i>
-                  <h4 className="mb-3">Join the Discussion</h4>
-                  <p className="text-muted mb-4">
-                    Sign in to read comments from fellow music fans and share your thoughts about this article.
-                  </p>
-                  <button 
-                    className="btn btn-warning"
-                    onClick={() => {
-                      // This would trigger the auth modal
-                      window.location.href = '/social';
-                    }}
-                  >
-                    <i className="bi bi-box-arrow-in-right me-2"></i>Sign In to View Comments
-                  </button>
                 </div>
               )}
+
+              {/* Public Comments List */}
+              <div className="comments-list">
+                <div className="card mb-3">
+                  <div className="card-body">
+                    <div className="d-flex align-items-start">
+                      <div className="flex-shrink-0 me-3">
+                        <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
+                          <i className="bi bi-person-fill text-dark"></i>
+                        </div>
+                      </div>
+                      <div className="flex-grow-1">
+                        <div className="d-flex justify-content-between align-items-start mb-2">
+                          <h6 className="mb-0">Music Lover</h6>
+                          <small className="text-muted">2 hours ago</small>
+                        </div>
+                        <p className="mb-0">Amazing article! I never knew these details about The Beatles. Thanks for sharing this fascinating story.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card mb-3">
+                  <div className="card-body">
+                    <div className="d-flex align-items-start">
+                      <div className="flex-shrink-0 me-3">
+                        <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
+                          <i className="bi bi-person-fill text-dark"></i>
+                        </div>
+                      </div>
+                      <div className="flex-grow-1">
+                        <div className="d-flex justify-content-between align-items-start mb-2">
+                          <h6 className="mb-0">Beatles Fan</h6>
+                          <small className="text-muted">5 hours ago</small>
+                        </div>
+                        <p className="mb-0">These rare photos are incredible! It's amazing to see them before they became famous. Great find!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -178,3 +178,21 @@
 .icon-xl {
   font-size: 4rem;
 }
+
+/* Full-width CTA bar (Discover All Artists) */
+.cta-bar {
+  background: linear-gradient(90deg, #ffbd2e 0%, #ffc107 50%, #ffbd2e 100%);
+  color: #1f1f1f;
+  font-weight: 700;
+  text-align: center;
+  padding: 14px 18px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 193, 7, 0.35);
+  color: #1f1f1f;
+}

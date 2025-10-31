@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { AuthModal } from "../auth";
+import { FEATURE_FLAGS } from "../../constants";
 
 export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -45,7 +46,7 @@ export default function Header() {
               <li className="nav-item">
                 <Link className="nav-link" to="/concerts">Concerts</Link>
               </li>
-              {isAuthenticated && (
+              {FEATURE_FLAGS.communityEnabled && isAuthenticated && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/social">Community</Link>
                 </li>
@@ -53,61 +54,65 @@ export default function Header() {
             </ul>
 
             {/* Authentication Section */}
-            <ul className="navbar-nav">
-              {isAuthenticated ? (
-                <li className="nav-item dropdown">
-                  <button
-                    className="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
-                    onClick={() => setShowUserMenu(!showUserMenu)}
-                    style={{ border: 'none', background: 'none' }}
-                  >
-                    <img
-                      src={user.avatar}
-                      alt={user.username}
-                      className="rounded-circle me-2"
-                      style={{ width: '30px', height: '30px', objectFit: 'cover' }}
-                    />
-                    <span className="d-none d-md-inline">{user.firstName}</span>
-                  </button>
-                  {showUserMenu && (
-                    <div className="dropdown-menu show" style={{ right: 0, left: 'auto' }}>
-                      <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
-                        <i className="bi bi-person me-2"></i>My Profile
-                      </Link>
-                      <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
-                        <i className="bi bi-heart me-2"></i>Favorites
-                      </Link>
-                      <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
-                        <i className="bi bi-bookmark me-2"></i>Wishlist
-                      </Link>
-                      <div className="dropdown-divider"></div>
-                      <button className="dropdown-item" onClick={handleLogout}>
-                        <i className="bi bi-box-arrow-right me-2"></i>Sign Out
-                      </button>
-                    </div>
-                  )}
-                </li>
-              ) : (
-                <li className="nav-item">
-                  <button
-                    className="btn btn-warning"
-                    onClick={() => setShowAuthModal(true)}
-                  >
-                    <i className="bi bi-box-arrow-in-right me-2"></i>
-                    Sign In
-                  </button>
-                </li>
-              )}
-            </ul>
+            {FEATURE_FLAGS.authEnabled && (
+              <ul className="navbar-nav">
+                {isAuthenticated ? (
+                  <li className="nav-item dropdown">
+                    <button
+                      className="btn btn-link nav-link dropdown-toggle d-flex align-items-center"
+                      onClick={() => setShowUserMenu(!showUserMenu)}
+                      style={{ border: 'none', background: 'none' }}
+                    >
+                      <img
+                        src={user.avatar}
+                        alt={user.username}
+                        className="rounded-circle me-2"
+                        style={{ width: '30px', height: '30px', objectFit: 'cover' }}
+                      />
+                      <span className="d-none d-md-inline">{user.firstName}</span>
+                    </button>
+                    {showUserMenu && (
+                      <div className="dropdown-menu show" style={{ right: 0, left: 'auto' }}>
+                        <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
+                          <i className="bi bi-person me-2"></i>My Profile
+                        </Link>
+                        <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
+                          <i className="bi bi-heart me-2"></i>Favorites
+                        </Link>
+                        <Link className="dropdown-item" to="/social" onClick={() => setShowUserMenu(false)}>
+                          <i className="bi bi-bookmark me-2"></i>Wishlist
+                        </Link>
+                        <div className="dropdown-divider"></div>
+                        <button className="dropdown-item" onClick={handleLogout}>
+                          <i className="bi bi-box-arrow-right me-2"></i>Sign Out
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                ) : (
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => setShowAuthModal(true)}
+                    >
+                      <i className="bi bi-box-arrow-in-right me-2"></i>
+                      Sign In
+                    </button>
+                  </li>
+                )}
+              </ul>
+            )}
           </div>
         </div>
       </nav>
 
-      <AuthModal 
-        show={showAuthModal}
-        onHide={() => setShowAuthModal(false)}
-        onSuccess={() => setShowAuthModal(false)}
-      />
+      {FEATURE_FLAGS.authEnabled && (
+        <AuthModal 
+          show={showAuthModal}
+          onHide={() => setShowAuthModal(false)}
+          onSuccess={() => setShowAuthModal(false)}
+        />
+      )}
     </>
   );
 }

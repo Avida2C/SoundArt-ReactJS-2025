@@ -7,6 +7,12 @@ export const APP_CONFIG = {
   author: 'SoundArt Team'
 };
 
+// Feature Flags
+export const FEATURE_FLAGS = {
+  authEnabled: false,
+  communityEnabled: false
+};
+
 // API Endpoints
 export const API_ENDPOINTS = {
   articles: '/api/articles',

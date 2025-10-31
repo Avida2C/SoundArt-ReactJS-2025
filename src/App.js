@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
+import { FEATURE_FLAGS } from "./constants";
 
 import "./App.css";
 
@@ -28,8 +29,12 @@ function App() {
           <Route path="/artists" element={<Artists />} />
           <Route path="/news" element={<News />} />
           <Route path="/concerts" element={<Concerts />} />
-              <Route path="/social" element={<Social />} />
-              <Route path="/profile/:username" element={<Profile />} />
+          {FEATURE_FLAGS.communityEnabled && (
+            <Route path="/social" element={<Social />} />
+          )}
+          {FEATURE_FLAGS.authEnabled && (
+            <Route path="/profile/:username" element={<Profile />} />
+          )}
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />

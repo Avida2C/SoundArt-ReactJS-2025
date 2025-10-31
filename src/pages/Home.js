@@ -163,9 +163,9 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="text-center mt-5">
-            <Link to="/artists" className="btn btn-warning btn-lg px-5 py-3">
-              <i className="bi bi-music-note-list me-2"></i>Discover All Artists
+          <div className="mt-5">
+            <Link to="/artists" className="cta-bar d-block text-decoration-none">
+              <span className="me-2">🎵</span> Discover All Artists
             </Link>
           </div>
         </div>
@@ -228,9 +228,6 @@ export default function Home() {
               <div className="d-flex gap-3 justify-content-center flex-wrap">
                 <Link to="/artists" className="btn btn-warning btn-lg px-5 py-3">
                   <i className="bi bi-music-note me-2"></i>Start Exploring
-                </Link>
-                <Link to="/news" className="btn btn-outline-light btn-lg px-5 py-3">
-                  <i className="bi bi-newspaper me-2"></i>Read Latest News
                 </Link>
               </div>
             </div>

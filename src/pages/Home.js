@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HeroSection, CTASection, StatsSection } from "../components/layout";
+import { HeroSection, CTASection, StatsSection, FeaturedStory, StoriesSidebar } from "../components/layout";
 import ArtistCard from "../components/ArtistGallery/ArtistCard";
 import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
@@ -66,65 +66,8 @@ export default function Home() {
           </div>
           
           <div className="row g-4">
-            <div className="col-lg-8">
-              <div className="featured-news-card card border-0 shadow-lg overflow-hidden">
-                <div className="row g-0 h-100">
-                  <div className="col-md-6">
-                    <img 
-                      src={featuredArticle.image1} 
-                      className="img-fluid h-100 article-image" 
-                      alt={featuredArticle.title}
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <div className="card-body h-100 d-flex flex-column justify-content-center p-4">
-                      <span className="badge bg-warning text-dark mb-3 px-3 py-2">Featured Story</span>
-                      <h3 className="card-title fw-bold mb-3">{featuredArticle.title}</h3>
-                      <p className="card-text text-muted mb-4">
-                        {featuredArticle.content[0].substring(0, 200)}...
-                      </p>
-                      <div className="d-flex justify-content-between align-items-center">
-                        <small className="text-muted">
-                          <i className="bi bi-person me-1"></i>{featuredArticle.author} • 
-                          <i className="bi bi-calendar ms-2 me-1"></i>{featuredArticle.date}
-                        </small>
-                        <Link to={`/article/${featuredArticle.id}`} className="btn btn-warning">
-                          Read Full Story
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="col-lg-4">
-              <div className="news-sidebar">
-                <h4 className="fw-bold mb-4">More Stories</h4>
-                {articlesData.slice(1, 4).map((article) => (
-                  <div key={article.id} className="news-item mb-4">
-                    <Link to={`/article/${article.id}`} className="text-decoration-none text-dark">
-                      <div className="d-flex gap-3">
-                        <img 
-                          src={article.image1} 
-                          alt={article.title}
-                          className="rounded news-thumbnail"
-                        />
-                        <div>
-                          <h6 className="mb-1 fw-semibold">{article.title}</h6>
-                          <small className="text-muted">{article.date}</small>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-                <div className="text-center mt-4">
-                  <Link to="/news" className="btn btn-outline-warning">
-                    View All Stories
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <FeaturedStory article={featuredArticle} />
+            <StoriesSidebar stories={articlesData.slice(1, 4)} />
           </div>
         </div>
       </section>

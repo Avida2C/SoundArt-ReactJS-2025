@@ -18,9 +18,9 @@ export default function StatsSection({
       <div className="container">
         <div className="row text-center">
           {stats.map((stat, index) => (
-            <div key={index} className="col-lg-3 col-md-6 mb-4">
+            <div key={index} className="col-lg-3 col-md-6 my-4">
               <div className="stat-item">
-                <h3 className="display-4 fw-bold text-warning mb-2">{stat.number}</h3>
+                <h3 className="display-3 fw-bold text-warning mb-2">{stat.number}</h3>
                 <p className="mb-0">{stat.label}</p>
               </div>
             </div>

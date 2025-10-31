@@ -13,8 +13,8 @@
 
 /* CSS Variables for consistent theming */
 :root {
-  --primary-color: #FFB300;
-  --primary-dark: #ff8f00;
+  --primary-color: #ffbd2e ;
+  --primary-dark: #ffa12e ;
   --secondary-color: #6c757d;
   --dark-bg: #1a1a1a;
   --dark-bg-light: #2d2d2d;
@@ -145,7 +145,7 @@ h1,
   letter-spacing: 0 !important;
   transition: var(--transition);
   border-radius: 4px !important;
-  padding: 16px !important;
+  padding: 8px !important;
 }
 
 /* Buttons with icons - 24px padding on opposite side of icon */
@@ -153,24 +153,25 @@ h1,
 .btn:has(svg:first-child:not(:only-child)),
 .btn-lg:has(i:first-child:not(:only-child)),
 .btn-lg:has(svg:first-child:not(:only-child)) {
-  padding-right: 24px !important;
-  padding-left: 16px !important;
-  padding-top: 16px !important;
-  padding-bottom: 16px !important;
+  padding-right: 16px !important;
+  padding-left: 8px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
 }
 
 .btn:has(i:last-child:not(:only-child)),
 .btn:has(svg:last-child:not(:only-child)),
 .btn-lg:has(i:last-child:not(:only-child)),
 .btn-lg:has(svg:last-child:not(:only-child)) {
-  padding-left: 24px !important;
-  padding-right: 16px !important;
-  padding-top: 16px !important;
-  padding-bottom: 16px !important;
+  padding-left: 16px !important;
+  padding-right: 8px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
 }
 
 .btn-warning {
   background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+  padding: 8px !important;
   border: none;
 }
 
@@ -181,6 +182,7 @@ h1,
 
 .btn-outline-warning {
   border: 2px solid var(--primary-color);
+  padding: 8px !important;
   color: var(--primary-color);
 }
 
@@ -192,6 +194,7 @@ h1,
 
 .btn-outline-light {
   border: 2px solid #fff;
+  padding: 8px !important;
   color: #fff;
 }
 

@@ -77,6 +77,10 @@
   transform: translateY(-10px);
 }
 
+.featured-news-card .btn.text-uppercase {
+  text-transform: uppercase !important;
+}
+
 /* Artist Card */
 .artist-card {
   transition: var(--transition);
@@ -109,13 +113,9 @@
 .news-item {
   transition: var(--transition);
   border-radius: 4px;
-  padding: 10px;
+  margin-bottom: 16px;
 }
 
-.news-item:hover {
-  transform: translateX(5px);
-  background-color: rgba(255, 193, 7, 0.1);
-}
 
 /* Hero Section Backgrounds */
 .hero-bg {
@@ -150,9 +150,24 @@
 }
 
 .news-thumbnail {
-  width: 80px;
-  height: 60px;
+  width: 88px;
+  height: 64px;
   object-fit: cover;
+}
+
+/* News Sidebar Styles */
+.news-sidebar .news-item {
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.news-sidebar .news-item:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.news-sidebar .btn.text-uppercase {
+  text-transform: uppercase !important;
 }
 
 .artist-card-image {
@@ -180,7 +195,7 @@
 
 /* Full-width CTA bar (Discover All Artists) */
 .cta-bar {
-  background: linear-gradient(90deg, #ffbd2e 0%, #ffc107 50%, #ffbd2e 100%);
+  background: linear-gradient(90deg, #ffbd2e  0%, #ffc107 50%, #ffbd2e 100%);
   color: #1f1f1f;
   font-weight: 700;
   text-align: center;

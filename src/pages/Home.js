@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArtistCTA from "../assets/components/ArtistGallery/ArtistCTA";
-import articlesData from "../assets/data/Articles/articlesData";
-import artistData from "../assets/data/Artist/artistData";
+import ArtistCTA from "../components/ArtistGallery/ArtistCTA";
+import articlesData from "../data/Articles/articlesData";
+import artistData from "../data/Artist/artistData";
 import "../styles/home.css";
 
 export default function Home() {

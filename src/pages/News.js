@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import articlesData from "../assets/data/Articles/articlesData";
+import articlesData from "../data/Articles/articlesData";
 import { useDebounce } from "../hooks";
 import { formatNumber } from "../utils/helpers";
 

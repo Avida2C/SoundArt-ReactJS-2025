@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ContactUsDetails from "../assets/components/ContactUs/ContactUsDetails";
+import ContactUsDetails from "../components/ContactUs/ContactUsDetails";
 import "../styles/contact.css";
 
 export default function Contact() {

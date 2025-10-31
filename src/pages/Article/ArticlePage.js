@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import articlesData from "../../assets/data/Articles/articlesData";
+import articlesData from "../../data/Articles/articlesData";
 
 export default function ArticlePage() {
   const { id } = useParams();

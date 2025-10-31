@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArtistGallery from "../../assets/components/ArtistGallery/ArtistGallery";
+import ArtistGallery from "../../components/ArtistGallery/ArtistGallery";
 import "../../styles/artists.css";
 
 export default function Artists() {

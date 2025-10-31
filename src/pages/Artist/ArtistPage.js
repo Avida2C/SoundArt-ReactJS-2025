@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { LoginGate } from "../../components/auth";
-import artists from "../../assets/data/Artist/artistData";
-import ReviewsSection from "../../assets/components/Reviews/ReviewsSection";
+import artists from "../../data/Artist/artistData";
 import "../../styles/artists.css";
 
 export default function ArtistPage() {
@@ -301,14 +300,7 @@ export default function ArtistPage() {
                 Concerts
               </button>
             </li>
-            <li className="nav-item">
-              <button 
-                className={`nav-link ${activeTab === 'reviews' ? 'active' : ''}`}
-                onClick={() => setActiveTab('reviews')}
-              >
-                Reviews
-              </button>
-            </li>
+            
           </ul>
 
           {/* Tab Content */}
@@ -728,11 +720,7 @@ export default function ArtistPage() {
               </div>
             )}
 
-            {activeTab === 'reviews' && (
-              <div>
-                <ReviewsSection artistId={selectedArtist.id} artistName={selectedArtist.name} />
-              </div>
-            )}
+            
           </div>
         </div>
       </div>

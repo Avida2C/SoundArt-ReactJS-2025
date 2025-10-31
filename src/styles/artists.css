@@ -4,14 +4,12 @@
 .gallery-controls {
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
   padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
   margin: 1rem 0 2rem 0;
 }
 
 .search-box .input-group {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -28,7 +26,6 @@
 }
 
 .search-box .form-control:focus {
-  box-shadow: none;
   border-color: transparent;
 }
 
@@ -63,16 +60,14 @@
   height: 50vh;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
   transition: var(--transition);
   margin-bottom: 1rem;
 }
 
 .artist-gallery:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 .artist-name {
@@ -88,6 +83,7 @@
   color: rgba(254, 193, 50, 0.9);
   font-weight: 700;
   font-size: 7vh;
+  font-family: "AntiquaStd", serif !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: var(--transition);
 }
@@ -96,7 +92,7 @@
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
   padding: 1rem;
   backdrop-filter: blur(10px);
-  border-radius: 10px 0 0 0;
+  border-radius: 4px 0 0 0;
 }
 
 .artist-bio p {
@@ -107,20 +103,18 @@
 
 .artist-bio button {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: #000;
+  color: #353535;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   width: 100%;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
 }
 
 .artist-bio button:hover {
   background: linear-gradient(135deg, #ffd000 0%, #ffa600 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
 }
 
 .truncate-bio {
@@ -145,11 +139,10 @@
 .artist-item {
   position: relative;
   height: 250px;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: var(--shadow-sm);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -158,12 +151,10 @@
 
 .artist-item:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg);
 }
 
 .artist-item.active {
   transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
   border: 3px solid var(--primary-color);
 }
 
@@ -203,7 +194,7 @@
   background: rgba(255, 193, 7, 0.2);
   color: var(--primary-color);
   padding: 0.25rem 0.5rem;
-  border-radius: 15px;
+  border-radius: 4px;
   font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
@@ -218,7 +209,7 @@
 .artist-item-actions .btn {
   flex: 1;
   padding: 0.5rem;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   font-size: 0.9rem;
   transition: var(--transition);
 }
@@ -234,9 +225,8 @@
 .artist-list-item {
   display: flex;
   background: white;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
   transition: var(--transition);
   cursor: pointer;
   border: 2px solid transparent;
@@ -244,12 +234,10 @@
 
 .artist-list-item:hover {
   transform: translateX(5px);
-  box-shadow: var(--shadow-md);
 }
 
 .artist-list-item.active {
   border-color: var(--primary-color);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2);
 }
 
 .artist-list-image {
@@ -295,9 +283,9 @@
 
 .genre-tag {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: #000;
+  color: #353535;
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -311,7 +299,7 @@
 
 .artist-list-actions .btn {
   min-width: 100px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   font-weight: 600;
   transition: var(--transition);
 }
@@ -320,7 +308,7 @@
 .no-results {
   padding: 3rem 1rem;
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   margin: 2rem 0;
 }
 
@@ -430,14 +418,12 @@
 .gallery-controls {
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
   padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
+  border-radius: 4px;
   margin: 1rem 0 2rem 0;
 }
 
 .search-box .input-group {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -454,7 +440,6 @@
 }
 
 .search-box .form-control:focus {
-  box-shadow: none;
   border-color: transparent;
 }
 
@@ -478,16 +463,14 @@
   height: 50vh;
   padding-left: 0px !important;
   padding-right: 0px !important;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
   transition: var(--transition);
   margin-bottom: 1rem;
 }
 
 .artist-gallery:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
 }
 
 .artist-name {
@@ -503,6 +486,7 @@
   color: rgba(254, 193, 50, 0.9);
   font-weight: 700;
   font-size: 7vh;
+  font-family: "AntiquaStd", serif !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   transition: var(--transition);
 }
@@ -511,7 +495,7 @@
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
   padding: 1rem;
   backdrop-filter: blur(10px);
-  border-radius: 10px 0 0 0;
+  border-radius: 4px 0 0 0;
 }
 
 .artist-bio p {
@@ -522,20 +506,18 @@
 
 .artist-bio button {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: #000;
+  color: #353535;
   padding: 0.75rem 1.5rem;
   font-weight: 600;
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   width: 100%;
   transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
 }
 
 .artist-bio button:hover {
   background: linear-gradient(135deg, #ffd000 0%, #ffa600 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
 }
 
 .truncate-bio {
@@ -560,21 +542,18 @@
 .artist-item {
   position: relative;
   height: 250px;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: var(--shadow-sm);
 }
 
 .artist-item:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--shadow-lg);
 }
 
 .artist-item.active {
   transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
   border: 3px solid var(--primary-color);
 }
 
@@ -614,7 +593,7 @@
   background: rgba(255, 193, 7, 0.2);
   color: var(--primary-color);
   padding: 0.25rem 0.5rem;
-  border-radius: 15px;
+  border-radius: 4px;
   font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
@@ -629,7 +608,7 @@
 .artist-item-actions .btn {
   flex: 1;
   padding: 0.5rem;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   font-size: 0.9rem;
   transition: var(--transition);
 }
@@ -645,9 +624,8 @@
 .artist-list-item {
   display: flex;
   background: white;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
   transition: var(--transition);
   cursor: pointer;
   border: 2px solid transparent;
@@ -655,12 +633,10 @@
 
 .artist-list-item:hover {
   transform: translateX(5px);
-  box-shadow: var(--shadow-md);
 }
 
 .artist-list-item.active {
   border-color: var(--primary-color);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2);
 }
 
 .artist-list-image {
@@ -706,9 +682,9 @@
 
 .genre-tag {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-  color: #000;
+  color: #353535;
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -722,7 +698,7 @@
 
 .artist-list-actions .btn {
   min-width: 100px;
-  border-radius: var(--border-radius-sm);
+  border-radius: 4px;
   font-weight: 600;
   transition: var(--transition);
 }
@@ -731,7 +707,7 @@
 .no-results {
   padding: 3rem 1rem;
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   margin: 2rem 0;
 }
 

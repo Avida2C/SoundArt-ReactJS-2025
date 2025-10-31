@@ -64,29 +64,28 @@
 
 .hero-content h1 {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  font-family: "AntiquaStd", serif !important;
 }
 
 /* Featured News Card */
 .featured-news-card {
   transition: var(--transition);
-  border-radius: var(--border-radius-lg);
+  border-radius: 4px;
 }
 
 .featured-news-card:hover {
   transform: translateY(-10px);
-  box-shadow: var(--shadow-lg) !important;
 }
 
 /* Artist Card */
 .artist-card {
   transition: var(--transition);
-  border-radius: var(--border-radius-lg);
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .artist-card:hover {
   transform: translateY(-10px);
-  box-shadow: var(--shadow-lg) !important;
 }
 
 .artist-overlay {
@@ -109,7 +108,7 @@
 /* News Items */
 .news-item {
   transition: var(--transition);
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 10px;
 }
 
@@ -186,13 +185,11 @@
   font-weight: 700;
   text-align: center;
   padding: 14px 18px;
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
 }
 
 .cta-bar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(255, 193, 7, 0.35);
   color: #1f1f1f;
 }

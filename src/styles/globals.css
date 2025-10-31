@@ -1,209 +1,15 @@
 /* Global Styles and CSS Variables */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,500;0,800;1,400&display=swap');
 
-/* CSS Variables for consistent theming */
-:root {
-  --primary-color: #ffc107;
-  --primary-dark: #ff8f00;
-  --secondary-color: #6c757d;
-  --dark-bg: #1a1a1a;
-  --dark-bg-light: #2d2d2d;
-  --light-bg: #f8f9fa;
-  --light-bg-dark: #e9ecef;
-  --text-dark: #333;
-  --text-muted: #6c757d;
-  --border-radius: 15px;
-  --border-radius-sm: 8px;
-  --border-radius-lg: 20px;
-  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.2);
-  --transition: all 0.3s ease;
-}
-
-/* Base Styles */
-* {
-  font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
+/* AntiquaStd Font - If you have the font files, uncomment and add @font-face declarations:
+@font-face {
+  font-family: "AntiquaStd";
+  src: url("../fonts/AntiquaStd.woff2") format("woff2"),
+       url("../fonts/AntiquaStd.woff") format("woff");
+  font-weight: normal;
   font-style: normal;
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Typography Scale */
-h1 { font-size: 48px; }
-h2 { font-size: 32px; }
-h3 { font-size: 24px; }
-h4 { font-size: 20px; }
-h5 { font-size: 16px; }
-h6 { font-size: 14px; }
-p { font-size: 16px; }
-
-/* Premium Typography */
-.display-3, .display-5 {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-}
-
-/* Premium Text Effects */
-.text-warning {
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-}
-
-/* Premium Button Styles */
-.btn-warning {
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-  border: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-  border-radius: var(--border-radius-sm);
-}
-
-.btn-warning:hover {
-  background: linear-gradient(45deg, var(--primary-dark), var(--primary-color));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
-}
-
-.btn-outline-warning {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  font-weight: 600;
-  transition: var(--transition);
-  border-radius: var(--border-radius-sm);
-}
-
-.btn-outline-warning:hover {
-  background: var(--primary-color);
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
-}
-
-.btn-outline-light {
-  border: 2px solid #fff;
-  color: #fff;
-  font-weight: 600;
-  transition: var(--transition);
-  border-radius: var(--border-radius-sm);
-}
-
-.btn-outline-light:hover {
-  background: #fff;
-  color: #000;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-}
-
-/* Premium Card Styles */
-.card {
-  border-radius: var(--border-radius);
-  transition: var(--transition);
-  border: none;
-}
-
-.shadow-lg {
-  box-shadow: var(--shadow-lg) !important;
-}
-
-.shadow-sm {
-  box-shadow: var(--shadow-sm) !important;
-}
-
-/* Premium Badge */
-.badge {
-  border-radius: 20px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* Premium Section Spacing */
-section {
-  position: relative;
-}
-
-/* Premium Background Patterns */
-.bg-light {
-  background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%) !important;
-}
-
-/* Navigation Styles */
-.nav-link:hover {
-  transform: scale(1.05);
-  transition: var(--transition);
-}
-
-/* Brand Logo */
-.brand-logo {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-}
-
-@media (max-width: 768px) {
-  .brand-logo {
-    height: 40px;
-  }
-}
-
-/* Brand Text Logo */
-.brand-text {
-  font-family: "Playfair Display", serif;
-  font-size: inherit;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  color: var(--text-dark);
-}
-
-/* Default brand text sizing in navbar */
-.navbar-brand .brand-text {
-  font-size: 28px;
-}
-
-.brand-accent {
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-@media (max-width: 768px) {
-  .navbar-brand .brand-text {
-    font-size: 24px;
-  }
-}
-
-/* Footer Link Hover Effects */
-.footer-link {
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: var(--primary-color) !important;
-}
-
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Global Styles and CSS Variables */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+*/
 
 /* CSS Variables for consistent theming */
 :root {
@@ -216,21 +22,19 @@ html {
   --light-bg-dark: #e9ecef;
   --text-dark: #333;
   --text-muted: #6c757d;
-  --border-radius: 15px;
-  --border-radius-sm: 8px;
-  --border-radius-lg: 20px;
-  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.2);
+  --border-radius: 4px;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 4px;
   --transition: all 0.3s ease;
 }
 
 /* Base Styles */
 * {
-  font-family: "Nunito", sans-serif;
+  font-family: "Aptos", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
+  line-height: 1.2;
 }
 
 html {
@@ -238,18 +42,85 @@ html {
 }
 
 /* Typography Scale */
-h1 { font-size: 48px; }
-h2 { font-size: 32px; }
-h3 { font-size: 24px; }
-h4 { font-size: 20px; }
-h5 { font-size: 16px; }
-h6 { font-size: 14px; }
-p { font-size: 16px; }
+h1 { 
+  font-size: 48px; 
+  font-family: "AntiquaStd", serif;
+  line-height: 1.2;
+}
+h2 { 
+  font-size: 32px; 
+  line-height: 1.2;
+}
+h3 { 
+  font-size: 24px; 
+  line-height: 1.2;
+}
+h4 { 
+  font-size: 20px; 
+  line-height: 1.2;
+}
+h5 { 
+  font-size: 16px; 
+  line-height: 1.6;
+}
+h6 { 
+  font-size: 14px; 
+  line-height: 1.6;
+}
+p { 
+  font-size: 16px; 
+  line-height: 1.6;
+}
 
-/* Premium Typography */
-.display-3, .display-5 {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
+/* Line height rules for 14px and 16px */
+[style*="font-size: 14px"],
+[style*="font-size: 16px"],
+.font-14,
+.font-16 {
+  line-height: 1.6;
+}
+
+/* Premium Typography - AntiquaStd for h1 */
+/* IMPORTANT: AntiquaStd must be loaded via @font-face or be a system font */
+/* If the font is not showing, check browser dev tools to see if font is loading */
+
+/* Target all h1 elements with maximum specificity */
+* h1,
+h1,
+h1.display-1,
+h1.display-2,
+h1.display-3,
+h1.display-4,
+h1.display-5,
+h1.display-6,
+h1.fw-bold,
+h1.fw-normal,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  font-family: "AntiquaStd", "Times New Roman", "Times", serif !important;
+  font-style: normal !important;
+}
+
+/* Base h1 styles */
+h1,
+* h1 {
+  font-size: 48px !important;
+  font-family: "AntiquaStd", "Times New Roman", "Times", serif !important;
+  line-height: 1.2 !important;
+}
+
+/* Override Bootstrap's display class font-family */
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  font-family: "AntiquaStd", "Times New Roman", "Times", serif !important;
 }
 
 /* Premium Text Effects */
@@ -262,51 +133,72 @@ p { font-size: 16px; }
 }
 
 /* Premium Button Styles */
+.btn-warning,
+.btn-outline-warning,
+.btn-outline-light,
+.btn,
+.btn-lg {
+  font-family: "Aptos", sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  transition: var(--transition);
+  border-radius: 4px !important;
+  padding: 16px !important;
+}
+
+/* Buttons with icons - 24px padding on opposite side of icon */
+.btn:has(i:first-child:not(:only-child)),
+.btn:has(svg:first-child:not(:only-child)),
+.btn-lg:has(i:first-child:not(:only-child)),
+.btn-lg:has(svg:first-child:not(:only-child)) {
+  padding-right: 24px !important;
+  padding-left: 16px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.btn:has(i:last-child:not(:only-child)),
+.btn:has(svg:last-child:not(:only-child)),
+.btn-lg:has(i:last-child:not(:only-child)),
+.btn-lg:has(svg:last-child:not(:only-child)) {
+  padding-left: 24px !important;
+  padding-right: 16px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
 .btn-warning {
   background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
   border: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: var(--transition);
-  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
-  border-radius: var(--border-radius-sm);
 }
 
 .btn-warning:hover {
   background: linear-gradient(45deg, var(--primary-dark), var(--primary-color));
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
 }
 
 .btn-outline-warning {
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
-  font-weight: 600;
-  transition: var(--transition);
-  border-radius: var(--border-radius-sm);
 }
 
 .btn-outline-warning:hover {
   background: var(--primary-color);
-  color: #000;
+  color: #353535;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
 }
 
 .btn-outline-light {
   border: 2px solid #fff;
   color: #fff;
-  font-weight: 600;
-  transition: var(--transition);
-  border-radius: var(--border-radius-sm);
 }
 
 .btn-outline-light:hover {
   background: #fff;
-  color: #000;
+  color: #353535;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 
 /* Premium Card Styles */
@@ -316,19 +208,34 @@ p { font-size: 16px; }
   border: none;
 }
 
-.shadow-lg {
-  box-shadow: var(--shadow-lg) !important;
-}
-
-.shadow-sm {
-  box-shadow: var(--shadow-sm) !important;
-}
-
 /* Premium Badge */
 .badge {
-  border-radius: 20px;
+  border-radius: 4px;
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+
+/* Remove all Bootstrap shadow utilities */
+.shadow-sm,
+.shadow,
+.shadow-md,
+.shadow-lg,
+.shadow-xl {
+  box-shadow: none !important;
+}
+
+/* Override Bootstrap rounded utilities to use 4px */
+.rounded,
+.rounded-1,
+.rounded-2,
+.rounded-3,
+.rounded-4,
+.rounded-5,
+.rounded-top,
+.rounded-bottom,
+.rounded-start,
+.rounded-end {
+  border-radius: 4px !important;
 }
 
 /* Premium Section Spacing */
@@ -341,10 +248,56 @@ section {
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%) !important;
 }
 
-/* Navigation Styles */
+/* Navigation Styles - Header (matching footer colors) */
+.navbar {
+  background-color: #171717 !important;
+  color: #e7e7e7 !important;
+}
+
+.navbar,
+.navbar * {
+  color: #e7e7e7 !important;
+}
+
+.nav-link {
+  color: #e7e7e7 !important;
+}
+
 .nav-link:hover {
   transform: scale(1.05);
   transition: var(--transition);
+  color: #FFB300 !important;
+}
+
+.navbar-brand,
+.navbar-brand * {
+  color: #e7e7e7 !important;
+}
+
+.navbar-toggler {
+  border-color: #e7e7e7 !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(231, 231, 231, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.dropdown-menu {
+  background-color: #171717 !important;
+  border-color: #353535 !important;
+}
+
+.dropdown-item {
+  color: #e7e7e7 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #2d2d2d !important;
+  color: #e7e7e7 !important;
+}
+
+.dropdown-divider {
+  border-top-color: #353535 !important;
 }
 
 /* Brand Logo */
@@ -353,7 +306,6 @@ section {
   width: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 @media (max-width: 768px) {
@@ -364,12 +316,17 @@ section {
 
 /* Brand Text Logo */
 .brand-text {
-  font-family: "Playfair Display", serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: inherit;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--text-dark);
+}
+
+/* Brand text in navbar - override with header color (matching footer) */
+.navbar .brand-text {
+  color: #e7e7e7 !important;
 }
 
 /* Default brand text sizing in navbar */
@@ -378,6 +335,7 @@ section {
 }
 
 .brand-accent {
+  font-weight: 800;
   background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -397,9 +355,4 @@ section {
 
 .footer-link:hover {
   color: var(--primary-color) !important;
-}
-
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
 }

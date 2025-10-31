@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light shadow-sm">
+      <nav className="navbar navbar-expand-lg shadow-sm">
         <div className="container">
           {/* Logo as clickable Home link */}
           <Link className="navbar-brand d-flex align-items-center" to="/">

@@ -19,8 +19,8 @@ export default function Home() {
         <div className="container py-5">
           <div className="row align-items-center min-vh-75">
             <div className="col-lg-6">
-              <div className="hero-content text-white">
-                <h1 className="display-3 fw-bold mb-4">
+              <div className="text-white">
+                <h1 className="display-4 mb-4">
                   Welcome to <span className="brand-text">Sound<span className="brand-accent">Art</span></span>
                 </h1>
                 <p className="lead mb-4">
@@ -36,21 +36,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6">
-              <div className="hero-image text-center">
-                <div className="position-relative">
-                  <div className="hero-glow position-absolute"></div>
-                  <img 
-                    src="/images/thebeatles1967.jpg" 
-                    alt="Music Legends" 
-                    className="img-fluid rounded-4 shadow-lg hero-image"
-                  />
-                </div>
-              </div>
             </div>
           </div>
-        </div>
       </section>
+      
 
       {/* Featured News Section */}
       <section className="py-5 bg-light">

@@ -14,20 +14,19 @@ export default function PrivacyPolicy() {
       />
 
       {/* Content Section */}
-      <section className="py-5">
+      <section className="py-5 bg-light">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-8">
-              <div className="card border-0 shadow-lg">
-                <div className="card-body p-5">
+            <div className="col-lg-10 col-xl-8">
+              <div className="px-4" style={{ maxWidth: '800px', margin: '0 auto' }}>
                   
                   {/* Introduction */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">1. Introduction</h2>
-                    <p className="text-muted">
+                    <p>
                       SoundArt ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
                     </p>
-                    <p className="text-muted">
+                    <p>
                       Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
                     </p>
                   </div>
@@ -38,7 +37,7 @@ export default function PrivacyPolicy() {
                     
                     <h4 className="h5 fw-semibold mb-3">2.1 Personal Information</h4>
                     <p className="text-muted mb-3">We may collect personal information that you voluntarily provide to us when you:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li>Register for an account</li>
                       <li>Subscribe to our newsletter or concert alerts</li>
                       <li>Purchase tickets or merchandise</li>
@@ -46,7 +45,7 @@ export default function PrivacyPolicy() {
                       <li>Participate in surveys or promotions</li>
                     </ul>
                     <p className="text-muted mb-3">This information may include:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li>Name and contact information (email, phone number)</li>
                       <li>Billing and shipping addresses</li>
                       <li>Payment information (processed securely by third-party providers)</li>
@@ -55,7 +54,7 @@ export default function PrivacyPolicy() {
 
                     <h4 className="h5 fw-semibold mb-3">2.2 Automatically Collected Information</h4>
                     <p className="text-muted mb-3">We automatically collect certain information when you visit our website:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li>IP address and location data</li>
                       <li>Browser type and version</li>
                       <li>Device information</li>
@@ -69,7 +68,7 @@ export default function PrivacyPolicy() {
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">3. How We Use Your Information</h2>
                     <p className="text-muted mb-3">We use the information we collect to:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li>Provide and maintain our services</li>
                       <li>Process transactions and send related information</li>
                       <li>Send you concert alerts and promotional materials</li>
@@ -85,7 +84,7 @@ export default function PrivacyPolicy() {
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">4. Information Sharing and Disclosure</h2>
                     <p className="text-muted mb-3">We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li><strong>Service Providers:</strong> With trusted third parties who assist us in operating our website and conducting our business</li>
                       <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
                       <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
@@ -99,7 +98,7 @@ export default function PrivacyPolicy() {
                     <p className="text-muted mb-3">
                       We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
                     </p>
-                    <p className="text-muted">
+                    <p>
                       We use industry-standard encryption for sensitive data and regularly review our security practices to ensure your information is protected.
                     </p>
                   </div>
@@ -110,13 +109,13 @@ export default function PrivacyPolicy() {
                     <p className="text-muted mb-3">
                       We use cookies and similar tracking technologies to enhance your experience on our website. Cookies are small data files stored on your device that help us:
                     </p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li>Remember your preferences and settings</li>
                       <li>Analyze website traffic and usage patterns</li>
                       <li>Provide personalized content and advertisements</li>
                       <li>Improve website functionality</li>
                     </ul>
-                    <p className="text-muted">
+                    <p>
                       You can control cookie settings through your browser preferences. However, disabling cookies may affect the functionality of our website.
                     </p>
                   </div>
@@ -125,7 +124,7 @@ export default function PrivacyPolicy() {
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">7. Your Rights and Choices</h2>
                     <p className="text-muted mb-3">Depending on your location, you may have the following rights regarding your personal information:</p>
-                    <ul className="text-muted mb-4">
+                    <ul className="mb-4">
                       <li><strong>Access:</strong> Request access to your personal information</li>
                       <li><strong>Correction:</strong> Request correction of inaccurate information</li>
                       <li><strong>Deletion:</strong> Request deletion of your personal information</li>
@@ -133,7 +132,7 @@ export default function PrivacyPolicy() {
                       <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
                       <li><strong>Restriction:</strong> Request restriction of processing</li>
                     </ul>
-                    <p className="text-muted">
+                    <p>
                       To exercise these rights, please contact us using the information provided in the "Contact Us" section below.
                     </p>
                   </div>
@@ -141,7 +140,7 @@ export default function PrivacyPolicy() {
                   {/* Data Retention */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">8. Data Retention</h2>
-                    <p className="text-muted">
+                    <p>
                       We retain your personal information only for as long as necessary to fulfill the purposes outlined in this privacy policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
                     </p>
                   </div>
@@ -149,7 +148,7 @@ export default function PrivacyPolicy() {
                   {/* Third-Party Links */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">9. Third-Party Links</h2>
-                    <p className="text-muted">
+                    <p>
                       Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
                     </p>
                   </div>
@@ -157,7 +156,7 @@ export default function PrivacyPolicy() {
                   {/* Children's Privacy */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">10. Children's Privacy</h2>
-                    <p className="text-muted">
+                    <p>
                       Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
                     </p>
                   </div>
@@ -165,7 +164,7 @@ export default function PrivacyPolicy() {
                   {/* International Transfers */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">11. International Data Transfers</h2>
-                    <p className="text-muted">
+                    <p>
                       Your information may be transferred to and processed in countries other than your own. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information.
                     </p>
                   </div>
@@ -173,7 +172,7 @@ export default function PrivacyPolicy() {
                   {/* Changes to Policy */}
                   <div className="mb-5">
                     <h2 className="h3 fw-bold mb-3">12. Changes to This Privacy Policy</h2>
-                    <p className="text-muted">
+                    <p>
                       We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the "Last updated" date. We encourage you to review this privacy policy periodically for any changes.
                     </p>
                   </div>
@@ -184,22 +183,19 @@ export default function PrivacyPolicy() {
                     <p className="text-muted mb-3">
                       If you have any questions about this Privacy Policy or our privacy practices, please contact us:
                     </p>
-                    <div className="bg-light p-4 rounded">
+                    <div>
                       <p className="mb-2"><strong>Email:</strong> privacy@soundart.com</p>
                       <p className="mb-2"><strong>Phone:</strong> (356) 1234 1234</p>
                       <p className="mb-0"><strong>Address:</strong> 112, Roy Buildings, JC Roads, RY</p>
                     </div>
                   </div>
-
-                  {/* Back to Home */}
-                  <div className="text-center mt-5">
-                    <Link to="/" className="btn btn-warning btn-lg">
-                      <i className="bi bi-house me-2"></i>Back to Home
-                    </Link>
-                  </div>
-
-                </div>
+<div className="d-flex justify-content-end mt-5">
+                <Link to="/" className="btn btn-warning text-uppercase">
+                  <i className="bi bi-house-up me-2"></i>Return Home
+                </Link>
               </div>
+              </div>
+              
             </div>
           </div>
         </div>

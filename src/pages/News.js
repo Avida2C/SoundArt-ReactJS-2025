@@ -1,20 +1,20 @@
 import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import { HeroSection, SectionTitle, NewsletterSection } from "../components/layout";
+import { ArticleCard } from "../components/News";
 import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
 import { useDebounce } from "../hooks";
-import { formatNumber } from "../utils/helpers";
 import SearchFilter from "../components/SearchFilter";
 import { searchFilterConfigs } from "../data/searchFilterData";
 import { sectionTitles } from "../data/sectionTitlesData";
+import "../styles/news.css";
 
 export default function News() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(6);
+  const [articlesPerPage] = useState(12);
   
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
@@ -98,9 +98,9 @@ export default function News() {
     }
 
     return (
-      <div className="d-flex justify-content-center align-items-center mt-5">
+      <div className="d-flex justify-content-end align-items-center mt-5 pagination">
         <button
-          className="btn btn-outline-warning me-2"
+          className="btn btn-outline-warning"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -108,7 +108,7 @@ export default function News() {
         </button>
         {pages}
         <button
-          className="btn btn-outline-warning ms-2"
+          className="btn btn-outline-warning"
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -163,7 +163,7 @@ export default function News() {
       />
 
       {/* Articles Section */}
-      <section className="py-5">
+      <section className="pt-2 pb-5">
         <div className="container">
           
           
@@ -186,80 +186,9 @@ export default function News() {
           ) : (
             <>
               <div className="row g-4">
-                {currentArticles.map((article, index) => (
-                  <div key={article.id} className="col-lg-4 col-md-6">
-                    <div className="card h-100 shadow-sm border-0">
-                      <div className="position-relative">
-                        <img 
-                          src={article.image1} 
-                          className="card-img-top article-thumbnail" 
-                          alt={article.title}
-                          style={{height: '250px', objectFit: 'cover'}}
-                        />
-                        <div className="position-absolute top-0 start-0 m-2">
-                          <span className="badge bg-warning text-dark">{article.category}</span>
-                        </div>
-                        <div className="position-absolute top-0 end-0 m-2">
-                          <span className="badge bg-dark bg-opacity-75">
-                            <i className="bi bi-clock me-1"></i>{article.readTime}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="card-body d-flex flex-column">
-                        <div className="d-flex justify-content-between align-items-start mb-3">
-                          <small className="text-muted">
-                            <i className="bi bi-person me-1"></i>{article.author}
-                          </small>
-                          <small className="text-muted">
-                            <i className="bi bi-calendar me-1"></i>{article.date}
-                          </small>
-                        </div>
-                        <h5 className="card-title fw-bold mb-3">
-                          {article.title}
-                        </h5>
-                        <p className="card-text text-muted flex-grow-1">
-                          {article.content[0].substring(0, 120)}...
-                        </p>
-                        
-                        {/* Tags */}
-                        <div className="mb-3">
-                          <div className="d-flex flex-wrap gap-1">
-                            {article.tags.slice(0, 3).map((tag, tagIndex) => (
-                              <span key={tagIndex} className="badge bg-light text-dark border">
-                                {tag}
-                              </span>
-                            ))}
-                            {article.tags.length > 3 && (
-                              <span className="badge bg-light text-muted border">
-                                +{article.tags.length - 3}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                          <div className="d-flex gap-3">
-                            <small className="text-muted">
-                              <i className="bi bi-eye me-1"></i>{formatNumber(article.views)}
-                            </small>
-                            <small className="text-muted">
-                              <i className="bi bi-heart me-1"></i>{formatNumber(article.likes)}
-                            </small>
-                          </div>
-                        </div>
-
-                        <div className="mt-auto">
-                          <Link 
-                            to={`/article/${article.id}`} 
-                            className="btn btn-warning w-100"
-                          >
-                            <i className="bi bi-arrow-right me-2"></i>
-                            Read Full Story
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
+                {currentArticles.map((article) => (
+                  <div key={article.id} className="col-lg-3 col-md-6">
+                    <ArticleCard article={article} />
                   </div>
                 ))}
               </div>

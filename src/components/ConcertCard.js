@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoTicketOutline } from "react-icons/io5";
+import { formatDateShort } from "../utils/helpers";
 /**
  * ConcertCard - Simple concert card matching the Artists page upcoming concerts style
  */
@@ -40,11 +41,7 @@ export default function ConcertCard({ concert, isAuthenticated }) {
         </p>
         <p className="text-muted mb-2">
           <i className="bi bi-calendar me-1"></i>
-          {new Date(concert.date).toLocaleDateString('en-US', { 
-            month: 'short', 
-            day: 'numeric',
-            year: 'numeric'
-          })}
+          {formatDateShort(concert.date)}
         </p>
         <p className="text-muted mb-3">
           <i className="bi bi-currency-dollar me-1"></i>{concert.price}

@@ -166,9 +166,9 @@ export default function Card({
           </div>
         )}
 
-        {/* Stats - Views, Likes, etc. */}
+        {/* Stats - Views, Shares, etc. */}
         {stats && stats.length > 0 && (
-          <div className="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+          <div className="d-flex align-items-center gap-3 mb-3 flex-wrap">
             {stats.map((stat, idx) => (
               <small key={idx} className="text-muted d-flex align-items-center">
                 {stat.icon && <i className={`bi ${stat.icon} me-1`}></i>}

@@ -1,13 +1,20 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { NewsletterSection, HeroSection } from "../../components/layout";
+import { NewsletterSection, HeroSection, MoreStories, NewsletterSidebar } from "../../components/layout";
+import ArticleMeta from "../../components/Article/ArticleMeta";
+import { Comment, CommentForm } from "../../components/Comments";
+import { formatNumber, formatDateShort } from "../../utils/helpers";
 import articlesData from "../../data/Articles/articlesData";
+import { getCommentsByArticleId } from "../../data/Comments/commentsData";
+import "../../styles/home.css";
+import "../../styles/contact.css";
 
 export default function ArticlePage() {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   const article = articlesData.find(a => a.id === Number(id));
+  const comments = article ? getCommentsByArticleId(article.id) : [];
 
   if (!article) {
     return (
@@ -44,7 +51,7 @@ export default function ArticlePage() {
             </div>
             <div className="d-flex align-items-center">
               <i className="bi bi-calendar me-2 text-warning"></i>
-              <span className="text-white-50">{article.date}</span>
+              <span className="text-white-50">{formatDateShort(article.date)}</span>
             </div>
           </div>
         }
@@ -75,99 +82,76 @@ export default function ArticlePage() {
                   ))}
                 </div>
 
-                {/* Article Actions */}
-                <div className="d-flex gap-3 mt-5 pt-4 border-top">
-                  <button className="btn btn-warning">
-                    <i className="bi bi-heart me-2"></i>Like Article
-                  </button>
-                  <button className="btn btn-outline-warning">
-                    <i className="bi bi-share me-2"></i>Share Article
-                  </button>
-                  <button className="btn btn-outline-secondary">
-                    <i className="bi bi-bookmark me-2"></i>Save for Later
-                  </button>
-                </div>
+                {/* Article Meta (Tags, Metrics, Actions) */}
+                <ArticleMeta 
+                  article={article}
+                  onShare={() => {
+                    // Handle share functionality
+                    console.log("Share article:", article.id);
+                  }}
+                  onSave={() => {
+                    // Handle save functionality
+                    console.log("Save article:", article.id);
+                  }}
+                />
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="col-lg-4">
               <div className="sticky-top" style={{top: '2rem'}}>
-                {/* Related Articles */}
-                <div className="card mb-4">
-                  <div className="card-header">
-                    <h5 className="mb-0">
-                      <i className="bi bi-newspaper me-2"></i>Related Articles
-                    </h5>
-                  </div>
-                  <div className="card-body">
-                    {articlesData
-                      .filter(a => a.id !== article.id)
-                      .slice(0, 3)
-                      .map((relatedArticle) => (
-                        <div key={relatedArticle.id} className="mb-3">
-                          <Link to={`/article/${relatedArticle.id}`} className="text-decoration-none">
-                            <div className="d-flex gap-3">
-                              <img 
-                                src={relatedArticle.image1} 
-                                alt={relatedArticle.title}
-                                className="rounded"
-                                style={{width: '80px', height: '60px', objectFit: 'cover'}}
-                              />
-                              <div>
-                                <h6 className="mb-1 text-dark">{relatedArticle.title}</h6>
-                                <small className="text-muted">{relatedArticle.date}</small>
+                {/* More Stories Sidebar */}
+                <div className="mb-4 news-sidebar">
+                  <h4 className="fw-bold mb-4">More Stories</h4>
+                  {articlesData
+                    .filter(a => a.id !== article.id)
+                    .slice(0, 3)
+                    .map((relatedArticle) => (
+                      <div key={relatedArticle.id} className="news-item mb-3">
+                        <Link to={`/article/${relatedArticle.id}`} className="text-decoration-none text-dark">
+                          <div className="d-flex gap-3">
+                            <img 
+                              src={relatedArticle.image1} 
+                              alt={relatedArticle.title}
+                              className="rounded news-thumbnail"
+                            />
+                            <div className="flex-grow-1">
+                              <h6 className="mb-1 fw-semibold">{relatedArticle.title}</h6>
+                              <div className="d-flex align-items-center gap-3 flex-wrap">
+                                <small className="text-muted d-flex align-items-center">
+                                  <i className="bi bi-calendar me-1"></i>
+                                  {formatDateShort(relatedArticle.date)}
+                                </small>
+                                <small className="text-muted d-flex align-items-center">
+                                  <i className="bi bi-eye me-1"></i>
+                                  {formatNumber(relatedArticle.views || 0)}
+                                </small>
+                                <small className="text-muted d-flex align-items-center">
+                                  <i className="bi bi-share me-1"></i>
+                                  {formatNumber(relatedArticle.shares || relatedArticle.likes || 0)}
+                                </small>
                               </div>
                             </div>
-                          </Link>
-                        </div>
-                      ))}
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  <div className="mt-4">
+                    <Link 
+                      to="/news" 
+                      className="d-block text-decoration-none w-100 text-uppercase btn-outline-warning btn"
+                    >
+                      View All Stories
+                    </Link>
                   </div>
                 </div>
 
-                {/* Newsletter Signup */}
-                <div className="card bg-warning text-dark">
-                  <div className="card-body text-center">
-                    <h5 className="card-title">
-                      <i className="bi bi-envelope me-2"></i>Stay Updated
-                    </h5>
-                    <p className="card-text">
-                      Get the latest music news and stories delivered to your inbox
-                    </p>
-                    <div className="mb-3">
-                      <input 
-                        type="email" 
-                        className="form-control" 
-                        placeholder="Enter your email"
-                      />
-                    </div>
-                    <button className="btn btn-dark w-100">
-                      Subscribe
-                    </button>
-                  </div>
-                </div>
+                {/* Newsletter Sidebar */}
+                <NewsletterSidebar />
 
                 {/* Social Share */}
-                <div className="card mt-4">
-                  <div className="card-header">
-                    <h6 className="mb-0">
-                      <i className="bi bi-share me-2"></i>Share This Article
-                    </h6>
-                  </div>
-                  <div className="card-body">
-                    <div className="d-flex gap-2">
-                      <button className="btn btn-primary btn-sm flex-fill">
-                        <i className="bi bi-facebook me-1"></i>Facebook
-                      </button>
-                      <button className="btn btn-info btn-sm flex-fill">
-                        <i className="bi bi-twitter me-1"></i>Twitter
-                      </button>
-                      <button className="btn btn-success btn-sm flex-fill">
-                        <i className="bi bi-whatsapp me-1"></i>WhatsApp
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                
+          
               </div>
             </div>
           </div>
@@ -175,108 +159,42 @@ export default function ArticlePage() {
       </section>
 
       {/* Comments Section */}
-      <section className="py-5 bg-light">
+      <section className="py-2">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <h3 className="mb-4">
-                <i className="bi bi-chat-dots me-2"></i>Comments
-              </h3>
+              <h3 className="mb-4 fw-bold text-dark" style={{ fontSize: '2rem' }}>Comments</h3>
               
-              {/* Show comment form only when authenticated; always show existing comments */}
-              {isAuthenticated && (
-                <div className="card mb-4">
-                  <div className="card-body">
-                    <h6 className="card-title">Leave a Comment</h6>
-                    <form>
-                      <div className="mb-3">
-                        <textarea 
-                          className="form-control" 
-                          rows="4" 
-                          placeholder="Share your thoughts about this article..."
-                        ></textarea>
-                      </div>
-                      <div className="row g-3">
-                        <div className="col-md-6">
-                          <input 
-                            type="text" 
-                            className="form-control" 
-                            placeholder="Your name"
-                          />
-                        </div>
-                        <div className="col-md-6">
-                          <input 
-                            type="email" 
-                            className="form-control" 
-                            placeholder="Your email"
-                          />
-                        </div>
-                      </div>
-                      <button type="submit" className="btn btn-warning mt-3">
-                        <i className="bi bi-send me-2"></i>Post Comment
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              )}
-
               {/* Public Comments List */}
-              <div className="comments-list">
-                <div className="card mb-3">
-                  <div className="card-body">
-                    <div className="d-flex align-items-start">
-                      <div className="flex-shrink-0 me-3">
-                        <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                          <i className="bi bi-person-fill text-dark"></i>
-                        </div>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div className="d-flex justify-content-between align-items-start mb-2">
-                          <h6 className="mb-0">Music Lover</h6>
-                          <small className="text-muted">2 hours ago</small>
-                        </div>
-                        <p className="mb-0">Amazing article! I never knew these details about The Beatles. Thanks for sharing this fascinating story.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card mb-3">
-                  <div className="card-body">
-                    <div className="d-flex align-items-start">
-                      <div className="flex-shrink-0 me-3">
-                        <div className="bg-warning rounded-circle d-flex align-items-center justify-content-center" style={{width: '40px', height: '40px'}}>
-                          <i className="bi bi-person-fill text-dark"></i>
-                        </div>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div className="d-flex justify-content-between align-items-start mb-2">
-                          <h6 className="mb-0">Beatles Fan</h6>
-                          <small className="text-muted">5 hours ago</small>
-                        </div>
-                        <p className="mb-0">These rare photos are incredible! It's amazing to see them before they became famous. Great find!</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="comments-list mb-4">
+                {comments.length > 0 ? (
+                  comments.map(comment => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))
+                ) : (
+                  <p className="text-muted">No comments yet. Be the first to comment!</p>
+                )}
               </div>
+
+              {/* Leave a Comment Form */}
+              <CommentForm 
+                onSubmit={(formData) => {
+                  // Handle form submission - could add comment to data or show success message
+                  console.log("Comment submitted:", formData);
+                }}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Back to News */}
-      <section className="py-4">
-        <div className="container">
-          <div className="row">
-            <div className="col-12 text-center">
-              <Link to="/news" className="btn btn-outline-warning btn-lg">
-                <i className="bi bi-arrow-left me-2"></i>Back to All Articles
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* More Stories Section */}
+      <MoreStories 
+        articles={articlesData
+          .filter(a => a.id !== article.id)
+          .slice(0, 3)
+        } 
+      />
 
       {/* Newsletter Section */}
       <NewsletterSection />

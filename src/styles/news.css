@@ -16,3 +16,13 @@
   padding: 0.25rem;
 }
 
+/* Article Meta Buttons - Consistent Hover Effect */
+.article-meta-actions .btn {
+  transition: all 0.2s ease;
+}
+
+.article-meta-actions .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

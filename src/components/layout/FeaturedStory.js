@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatDateShort } from "../../utils/helpers";
 
 /**
  * FeaturedStory - Reusable featured story component
@@ -28,7 +29,7 @@ export default function FeaturedStory({ article, className = "" }) {
               <div className="d-flex justify-content-between align-items-center">
                 <small className="text-muted">
                   <i className="bi bi-person me-1"></i>{article.author} • 
-                  <i className="bi bi-calendar ms-2 me-1"></i>{article.date}
+                  <i className="bi bi-calendar ms-2 me-1"></i>{formatDateShort(article.date)}
                 </small>
               </div>
               <Link to={`/article/${article.id}`} className="cta-bar d-block text-decoration-none w-100 text-uppercase mt-2">

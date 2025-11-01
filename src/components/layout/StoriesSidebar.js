@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatNumber, formatDateShort } from "../../utils/helpers";
 import "../../styles/home.css";
 
 /**
@@ -28,9 +29,22 @@ export default function StoriesSidebar({
                   alt={article.title}
                   className="rounded news-thumbnail"
                 />
-                <div>
+                <div className="flex-grow-1">
                   <h6 className="mb-1 fw-semibold">{article.title}</h6>
-                  <small className="text-muted">{article.date}</small>
+                  <div className="d-flex align-items-center gap-3 flex-wrap">
+                    <small className="text-muted d-flex align-items-center">
+                      <i className="bi bi-calendar me-1"></i>
+                      {formatDateShort(article.date)}
+                    </small>
+                    <small className="text-muted d-flex align-items-center">
+                      <i className="bi bi-eye me-1"></i>
+                      {formatNumber(article.views || 0)}
+                    </small>
+                    <small className="text-muted d-flex align-items-center">
+                      <i className="bi bi-share me-1"></i>
+                      {formatNumber(article.shares || article.likes || 0)}
+                    </small>
+                  </div>
                 </div>
               </div>
             </Link>

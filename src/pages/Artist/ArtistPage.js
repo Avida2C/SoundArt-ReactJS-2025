@@ -8,6 +8,7 @@ import {
   GetFeaturedAsArtist,
 } from "../../components/layout";
 import { LegendaryArtistsSection } from "../../components/ArtistGallery";
+import { formatDateShort } from "../../utils/helpers";
 import artists from "../../data/Artist/artistData";
 import { getArtistDetails } from "../../data/Artist/artistDetailsData";
 import "../../styles/artists.css";
@@ -656,13 +657,7 @@ export default function ArtistPage() {
                                       style={{ fontSize: "1.5rem" }}
                                     ></i>
                                     <h6 className="mb-1">
-                                      {new Date(
-                                        concert.date
-                                      ).toLocaleDateString("en-US", {
-                                        month: "short",
-                                        day: "numeric",
-                                        year: "numeric",
-                                      })}
+                                      {formatDateShort(concert.date)}
                                     </h6>
                                     <small className="text-muted">Date</small>
                                   </div>

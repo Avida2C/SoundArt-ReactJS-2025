@@ -65,7 +65,7 @@ export default function Card({
           disabled={buttonDisabled}
         >
           {buttonText}
-          <i className="bi bi-arrow-right ms-2"></i>
+    
         </button>
       );
     }
@@ -74,7 +74,6 @@ export default function Card({
       return (
         <Link to={buttonLink} className={buttonClass}>
           {buttonText}
-          <i className="bi bi-arrow-right ms-2"></i>
         </Link>
       );
     }

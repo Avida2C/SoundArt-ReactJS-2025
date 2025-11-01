@@ -25,10 +25,9 @@ export default function UpcomingConcerts({ concerts }) {
             </div>
           ))}
         </div>
-        
-        <div className="text-center mt-4">
-          <Link to="/concerts" className="btn btn-outline-warning btn-lg">
-            <i className="bi bi-calendar-event me-2"></i>View All Concerts
+        <div>
+          <Link to="/concerts" className="cta-bar d-block text-decoration-none w-100 text-uppercase mt-4">
+            <i className="bi bi-music-note me-2"></i>View All Concerts
           </Link>
         </div>
       </div>

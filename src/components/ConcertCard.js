@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { IoTicketOutline } from "react-icons/io5";
 /**
  * ConcertCard - Simple concert card matching the Artists page upcoming concerts style
  */
@@ -51,7 +51,7 @@ export default function ConcertCard({ concert, isAuthenticated }) {
         </p>
         <div className="mt-auto">
           <Link to="/concerts" className="btn btn-warning w-100">
-            <i className="bi bi-ticket-perforated me-2"></i>Get Tickets
+            <IoTicketOutline className="me-1 fs-4" /> <span className="me-2">Get Tickets </span>
           </Link>
         </div>
       </div>

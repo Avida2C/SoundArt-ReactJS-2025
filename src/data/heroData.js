@@ -42,9 +42,9 @@ export const heroData = {
     description: "Experience the magic of legendary artists in spectacular tribute concerts. From The Beatles to Queen, don't miss these unforgettable performances."
   },
   contact: {
-    title: "Get in",
-    titleHighlight: "Touch",
-    description: "Have questions or want to get in touch? We'd love to hear from you. Reach out to us through any of the channels below."
+    title: "Contact",
+    titleHighlight: "Us",
+    description: "We'd love to hear from you. Tell us how we can help."
   },
   privacy: {
     title: "Privacy",

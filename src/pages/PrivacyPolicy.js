@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { HeroSection } from "../components/layout";
 import { heroData } from "../data/heroData";
-import { Link } from "react-router-dom";
+import { privacySections } from "../data/privacyPolicyData";
 
 export default function PrivacyPolicy() {
   return (
@@ -18,184 +19,81 @@ export default function PrivacyPolicy() {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-10 col-xl-8">
-              <div className="px-4" style={{ maxWidth: '800px', margin: '0 auto' }}>
-                  
-                  {/* Introduction */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">1. Introduction</h2>
-                    <p>
-                      SoundArt ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
-                    </p>
-                    <p>
-                      Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
-                    </p>
-                  </div>
-
-                  {/* Information We Collect */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">2. Information We Collect</h2>
+              <div className="px-4">
+                
+                {privacySections.map((section) => (
+                  <div key={section.id} className="mb-5">
+                    <h2 className="h3 fw-bold mb-3">{section.id}. {section.title}</h2>
                     
-                    <h4 className="h5 fw-semibold mb-3">2.1 Personal Information</h4>
-                    <p className="text-muted mb-3">We may collect personal information that you voluntarily provide to us when you:</p>
-                    <ul className="mb-4">
-                      <li>Register for an account</li>
-                      <li>Subscribe to our newsletter or concert alerts</li>
-                      <li>Purchase tickets or merchandise</li>
-                      <li>Contact us for support</li>
-                      <li>Participate in surveys or promotions</li>
-                    </ul>
-                    <p className="text-muted mb-3">This information may include:</p>
-                    <ul className="mb-4">
-                      <li>Name and contact information (email, phone number)</li>
-                      <li>Billing and shipping addresses</li>
-                      <li>Payment information (processed securely by third-party providers)</li>
-                      <li>Preferences and interests</li>
-                    </ul>
+                    {/* Render content paragraphs */}
+                    {section.content && section.content.map((paragraph, index) => (
+                      <p key={index} className={index === 0 && (section.list || section.subsections) ? "text-muted mb-3" : ""}>
+                        {paragraph}
+                      </p>
+                    ))}
 
-                    <h4 className="h5 fw-semibold mb-3">2.2 Automatically Collected Information</h4>
-                    <p className="text-muted mb-3">We automatically collect certain information when you visit our website:</p>
-                    <ul className="mb-4">
-                      <li>IP address and location data</li>
-                      <li>Browser type and version</li>
-                      <li>Device information</li>
-                      <li>Pages visited and time spent on site</li>
-                      <li>Referring website</li>
-                      <li>Cookies and similar tracking technologies</li>
-                    </ul>
-                  </div>
+                    {/* Render subsections */}
+                    {section.subsections && section.subsections.map((subsection, subIndex) => (
+                      <div key={subIndex}>
+                        <h4 className="h5 fw-semibold mb-3">{subsection.title}</h4>
+                        {subsection.content && subsection.content.map((paragraph, paraIndex) => (
+                          <p key={paraIndex} className={paraIndex === 0 && (subsection.list || subsection.additionalList) ? "text-muted mb-3" : ""}>
+                            {paragraph}
+                          </p>
+                        ))}
+                        {subsection.list && (
+                          <ul className="mb-4">
+                            {subsection.list.map((item, itemIndex) => (
+                              <li key={itemIndex}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {subsection.additionalContent && subsection.additionalContent.map((paragraph, paraIndex) => (
+                          <p key={`additional-${paraIndex}`} className={paraIndex === 0 && subsection.additionalList ? "text-muted mb-3" : ""}>
+                            {paragraph}
+                          </p>
+                        ))}
+                        {subsection.additionalList && (
+                          <ul className="mb-4">
+                            {subsection.additionalList.map((item, itemIndex) => (
+                              <li key={itemIndex}>{item}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
 
-                  {/* How We Use Information */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">3. How We Use Your Information</h2>
-                    <p className="text-muted mb-3">We use the information we collect to:</p>
-                    <ul className="mb-4">
-                      <li>Provide and maintain our services</li>
-                      <li>Process transactions and send related information</li>
-                      <li>Send you concert alerts and promotional materials</li>
-                      <li>Respond to your comments and questions</li>
-                      <li>Improve our website and services</li>
-                      <li>Analyze usage patterns and trends</li>
-                      <li>Prevent fraud and enhance security</li>
-                      <li>Comply with legal obligations</li>
-                    </ul>
-                  </div>
+                    {/* Render list */}
+                    {section.list && (
+                      <ul className="mb-4">
+                        {section.list.map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
 
-                  {/* Information Sharing */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">4. Information Sharing and Disclosure</h2>
-                    <p className="text-muted mb-3">We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
-                    <ul className="mb-4">
-                      <li><strong>Service Providers:</strong> With trusted third parties who assist us in operating our website and conducting our business</li>
-                      <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and safety</li>
-                      <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                      <li><strong>Consent:</strong> When you have given us explicit consent to share your information</li>
-                    </ul>
-                  </div>
+                    {/* Render additional content */}
+                    {section.additionalContent && section.additionalContent.map((paragraph, index) => (
+                      <p key={index}>{paragraph}</p>
+                    ))}
 
-                  {/* Data Security */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">5. Data Security</h2>
-                    <p className="text-muted mb-3">
-                      We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
-                    </p>
-                    <p>
-                      We use industry-standard encryption for sensitive data and regularly review our security practices to ensure your information is protected.
-                    </p>
+                    {/* Render contact information */}
+                    {section.contactInfo && (
+                      <div>
+                        <p className="mb-2"><strong>Email:</strong> {section.contactInfo.email}</p>
+                        <p className="mb-2"><strong>Phone:</strong> {section.contactInfo.phone}</p>
+                        <p className="mb-0"><strong>Address:</strong> {section.contactInfo.address}</p>
+                      </div>
+                    )}
                   </div>
+                ))}
 
-                  {/* Cookies */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">6. Cookies and Tracking Technologies</h2>
-                    <p className="text-muted mb-3">
-                      We use cookies and similar tracking technologies to enhance your experience on our website. Cookies are small data files stored on your device that help us:
-                    </p>
-                    <ul className="mb-4">
-                      <li>Remember your preferences and settings</li>
-                      <li>Analyze website traffic and usage patterns</li>
-                      <li>Provide personalized content and advertisements</li>
-                      <li>Improve website functionality</li>
-                    </ul>
-                    <p>
-                      You can control cookie settings through your browser preferences. However, disabling cookies may affect the functionality of our website.
-                    </p>
-                  </div>
-
-                  {/* Your Rights */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">7. Your Rights and Choices</h2>
-                    <p className="text-muted mb-3">Depending on your location, you may have the following rights regarding your personal information:</p>
-                    <ul className="mb-4">
-                      <li><strong>Access:</strong> Request access to your personal information</li>
-                      <li><strong>Correction:</strong> Request correction of inaccurate information</li>
-                      <li><strong>Deletion:</strong> Request deletion of your personal information</li>
-                      <li><strong>Portability:</strong> Request transfer of your data to another service</li>
-                      <li><strong>Opt-out:</strong> Unsubscribe from marketing communications</li>
-                      <li><strong>Restriction:</strong> Request restriction of processing</li>
-                    </ul>
-                    <p>
-                      To exercise these rights, please contact us using the information provided in the "Contact Us" section below.
-                    </p>
-                  </div>
-
-                  {/* Data Retention */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">8. Data Retention</h2>
-                    <p>
-                      We retain your personal information only for as long as necessary to fulfill the purposes outlined in this privacy policy, unless a longer retention period is required or permitted by law. When we no longer need your information, we will securely delete or anonymize it.
-                    </p>
-                  </div>
-
-                  {/* Third-Party Links */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">9. Third-Party Links</h2>
-                    <p>
-                      Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
-                    </p>
-                  </div>
-
-                  {/* Children's Privacy */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">10. Children's Privacy</h2>
-                    <p>
-                      Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us immediately.
-                    </p>
-                  </div>
-
-                  {/* International Transfers */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">11. International Data Transfers</h2>
-                    <p>
-                      Your information may be transferred to and processed in countries other than your own. We ensure that such transfers comply with applicable data protection laws and implement appropriate safeguards to protect your information.
-                    </p>
-                  </div>
-
-                  {/* Changes to Policy */}
-                  <div className="mb-5">
-                    <h2 className="h3 fw-bold mb-3">12. Changes to This Privacy Policy</h2>
-                    <p>
-                      We may update this privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the "Last updated" date. We encourage you to review this privacy policy periodically for any changes.
-                    </p>
-                  </div>
-
-                  {/* Contact Information */}
-                  <div className="mb-4">
-                    <h2 className="h3 fw-bold mb-3">13. Contact Us</h2>
-                    <p className="text-muted mb-3">
-                      If you have any questions about this Privacy Policy or our privacy practices, please contact us:
-                    </p>
-                    <div>
-                      <p className="mb-2"><strong>Email:</strong> privacy@soundart.com</p>
-                      <p className="mb-2"><strong>Phone:</strong> (356) 1234 1234</p>
-                      <p className="mb-0"><strong>Address:</strong> 112, Roy Buildings, JC Roads, RY</p>
-                    </div>
-                  </div>
-<div className="d-flex justify-content-end mt-5">
-                <Link to="/" className="btn btn-warning text-uppercase">
-                  <i className="bi bi-house-up me-2"></i>Return Home
-                </Link>
+                <div className="d-flex justify-content-end mt-5">
+                  <Link to="/" className="btn btn-warning text-uppercase">
+                    <i className="bi bi-house-up me-2"></i>Return Home
+                  </Link>
+                </div>
               </div>
-              </div>
-              
             </div>
           </div>
         </div>
@@ -203,4 +101,3 @@ export default function PrivacyPolicy() {
     </div>
   );
 }
-

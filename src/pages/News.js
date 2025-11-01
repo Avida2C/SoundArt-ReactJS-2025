@@ -163,7 +163,7 @@ export default function News() {
       />
 
       {/* Articles Section */}
-      <section className="pt-2 pb-5">
+      <section className="py-5">
         <div className="container">
           
           

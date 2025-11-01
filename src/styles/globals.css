@@ -373,3 +373,31 @@ section {
 .footer-link:hover {
   color: var(--primary-color) !important;
 }
+
+/* Premium Breadcrumb Styles */
+.breadcrumb {
+  padding: 0.5rem 0;
+}
+
+.breadcrumb-item a {
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  font-weight: 600;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.5);
+  content: "/";
+  opacity: 0.5;
+}
+
+.text-white .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.5);
+}

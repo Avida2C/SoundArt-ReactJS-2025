@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { NewsletterSection } from "../../components/layout";
+import { NewsletterSection, HeroSection } from "../../components/layout";
 import articlesData from "../../data/Articles/articlesData";
 
 export default function ArticlePage() {
@@ -28,56 +28,27 @@ export default function ArticlePage() {
   return (
     <div>
       {/* Article Header */}
-      <section className="py-5" style={{
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)'
-      }}>
-        <div className="container text-white">
-          <div className="row">
-            <div className="col-12">
-              {/* Breadcrumb */}
-              <nav aria-label="breadcrumb" className="mb-4">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item"><Link to="/" className="text-white-50">Home</Link></li>
-                  <li className="breadcrumb-item"><Link to="/news" className="text-white-50">News</Link></li>
-                  <li className="breadcrumb-item active text-warning" aria-current="page">{article.title}</li>
-                </ol>
-              </nav>
-              
-              <div className="row align-items-center">
-                <div className="col-lg-8">
-                  <h1 className="display-4 fw-bold mb-4">{article.title}</h1>
-                  <div className="d-flex align-items-center gap-4 mb-4">
-                    <div className="d-flex align-items-center">
-                      <i className="bi bi-person-circle me-2 text-warning"></i>
-                      <span className="text-white-50">By {article.author}</span>
-                    </div>
-                    <div className="d-flex align-items-center">
-                      <i className="bi bi-calendar me-2 text-warning"></i>
-                      <span className="text-white-50">{article.date}</span>
-                    </div>
-                  </div>
-                  <div className="d-flex gap-3">
-                    <button className="btn btn-warning">
-                      <i className="bi bi-share me-2"></i>Share
-                    </button>
-                    <button className="btn btn-outline-light">
-                      <i className="bi bi-bookmark me-2"></i>Save
-                    </button>
-                  </div>
-                </div>
-                <div className="col-lg-4 text-center">
-                  <img 
-                    src={article.image1} 
-                    alt={article.title}
-                    className="img-fluid rounded-4 shadow-lg"
-                    style={{maxHeight: '300px', objectFit: 'cover'}}
-                  />
-                </div>
-              </div>
+      <HeroSection
+        title={article.title}
+        breadcrumbs={[
+          { to: "/", text: "Home" },
+          { to: "/news", text: "News" },
+          { text: article.title }
+        ]}
+        variant="split"
+        children={
+          <div className="d-flex align-items-center gap-4 mb-4">
+            <div className="d-flex align-items-center">
+              <i className="bi bi-person-circle me-2 text-warning"></i>
+              <span className="text-white-50">By {article.author}</span>
+            </div>
+            <div className="d-flex align-items-center">
+              <i className="bi bi-calendar me-2 text-warning"></i>
+              <span className="text-white-50">{article.date}</span>
             </div>
           </div>
-        </div>
-      </section>
+        }
+      />
 
       {/* Article Content */}
       <section className="py-5">

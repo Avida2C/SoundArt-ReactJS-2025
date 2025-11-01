@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { LoginGate } from "../../components/auth";
+import { NewsletterSection } from "../../components/layout";
+import { LegendaryArtistsSection } from "../../components/ArtistGallery";
 import artists from "../../data/Artist/artistData";
 import "../../styles/artists.css";
 
@@ -828,6 +830,12 @@ export default function ArtistPage() {
           </Link>
         </div>
       </div>
+
+      {/* Legendary Artists Section */}
+      <LegendaryArtistsSection artists={artists.filter(artist => artist.id !== selectedArtist.id).slice(0, 3)} />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
     </div>
   );
 }

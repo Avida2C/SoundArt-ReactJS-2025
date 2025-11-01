@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { NewsletterSection } from "../../components/layout";
 import articlesData from "../../data/Articles/articlesData";
 
 export default function ArticlePage() {
@@ -305,6 +306,9 @@ export default function ArticlePage() {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
     </div>
   );
 }

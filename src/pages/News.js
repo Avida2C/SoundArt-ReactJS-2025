@@ -1,10 +1,13 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroSection } from "../components/layout";
+import { HeroSection, SectionTitle, NewsletterSection } from "../components/layout";
 import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
 import { useDebounce } from "../hooks";
 import { formatNumber } from "../utils/helpers";
+import SearchFilter from "../components/SearchFilter";
+import { searchFilterConfigs } from "../data/searchFilterData";
+import { sectionTitles } from "../data/sectionTitlesData";
 
 export default function News() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -124,81 +127,40 @@ export default function News() {
         description={heroData.news.description}
       />
 
-      {/* Categories integrated into Search/Filter section below */}
-
-      {/* Title for Articles above filtering */}
-      <section className="pt-4">
+      {/* Search and Filter Section */}
+      <section className="py-4 bg-light search-section">
         <div className="container">
-          <div className="row mb-3">
-            <div className="col-12 text-center">
-              <h2 className="display-5 fw-bold mb-2">Latest Stories</h2>
-              <p className="lead text-muted mb-0">Discover fascinating stories from the world of music legends</p>
-            </div>
-          </div>
+          <SearchFilter
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            filterValue={selectedCategory}
+            onFilterChange={setSelectedCategory}
+            filterOptions={[
+              { value: 'all', label: 'All Categories' },
+              ...categories.slice(1).map(category => ({
+                value: category,
+                label: category
+              }))
+            ]}
+            sortValue={sortBy}
+            onSortChange={setSortBy}
+            sortOptions={Object.entries(searchFilterConfigs.news.sortOptions).map(([value, label]) => ({
+              value,
+              label
+            }))}
+            resultCount={filteredAndSortedArticles.length}
+            totalCount={articlesData.length}
+            resultCountFormat={searchFilterConfigs.news.resultCountFormat}
+            searchPlaceholder={searchFilterConfigs.news.searchPlaceholder}
+          />
         </div>
       </section>
 
-          {/* Search and Filter Section */}
-          <section className="py-4 bg-light search-section">
-            <div className="container">
-            <div className="row g-3 align-items-center">
-                <div className="col-lg-4">
-                  <div className="input-group">
-                    <span className="input-group-text">
-                      <i className="bi bi-search"></i>
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Search articles, authors, or tags..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    {searchTerm && (
-                      <button
-                        className="btn btn-outline-secondary"
-                        onClick={() => setSearchTerm('')}
-                      >
-                        <i className="bi bi-x"></i>
-                      </button>
-                    )}
-                  </div>
-                </div>
-                <div className="col-lg-3">
-                  <select
-                    className="form-select"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                  >
-                    <option value="all">All Categories</option>
-                    {categories.slice(1).map(category => (
-                      <option key={category} value={category}>{category}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-lg-3">
-                  <select
-                    className="form-select"
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                  >
-                    <option value="date">Sort by Date</option>
-                    <option value="views">Sort by Views</option>
-                    <option value="likes">Sort by Likes</option>
-                    <option value="title">Sort by Title</option>
-                  </select>
-                </div>
-                <div className="col-lg-2">
-                  <div className="text-end">
-                    <small className="text-muted">
-                      {filteredAndSortedArticles.length} articles found
-                    </small>
-                  </div>
-                </div>
-            {/* Category chips removed per request; dropdown retained above */}
-              </div>
-            </div>
-          </section>
+      {/* Section Title */}
+      <SectionTitle
+        title={sectionTitles.news.title}
+        subtitle={sectionTitles.news.subtitle}
+      />
 
       {/* Articles Section */}
       <section className="py-5">
@@ -310,35 +272,7 @@ export default function News() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-5 bg-light">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-8 text-center">
-              <h3 className="fw-bold mb-3">Stay Updated</h3>
-              <p className="lead text-muted mb-4">
-                Get the latest music news and stories delivered to your inbox
-              </p>
-              <div className="row g-3 justify-content-center">
-                <div className="col-md-6">
-                  <input 
-                    type="email" 
-                    className="form-control form-control-lg" 
-                    placeholder="Enter your email address"
-                  />
-                </div>
-                <div className="col-md-3">
-                  <button className="btn btn-warning btn-lg w-100">
-                    <i className="bi bi-envelope me-2"></i>Subscribe
-                  </button>
-                </div>
-              </div>
-              <small className="text-muted mt-3 d-block">
-                We respect your privacy. Unsubscribe at any time.
-              </small>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NewsletterSection />
 
       {/* Categories integrated into search section */}
     </div>

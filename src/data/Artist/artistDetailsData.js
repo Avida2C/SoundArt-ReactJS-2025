@@ -5,7 +5,7 @@
 
 const artistDetails = {
   1: { // The Beatles
-    fullBio: "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr. They are regarded as the most influential band of all time and were integral to the development of 1960s counterculture and popular music's recognition as an art form. Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated elements of classical music and traditional pop in innovative ways; the band also explored music styles ranging from folk and Indian music to psychedelia and hard rock. As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised many aspects of the music industry and were often publicized as leaders of the era's youth and sociocultural movements. Led by primary songwriters Lennon and McCartney, the Beatles evolved from Lennon's previous group, the Quarrymen, and built their reputation playing clubs in Liverpool and Hamburg over three years from 1960, initially with Stuart Sutcliffe playing bass. The core trio of Lennon, McCartney and Harrison, together since 1958, went through a succession of drummers, including Pete Best, before asking Starr to join them in 1962. Manager Brian Epstein moulded them into a professional act, and producer George Martin guided and developed their recordings, greatly expanding their domestic success after signing to EMI Records and achieving their first hit, 'Love Me Do', in late 1962.",
+    fullBio: "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr. They are regarded as the most influential band of all time and were integral to the development of 1960s counterculture and popular music's recognition as an art form. Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated elements of classical music and traditional pop in innovative ways; the band also explored music styles ranging from folk and Indian music to psychedelia and hard rock. As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised many aspects of the music industry and were often publicized as leaders of the era's youth and sociocultural movements. Led by primary songwriters Lennon and McCartney, the Beatles evolved from Lennon's previous group, the Quarrymen, and built their reputation playing clubs in Liverpool and Hamburg over three years from 1960, initially with Stuart Sutcliffe playing bass. The core trio of Lennon, McCartney and Harrison, together since 1958, went through a succession of drummers, including Pete Best, before asking Starr to join them in 1962. Manager Brian Epstein moulded them into a professional act, and producer George Martin guided and developed their recordings, greatly expanding their domestic success after signing to EMI Records and achieving their first hit, 'Love Me Do', in late 1962. Throughout their career, the Beatles released a series of groundbreaking albums that showcased their evolution from a pop band to experimental artists. Their early work featured infectious melodies and harmonies that captured the hearts of millions worldwide. As they matured, their music became more complex and innovative, incorporating diverse influences from around the globe. The band's creative partnership between Lennon and McCartney produced some of the most memorable songs in popular music history, while Harrison's songwriting contributions and interest in Indian music added unique dimensions to their sound. The Beatles' influence extended far beyond music, impacting fashion, culture, and social movements of the 1960s. Their studio innovations, particularly with producer George Martin at Abbey Road Studios, pushed the boundaries of what was possible in popular music recording. From the raw energy of their early performances in Liverpool and Hamburg to their final masterpieces, the Beatles consistently reinvented themselves while maintaining their distinctive identity. Even after their breakup in 1970, their music continues to resonate with new generations of listeners, cementing their status as one of the greatest and most beloved bands in history.",
     discography: [
       { year: "1963", title: "Please Please Me", type: "Studio Album", image: "/images/beatles01.jpg", releaseDate: "March 22, 1963" },
       { year: "1963", title: "With the Beatles", type: "Studio Album", image: "/images/beatles02.jpg", releaseDate: "November 22, 1963" },
@@ -40,10 +40,10 @@ const artistDetails = {
     genres: ["Rock", "Pop", "Psychedelic Rock", "Folk Rock"],
     website: "https://www.thebeatles.com",
     concerts: [
-      { date: "2024-12-15", venue: "Madison Square Garden", city: "New York, NY", status: "Sold Out", price: "$150-500" },
-      { date: "2024-12-20", venue: "Hollywood Bowl", city: "Los Angeles, CA", status: "Limited", price: "$200-600" },
-      { date: "2025-01-10", venue: "Royal Albert Hall", city: "London, UK", status: "Available", price: "£120-400" },
-      { date: "2025-01-25", venue: "Sydney Opera House", city: "Sydney, Australia", status: "Available", price: "A$180-550" }
+      { date: "2024-12-15", venue: "Madison Square Garden", city: "New York, NY", status: "Sold Out", price: "150-500" },
+      { date: "2024-12-20", venue: "Hollywood Bowl", city: "Los Angeles, CA", status: "Limited", price: "200-600" },
+      { date: "2025-01-10", venue: "Royal Albert Hall", city: "London, UK", status: "Available", price: "120-400" },
+      { date: "2025-01-25", venue: "Sydney Opera House", city: "Sydney, Australia", status: "Available", price: "180-550" }
     ],
     topTracks: [
       { title: "Hey Jude", album: "The Beatles 1967-1970", duration: "7:11", spotifyId: "4y6B8u8zO2Q42xy3e7T9QS", youtubeId: "A_MjCqQoLLA", playCount: 2840000000, weeklyPlays: 12500000, peakPosition: 1, releaseYear: 1968 },
@@ -94,10 +94,10 @@ const artistDetails = {
     genres: ["Rock", "Progressive Rock", "Arena Rock", "Pop Rock"],
     website: "https://www.queenonline.com",
     concerts: [
-      { date: "2024-12-18", venue: "Wembley Stadium", city: "London, UK", status: "Sold Out", price: "£200-800" },
-      { date: "2025-02-14", venue: "Staples Center", city: "Los Angeles, CA", status: "Available", price: "$250-750" },
-      { date: "2025-03-01", venue: "Tokyo Dome", city: "Tokyo, Japan", status: "Available", price: "¥25,000-80,000" },
-      { date: "2025-03-15", venue: "Accor Arena", city: "Paris, France", status: "Limited", price: "€180-600" }
+      { date: "2024-12-18", venue: "Wembley Stadium", city: "London, UK", status: "Sold Out", price: "200-800" },
+      { date: "2025-02-14", venue: "Staples Center", city: "Los Angeles, CA", status: "Available", price: "250-750" },
+      { date: "2025-03-01", venue: "Tokyo Dome", city: "Tokyo, Japan", status: "Available", price: "25000-80000" },
+      { date: "2025-03-15", venue: "Accor Arena", city: "Paris, France", status: "Limited", price: "180-600" }
     ],
     topTracks: [
       { title: "Bohemian Rhapsody", album: "A Night at the Opera", duration: "5:55", spotifyId: "4u7EnebtmKWzUH433cf5Qv", youtubeId: "fJ9rUzIMcZQ", playCount: 3200000000, weeklyPlays: 18500000, peakPosition: 1, releaseYear: 1975 },
@@ -176,8 +176,8 @@ const defaultArtistDetails = {
   genres: ["Rock", "Alternative"],
   website: null,
   concerts: [
-    { date: "2025-01-15", venue: "Local Venue", city: "Your City", status: "Available", price: "$50-150" },
-    { date: "2025-02-20", venue: "Concert Hall", city: "Nearby City", status: "Available", price: "$75-200" }
+    { date: "2025-01-15", venue: "Local Venue", city: "Your City", status: "Available", price: "50-150" },
+    { date: "2025-02-20", venue: "Concert Hall", city: "Nearby City", status: "Available", price: "75-200" }
   ],
   topTracks: [
     { title: "Popular Song", album: "Greatest Hits", duration: "3:30", spotifyId: "sample1", youtubeId: "sample1", playCount: 50000000, weeklyPlays: 250000, peakPosition: 5, releaseYear: 2020 },

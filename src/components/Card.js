@@ -137,13 +137,13 @@ export default function Card({
         )}
 
         {/* Title */}
-        <h5 className="card-title fw-bold mb-3 text-dark">
+        <h5 className="card-title fw-bold mb-1 text-dark">
           {title}
         </h5>
 
         {/* Description */}
         {description && (
-          <p className="card-text text-dark flex-grow-1 mb-3">
+          <p className="card-text text-dark flex-grow-1 mb-1" style={{ marginTop: 0 }}>
             {description}
           </p>
         )}

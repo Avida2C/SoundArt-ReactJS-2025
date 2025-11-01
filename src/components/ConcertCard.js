@@ -5,7 +5,7 @@ import { formatDateShort } from "../utils/helpers";
 /**
  * ConcertCard - Simple concert card matching the Artists page upcoming concerts style
  */
-export default function ConcertCard({ concert, isAuthenticated }) {
+export default function ConcertCard({ concert, isAuthenticated, hideImage = false }) {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Sold Out':
@@ -21,19 +21,30 @@ export default function ConcertCard({ concert, isAuthenticated }) {
 
   return (
     <div className="card h-100 border-0" style={{ boxShadow: '0 0.125rem 0.5rem rgba(0, 0, 0, 0.1)', borderRadius: '4px' }}>
-      <div className="position-relative">
-        <img 
-          src={concert.image} 
-          className="card-img-top" 
-          alt={concert.artist}
-          style={{height: '200px', objectFit: 'cover'}}
-        />
-        <div className="position-absolute top-0 end-0 m-2">
-          <span className={`badge ${getStatusBadge(concert.status)}`}>
-            {concert.status || 'Live'}
-          </span>
+      {!hideImage && (
+        <div className="position-relative">
+          <img 
+            src={concert.image} 
+            className="card-img-top" 
+            alt={concert.artist}
+            style={{height: '200px', objectFit: 'cover'}}
+          />
+          <div className="position-absolute top-0 end-0 m-2">
+            <span className={`badge ${getStatusBadge(concert.status)}`}>
+              {concert.status || 'Live'}
+            </span>
+          </div>
         </div>
-      </div>
+      )}
+      {hideImage && (
+        <div className="card-body pb-0">
+          <div className="d-flex justify-content-end mb-2">
+            <span className={`badge ${getStatusBadge(concert.status)}`}>
+              {concert.status || 'Live'}
+            </span>
+          </div>
+        </div>
+      )}
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{concert.artist}</h5>
         <p className="text-muted mb-2">
@@ -47,9 +58,15 @@ export default function ConcertCard({ concert, isAuthenticated }) {
           <i className="bi bi-currency-dollar me-1"></i>{concert.price}
         </p>
         <div className="mt-auto">
-          <Link to="/concerts" className="btn btn-warning w-100">
-            <IoTicketOutline className="me-1 fs-4" /> <span className="me-2">Get Tickets </span>
-          </Link>
+          {concert.status === "Sold Out" ? (
+            <button className="btn btn-outline-secondary w-100" disabled>
+              <i className="bi bi-x-circle me-2"></i>Sold Out
+            </button>
+          ) : (
+            <Link to="/concerts" className="btn btn-warning w-100">
+              <IoTicketOutline className="me-1 fs-4" /> <span className="me-2">Get Tickets </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

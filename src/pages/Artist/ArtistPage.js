@@ -181,7 +181,8 @@ export default function ArtistPage() {
           {/* Navigation Tabs */}
           <div className="row">
             <div className="col-12">
-              <ul className="nav nav-tabs mb-4">
+              <div className="artist-tabs-container">
+                <ul className="nav nav-tabs">
                 <li className="nav-item">
                   <button
                     className={`nav-link ${
@@ -233,6 +234,7 @@ export default function ArtistPage() {
                   </button>
                 </li>
               </ul>
+              </div>
 
               {/* Tab Content */}
               <div className="tab-content">

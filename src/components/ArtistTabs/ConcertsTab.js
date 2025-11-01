@@ -1,119 +1,99 @@
-import React from "react";
-import { formatDateShort } from "../../utils/helpers";
+import React, { useState } from "react";
+import ConcertCard from "../ConcertCard";
 
 /**
  * ConcertsTab - Displays upcoming concerts and subscription form
+ * Uses ConcertCard component with pagination
  * @param {Object} artist - Artist object
  * @param {Object} artistDetails - Artist details object with concerts array
  * @param {boolean} isAuthenticated - Whether user is authenticated
  */
 export default function ConcertsTab({ artist, artistDetails, isAuthenticated }) {
+  const concertsPerPage = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const concerts = artistDetails.concerts || [];
+  const totalPages = Math.ceil(concerts.length / concertsPerPage);
+  
+  // Get concerts for current page
+  const startIndex = (currentPage - 1) * concertsPerPage;
+  const endIndex = startIndex + concertsPerPage;
+  const currentConcerts = concerts.slice(startIndex, endIndex);
+  
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const renderPagination = () => {
+    if (totalPages <= 1) return null;
+
+    const pages = [];
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+    if (endPage - startPage + 1 < maxVisiblePages) {
+      startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <button
+          key={i}
+          className={`btn ${i === currentPage ? 'btn-warning' : 'btn-outline-warning'} mx-1`}
+          onClick={() => handlePageChange(i)}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    return (
+      <div className="d-flex justify-content-end align-items-center mt-5 pagination">
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <i className="bi bi-chevron-left"></i>
+        </button>
+        {pages}
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <i className="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div>
-      <h3 className="mb-4">Upcoming Concerts</h3>
+      <h2 className="mb-4 fw-bold" style={{ color: "#353535", fontFamily: "sans-serif" }}>
+        Upcoming Concerts
+      </h2>
+      
       <div className="row g-4">
-        {artistDetails.concerts.map((concert, index) => (
-          <div key={index} className="col-lg-6">
-            <div className="card h-100 shadow-sm border-0">
-              <div className="card-body p-4">
-                <div className="d-flex justify-content-between align-items-start mb-3">
-                  <div>
-                    <h5 className="card-title mb-1">{concert.venue}</h5>
-                    <p className="text-muted mb-0">
-                      <i className="bi bi-geo-alt me-1"></i>
-                      {concert.city}
-                    </p>
-                  </div>
-                  <span
-                    className={`badge ${
-                      concert.status === "Sold Out"
-                        ? "bg-danger"
-                        : concert.status === "Limited"
-                        ? "bg-warning text-dark"
-                        : "bg-success"
-                    }`}
-                  >
-                    {concert.status}
-                  </span>
-                </div>
-
-                <div className="row g-3 mb-3">
-                  <div className="col-6">
-                    <div className="text-center p-3 bg-light rounded">
-                      <i
-                        className="bi bi-calendar-event text-warning mb-2 d-block"
-                        style={{ fontSize: "1.5rem" }}
-                      ></i>
-                      <h6 className="mb-1">{formatDateShort(concert.date)}</h6>
-                      <small className="text-muted">Date</small>
-                    </div>
-                  </div>
-                  <div className="col-6">
-                    <div className="text-center p-3 bg-light rounded">
-                      <i
-                        className="bi bi-currency-dollar text-warning mb-2 d-block"
-                        style={{ fontSize: "1.5rem" }}
-                      ></i>
-                      <h6 className="mb-1">{concert.price}</h6>
-                      <small className="text-muted">Price Range</small>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="d-grid gap-2">
-                  {concert.status === "Sold Out" ? (
-                    <button className="btn btn-outline-secondary" disabled>
-                      <i className="bi bi-x-circle me-2"></i>Sold Out
-                    </button>
-                  ) : (
-                    <button className="btn btn-warning">
-                      <i className="bi bi-ticket-perforated me-2"></i>
-                      Get Tickets
-                    </button>
-                  )}
-                  {isAuthenticated && (
-                    <button className="btn btn-outline-warning btn-sm">
-                      <i className="bi bi-heart me-2"></i>Add to Wishlist
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
+        {currentConcerts.map((concert, index) => (
+          <div key={index} className="col-lg-3 col-md-6">
+            <ConcertCard 
+              concert={{
+                ...concert,
+                artist: artist.name,
+                image: artist.image || concert.image
+              }} 
+              isAuthenticated={isAuthenticated}
+              hideImage={true}
+            />
           </div>
         ))}
       </div>
 
-      {/* Concert Alert Signup */}
-      <div className="row mt-5">
-        <div className="col-12">
-          <div className="card bg-warning text-dark">
-            <div className="card-body text-center p-4">
-              <h4 className="card-title mb-3">
-                <i className="bi bi-bell me-2"></i>Never Miss a Show!
-              </h4>
-              <p className="card-text mb-4">
-                Get notified when {artist.name} announces new concerts in your
-                area.
-              </p>
-              <div className="row g-3 justify-content-center">
-                <div className="col-md-6">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter your email address"
-                  />
-                </div>
-                <div className="col-md-3">
-                  <button className="btn btn-dark w-100">
-                    <i className="bi bi-envelope me-2"></i>
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {renderPagination()}
+
     </div>
   );
 }

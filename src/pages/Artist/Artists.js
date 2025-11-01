@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroSection, SectionTitle, NewsletterSection } from "../../components/layout";
+import { HeroSection, SectionTitle, NewsletterSection, GetFeaturedAsArtist } from "../../components/layout";
 import { heroData } from "../../data/heroData";
 import ArtistGallery from "../../components/ArtistGallery/ArtistGallery";
 import SearchFilter from "../../components/SearchFilter";
@@ -200,6 +200,8 @@ export default function Artists() {
 
       {/* Newsletter Section */}
       <NewsletterSection />
+
+      <GetFeaturedAsArtist />
     </div>
   );
 }

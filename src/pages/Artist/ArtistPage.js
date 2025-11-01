@@ -100,11 +100,6 @@ export default function ArtistPage() {
                   className="img-fluid rounded shadow"
                   style={{ width: "100%", height: "400px", objectFit: "cover" }}
                 />
-                <div className="position-absolute top-0 start-0 m-3">
-                  <span className="badge bg-warning text-dark fs-6">
-                    Featured Artist
-                  </span>
-                </div>
               </div>
             </div>
             <div className="col-lg-8">
@@ -115,19 +110,19 @@ export default function ArtistPage() {
               {/* Artist Info */}
               <div className="row g-3 mb-4">
                 <div className="col-md-6">
-                  <div className="p-3 bg-light rounded">
+                  <div className="p-3 bg-light rounded" style={{ color: "#353535" }}>
                     <h6 className="text-muted mb-1">Formed</h6>
-                    <p className="mb-0 fw-bold">{artistDetails.formed}</p>
+                    <p className="mb-0 fw-bold" style={{ color: "#353535" }}>{artistDetails.formed}</p>
                   </div>
                 </div>
                 <div className="col-md-6">
-                  <div className="p-3 bg-light rounded">
+                  <div className="p-3 bg-light rounded" style={{ color: "#353535" }}>
                     <h6 className="text-muted mb-1">Origin</h6>
-                    <p className="mb-0 fw-bold">{artistDetails.origin}</p>
+                    <p className="mb-0 fw-bold" style={{ color: "#353535" }}>{artistDetails.origin}</p>
                   </div>
                 </div>
                 <div className="col-12">
-                  <div className="p-3 bg-light rounded">
+                  <div className="p-3 bg-light rounded" style={{ color: "#353535" }}>
                     <h6 className="text-muted mb-1">Genres</h6>
                     <div className="d-flex flex-wrap gap-2">
                       {artistDetails.genres.map((genre, index) => (
@@ -144,7 +139,7 @@ export default function ArtistPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="d-flex gap-3">
+              <div className="d-flex gap-3 flex-wrap">
                 <button className="btn btn-warning btn-lg">
                   <i className="bi bi-play-circle me-2"></i>
                   Listen Now
@@ -154,6 +149,17 @@ export default function ArtistPage() {
                     <i className="bi bi-heart me-2"></i>
                     Follow
                   </button>
+                )}
+                {artistDetails.website && (
+                  <a
+                    href={artistDetails.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-outline-light btn-lg"
+                  >
+                    <i className="bi bi-globe me-2"></i>
+                    Visit Official Website
+                  </a>
                 )}
               </div>
             </div>

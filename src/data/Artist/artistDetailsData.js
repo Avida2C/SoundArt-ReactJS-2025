@@ -38,6 +38,7 @@ const artistDetails = {
     formed: "1960",
     origin: "Liverpool, England",
     genres: ["Rock", "Pop", "Psychedelic Rock", "Folk Rock"],
+    website: "https://www.thebeatles.com",
     concerts: [
       { date: "2024-12-15", venue: "Madison Square Garden", city: "New York, NY", status: "Sold Out", price: "$150-500" },
       { date: "2024-12-20", venue: "Hollywood Bowl", city: "Los Angeles, CA", status: "Limited", price: "$200-600" },
@@ -91,6 +92,7 @@ const artistDetails = {
     formed: "1970",
     origin: "London, England",
     genres: ["Rock", "Progressive Rock", "Arena Rock", "Pop Rock"],
+    website: "https://www.queenonline.com",
     concerts: [
       { date: "2024-12-18", venue: "Wembley Stadium", city: "London, UK", status: "Sold Out", price: "£200-800" },
       { date: "2025-02-14", venue: "Staples Center", city: "Los Angeles, CA", status: "Available", price: "$250-750" },
@@ -107,6 +109,48 @@ const artistDetails = {
       { title: "Under Pressure", album: "Hot Space", duration: "4:08", spotifyId: "sample10", youtubeId: "sample10", playCount: 1180000000, weeklyPlays: 5800000, peakPosition: 1, releaseYear: 1981 },
       { title: "Radio Ga Ga", album: "The Works", duration: "5:48", spotifyId: "sample11", youtubeId: "sample11", playCount: 980000000, weeklyPlays: 4800000, peakPosition: 1, releaseYear: 1984 }
     ]
+  },
+  3: { // Metallica
+    website: "https://www.metallica.com"
+  },
+  4: { // AC/DC
+    website: "https://www.acdc.com"
+  },
+  5: { // Pink Floyd
+    website: "https://www.pinkfloyd.com"
+  },
+  6: { // The Police
+    website: "https://www.thepolice.com"
+  },
+  7: { // Coldplay
+    website: "https://www.coldplay.com"
+  },
+  8: { // Foo Fighters
+    website: "https://www.foofighters.com"
+  },
+  9: { // Linkin Park
+    website: "https://www.linkinpark.com"
+  },
+  10: { // Red Hot Chili Peppers
+    website: "https://www.redhotchilipeppers.com"
+  },
+  11: { // R.E.M.
+    website: "https://www.remhq.com"
+  },
+  12: { // Blink-182
+    website: "https://www.blink182.com"
+  },
+  13: { // 3 Doors Down
+    website: "https://www.3doorsdown.com"
+  },
+  14: { // Green Day
+    website: "https://www.greenday.com"
+  },
+  15: { // Ozzy Osbourne
+    website: "https://www.ozzy.com"
+  },
+  16: { // The Police (Live)
+    website: "https://www.thepolice.com"
   }
 };
 
@@ -130,6 +174,7 @@ const defaultArtistDetails = {
   formed: "2000",
   origin: "Unknown",
   genres: ["Rock", "Alternative"],
+  website: null,
   concerts: [
     { date: "2025-01-15", venue: "Local Venue", city: "Your City", status: "Available", price: "$50-150" },
     { date: "2025-02-20", venue: "Concert Hall", city: "Nearby City", status: "Available", price: "$75-200" }
@@ -147,7 +192,21 @@ const defaultArtistDetails = {
  * @returns {Object} Detailed artist information or default details if not found
  */
 export const getArtistDetails = (artist) => {
-  return artistDetails[artist.id] || {
+  const details = artistDetails[artist.id];
+  if (details) {
+    // If artist has full details, return them
+    if (details.fullBio || details.discography) {
+      return details;
+    }
+    // If artist only has website or partial details, merge with defaults
+    return {
+      ...defaultArtistDetails,
+      ...details,
+      fullBio: details.fullBio || artist.bio
+    };
+  }
+  // Fallback to defaults
+  return {
     ...defaultArtistDetails,
     fullBio: artist.bio
   };

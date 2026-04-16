@@ -27,6 +27,8 @@ export default function SearchFilter({
           <input
             type="text"
             className="form-control"
+            id="search-filter-input"
+            name="searchFilterInput"
             placeholder={searchPlaceholder}
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
@@ -47,6 +49,8 @@ export default function SearchFilter({
       <div className="col-lg-3 col-md-3">
         <select
           className="form-select"
+          id="search-filter-category"
+          name="searchFilterCategory"
           value={filterValue}
           onChange={(e) => onFilterChange(e.target.value)}
         >
@@ -62,6 +66,8 @@ export default function SearchFilter({
       <div className="col-lg-3 col-md-3">
         <select
           className="form-select"
+          id="search-filter-sort"
+          name="searchFilterSort"
           value={sortValue}
           onChange={(e) => onSortChange(e.target.value)}
         >

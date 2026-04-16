@@ -10,12 +10,17 @@ export default function NewsletterSection({
   privacyText = "We respect your privacy. Unsubscribe at any time."
 }) {
   const [email, setEmail] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription:", email);
-    setEmail("");
+
+    // For now we just simulate a successful subscription
+    if (email.trim()) {
+      console.log("Newsletter subscription:", email);
+      setStatusMessage("You're subscribed! We'll keep you updated.");
+      setEmail("");
+    }
   };
 
   return (
@@ -30,11 +35,13 @@ export default function NewsletterSection({
               variant="newsletter"
             />
             <form onSubmit={handleSubmit}>
-              <div className="row g-3 justify-content-center">
+              <div className="row g-3 mt-2 justify-content-center">
                 <div className="col-md-6">
                   <input 
                     type="email" 
                     className="form-control form-control-lg" 
+                    id="newsletter-email"
+                    name="newsletterEmail"
                     placeholder={placeholder}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -48,6 +55,11 @@ export default function NewsletterSection({
                 </div>
               </div>
             </form>
+            {statusMessage && (
+              <div className="alert alert-success mt-3 mb-0 py-2" role="status">
+                {statusMessage}
+              </div>
+            )}
             <small className="text-muted mt-3 d-block">
               {privacyText}
             </small>

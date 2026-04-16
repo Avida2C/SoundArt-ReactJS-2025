@@ -20,12 +20,15 @@ export default function HeroSection({
   description,
   buttons = [],
   backgroundStyle = '#191919',
-  className = "py-5",
+  className = "py-4",
   breadcrumbs = null,
   image = null,
   children = null,
   variant = "centered"
 }) {
+  const isSoundartVariant = (variantClass) =>
+    typeof variantClass === "string" && variantClass.includes("btn-soundart");
+
   return (
     <section
       className={className}
@@ -58,7 +61,7 @@ export default function HeroSection({
         {variant === "centered" && (
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center">
-              <div className="display-4 fw-bold mb-4" style={{ fontFamily: 'Aptos, sans-serif' }}>
+              <div className="display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
@@ -77,17 +80,20 @@ export default function HeroSection({
                 <p className="lead mb-4">{description}</p>
               )}
               {buttons && buttons.length > 0 && (
-                <div className="d-flex gap-3 flex-wrap justify-content-center">
+                <div className="d-flex gap-3 flex-wrap justify-content-center hero-cta-row">
                   {buttons.map((button, index) => {
+                    const soundartCta = isSoundartVariant(button.variant);
                     if (button.to) {
                       return (
                         <Link
                           key={index}
                           to={button.to}
-                          className={`btn ${button.variant || 'btn-warning'} btn-lg`}
+                          className={`btn ${button.variant || 'btn-warning'} btn-lg${soundartCta ? " d-inline-flex align-items-center" : ""}`}
                           onClick={button.onClick}
                         >
-                          {button.icon && <i className={`${button.icon} me-2`}></i>}
+                          {button.icon && (
+                            <i className={`${button.icon}${soundartCta ? " cta-icon" : " me-2"}`} aria-hidden="true"></i>
+                          )}
                           {button.text}
                         </Link>
                       );
@@ -95,10 +101,12 @@ export default function HeroSection({
                     return (
                       <button
                         key={index}
-                        className={`btn ${button.variant || 'btn-warning'} btn-lg`}
+                        className={`btn ${button.variant || 'btn-warning'} btn-lg${soundartCta ? " d-inline-flex align-items-center" : ""}`}
                         onClick={button.onClick}
                       >
-                        {button.icon && <i className={`${button.icon} me-2`}></i>}
+                        {button.icon && (
+                          <i className={`${button.icon}${soundartCta ? " cta-icon" : " me-2"}`} aria-hidden="true"></i>
+                        )}
                         {button.text}
                       </button>
                     );
@@ -113,7 +121,7 @@ export default function HeroSection({
         {variant === "split" && (
           <div className="row align-items-center">
             <div className="col-lg-8">
-              <div className="display-4 fw-bold mb-4" style={{ fontFamily: 'Aptos, sans-serif' }}>
+              <div className="display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
@@ -133,17 +141,20 @@ export default function HeroSection({
               )}
               {children && children}
               {buttons && buttons.length > 0 && (
-                <div className="d-flex gap-3 flex-wrap">
+                <div className="d-flex gap-3 flex-wrap hero-cta-row">
                   {buttons.map((button, index) => {
+                    const soundartCta = isSoundartVariant(button.variant);
                     if (button.to) {
                       return (
                         <Link
                           key={index}
                           to={button.to}
-                          className={`btn ${button.variant || 'btn-warning'} btn-lg`}
+                          className={`btn ${button.variant || 'btn-warning'} btn-lg${soundartCta ? " d-inline-flex align-items-center" : ""}`}
                           onClick={button.onClick}
                         >
-                          {button.icon && <i className={`${button.icon} me-2`}></i>}
+                          {button.icon && (
+                            <i className={`${button.icon}${soundartCta ? " cta-icon" : " me-2"}`} aria-hidden="true"></i>
+                          )}
                           {button.text}
                         </Link>
                       );
@@ -151,10 +162,12 @@ export default function HeroSection({
                     return (
                       <button
                         key={index}
-                        className={`btn ${button.variant || 'btn-warning'} btn-lg`}
+                        className={`btn ${button.variant || 'btn-warning'} btn-lg${soundartCta ? " d-inline-flex align-items-center" : ""}`}
                         onClick={button.onClick}
                       >
-                        {button.icon && <i className={`${button.icon} me-2`}></i>}
+                        {button.icon && (
+                          <i className={`${button.icon}${soundartCta ? " cta-icon" : " me-2"}`} aria-hidden="true"></i>
+                        )}
                         {button.text}
                       </button>
                     );

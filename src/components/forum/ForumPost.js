@@ -210,6 +210,8 @@ const ForumPost = ({ post, onReply, onLike, onShare, onPostClick, onTagClick }) 
               <div className="flex-grow-1">
                 <textarea
                   className="form-control"
+                  id="forum-inline-reply"
+                  name="forumInlineReply"
                   rows="2"
                   placeholder="Write a reply..."
                   value={replyText}

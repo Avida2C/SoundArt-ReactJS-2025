@@ -4,6 +4,7 @@ import { heroData } from "../data/heroData";
 import ContactUsDetails from "../components/ContactUs/ContactUsDetails";
 import ContactFAQ from "../components/ContactUs/ContactFAQ";
 import ContactForm from "../components/ContactUs/ContactForm";
+import { usePageTitle } from "../hooks";
 import "../styles/contact.css";
 
 export default function Contact() {
@@ -13,6 +14,9 @@ export default function Contact() {
         { q: "Do you offer support for ticket or payment issues?", a: "Yes. Choose \"Technical Support\" in the form and include your order ID and any error messages. Our support team will assist you promptly." },
         { q: "Can brands or venues partner with SoundArt?", a: "Absolutely. Select \"Partnership Opportunity\" in the form and share your goals, timeline, and relevant links. Our partnerships team will follow up." }
     ];
+
+    usePageTitle("Contact");
+
     return (
         <div>
             {/* Hero Section */}
@@ -28,7 +32,7 @@ export default function Contact() {
                     {/* Get in Touch Section */}
                     <div className="mb-5">
                         <h1 className="contact-section-title mb-3">Get in Touch</h1>
-                        <p className="contact-intro-text mb-4 col-6">
+                        <p className="contact-intro-text mb-4 col-12 col-md-6">
                             Whether you're an artist looking to get featured, a music lover with questions, or a potential partner, we're here to help.
                         </p>
                         

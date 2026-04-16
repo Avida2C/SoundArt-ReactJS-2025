@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { formatDate, formatNumber } from '../utils/helpers';
+import { usePageTitle } from '../hooks';
 
 const Profile = () => {
   const { username } = useParams();
@@ -363,6 +364,8 @@ const Profile = () => {
       ]
     }
   };
+
+  usePageTitle(profileUser ? `${profileUser.firstName} ${profileUser.lastName}` : 'Profile');
 
   useEffect(() => {
     // Simulate API call

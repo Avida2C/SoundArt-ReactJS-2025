@@ -1,6 +1,44 @@
 import React from "react";
 
-export default function SectionTitle({ title, subtitle, variant = "section", titleIcon, textColor = "default" }) {
+const VARIANT_CONFIG = {
+  section: {
+    headingTag: "h2",
+    headingClass: "display-5",
+    subtitleClass: "lead",
+    titleMargin: "mb-2",
+    subtitleMargin: "mb-0",
+  },
+  newsletter: {
+    headingTag: "h2",
+    headingClass: "display-5",
+    subtitleClass: "lead",
+    titleMargin: "mb-0",
+    subtitleMargin: "mb-0",
+  },
+  inline: {
+    headingTag: "h5",
+    headingClass: "",
+    subtitleClass: "",
+    titleMargin: "mb-0",
+    subtitleMargin: "mb-0",
+  },
+};
+
+const DEFAULT_CONFIG = {
+  headingTag: "h2",
+  headingClass: "display-5",
+  subtitleClass: "lead",
+  titleMargin: "mb-0",
+  subtitleMargin: "mb-0",
+};
+
+export default function SectionTitle({
+  title,
+  subtitle,
+  variant = "section",
+  titleIcon,
+  textColor = "default",
+}) {
   const titleElement = titleIcon ? (
     <>
       <i className={`${titleIcon} text-warning me-2`}></i>
@@ -10,39 +48,22 @@ export default function SectionTitle({ title, subtitle, variant = "section", tit
     title
   );
 
-  // Determine heading tag and classes based on variant
-  let HeadingTag, headingClass, subtitleClass, titleMargin, subtitleMargin;
-  
-  if (variant === "section" || variant === "newsletter") {
-    HeadingTag = "h2";
-    headingClass = "display-5";
-    subtitleClass = "lead";
-    titleMargin = variant === "newsletter" ? "mb-3" : "mb-2";
-    subtitleMargin = "mb-4";
-  } else if (variant === "inline") {
-    HeadingTag = "h5";
-    headingClass = "";
-    subtitleClass = "";
-    titleMargin = "mb-2";
-    subtitleMargin = "mb-0";
-  } else {
-    HeadingTag = "h2";
-    headingClass = "display-5";
-    subtitleClass = "lead";
-    titleMargin = "mb-2";
-    subtitleMargin = "mb-4";
-  }
-  
+  const config = VARIANT_CONFIG[variant] || DEFAULT_CONFIG;
+  const HeadingTag = config.headingTag;
   const subtitleTextColor = textColor === "white" ? "text-white" : "text-muted";
   const titleTextColor = textColor === "white" ? "text-white" : "";
-  
+
   const content = (
     <>
-      <HeadingTag className={`${headingClass} fw-bold ${titleMargin} ${titleTextColor}`}>
+      <HeadingTag
+        className={`${config.headingClass} fw-bold ${config.titleMargin} ${titleTextColor}`}
+      >
         {titleElement}
       </HeadingTag>
       {subtitle && (
-        <p className={`${subtitleClass} ${subtitleTextColor} ${subtitleMargin}`}>
+        <p
+          className={`${config.subtitleClass} ${subtitleTextColor} ${config.subtitleMargin}`}
+        >
           {subtitle}
         </p>
       )}

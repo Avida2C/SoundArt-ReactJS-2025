@@ -216,6 +216,8 @@ const PostDetail = ({ post, onBack, onLike, onReply, onShare, onTagClick }) => {
                   <div className="flex-grow-1">
                     <textarea
                       className="form-control"
+                      id="forum-detail-reply"
+                      name="forumDetailReply"
                       rows="4"
                       placeholder="Share your thoughts..."
                       value={replyText}

@@ -35,6 +35,8 @@ export default function CommentForm({ onSubmit }) {
           <div className="col-12">
             <textarea 
               className="form-control contact-textarea" 
+              id="comment-content"
+              name="commentContent"
               rows="6" 
               placeholder="Share your thoughts about this article..."
               value={content}
@@ -46,6 +48,8 @@ export default function CommentForm({ onSubmit }) {
             <input 
               type="text" 
               className="form-control contact-input" 
+              id="comment-name"
+              name="commentName"
               placeholder="Your Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -56,6 +60,8 @@ export default function CommentForm({ onSubmit }) {
             <input 
               type="email" 
               className="form-control contact-input" 
+              id="comment-email"
+              name="commentEmail"
               placeholder="Your Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

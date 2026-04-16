@@ -8,7 +8,7 @@
 
 /* Get in Touch Section */
 .contact-section-title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
   color: #333;
   text-align: left;
@@ -16,7 +16,7 @@
 }
 
 .contact-intro-text {
-  font-size: 16px;
+  font-size: 1rem;
   color: #333;
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -25,8 +25,8 @@
 /* Contact Method Cards */
 .contact-method-card {
   background-color: white;
-  box-shadow: 2px 2px 4px rgba(95, 95, 95, 0.141);
-  border-radius: 4px;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(95, 95, 95, 0.141);
+  border-radius: 0.25rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -42,13 +42,13 @@
 }
 
 .contact-method-title {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: bold;
   color: #333;
 }
 
 .contact-method-description {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #333;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -56,8 +56,8 @@
 }
 
 .contact-info-box {
-  border: 1px solid var(--primary-color);
-  border-radius: 4px;
+  border: 0.0625rem solid var(--primary-color);
+  border-radius: 0.25rem;
   padding: 0.75rem 1rem;
   margin-top: auto;
   background-color: transparent;
@@ -66,7 +66,7 @@
 
 .contact-info-text {
   color: var(--primary-color);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
 
 }
@@ -74,14 +74,14 @@
 /* Contact Form Card */
 .contact-form-card {
   background-color: white;
-  box-shadow: 2px 2px 4px rgba(95, 95, 95, 0.141);
-  border-radius: 4px;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(95, 95, 95, 0.141);
+  border-radius: 0.25rem;
   padding: 2rem;
   
 }
 
 .contact-form-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
 }
@@ -91,10 +91,10 @@
 .contact-textarea,
 .contact-select {
   background-color: white;
-  border: 1px solid #E0E0E0;
-  border-radius: 4px;
+  border: 0.0625rem solid #E0E0E0;
+  border-radius: 0.25rem;
   padding: 0.75rem 1rem;
-  font-size: 16px;
+  font-size: 1rem;
   color: #333;
   transition: var(--transition);
 }
@@ -104,11 +104,11 @@
 .contact-select:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(255, 189, 46, 0.2);
+  box-shadow: 0 0 0 0.125rem rgba(255, 189, 46, 0.2);
 }
 
 .contact-textarea {
-  min-height: 120px;
+  min-height: 7.5rem;
   resize: vertical;
 }
 
@@ -135,14 +135,14 @@
 
 /* Form Labels */
 .contact-form-card .form-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 0.5rem;
 }
 
 .contact-checkbox-label {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #333;
   margin-left: 0.5rem;
 }
@@ -151,13 +151,13 @@
 .contact-submit-btn {
   background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   padding: 1rem 2rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125rem;
   transition: var(--transition);
   display: flex;
   align-items: center;
@@ -166,8 +166,8 @@
 
 .contact-submit-btn:hover:not(:disabled) {
   background: linear-gradient(45deg, var(--primary-dark), var(--primary-color));
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .contact-submit-btn:disabled {
@@ -178,13 +178,13 @@
 /* FAQ Section */
 .contact-faq-card {
   background-color: white;
-  box-shadow: 2px 2px 4px rgba(95, 95, 95, 0.141);
-  border-radius: 4px;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(95, 95, 95, 0.141);
+  border-radius: 0.25rem;
   padding: 2rem;
 }
 
 .contact-faq-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #333;
 }
@@ -196,7 +196,7 @@
 }
 
 .contact-faq-item {
-  border-bottom: 1px solid #E0E0E0;
+  border-bottom: 0.0625rem solid #E0E0E0;
   padding-bottom: 0;
 }
 
@@ -210,7 +210,7 @@
   border: none;
   padding: 1rem 0;
   text-align: left;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: #333;
   display: flex;
@@ -226,7 +226,7 @@
 
 .contact-faq-question i {
   color: #666;
-  font-size: 14px;
+  font-size: 0.875rem;
   transition: var(--transition);
 }
 
@@ -236,16 +236,16 @@
 
 .contact-faq-answer {
   padding: 0 0 1rem 0;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #666;
   line-height: 1.6;
   margin-top: 0.5rem;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
   .contact-section-title {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   .contact-form-card,
@@ -258,7 +258,7 @@
   }
 
   .contact-submit-btn {
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 0.875rem 1.5rem;
   }
 

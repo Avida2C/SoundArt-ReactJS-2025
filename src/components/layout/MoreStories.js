@@ -28,13 +28,7 @@ export default function MoreStories({
           {showViewAllButton && (
             <Link 
               to="/news" 
-              className="text-decoration-none text-uppercase btn btn-outline-warning"
-              style={{ 
-                paddingTop: '8px',
-                paddingBottom: '8px',
-                paddingLeft: '16px',
-                paddingRight: '16px'
-              }}
+              className="more-stories-view-all-btn text-decoration-none text-uppercase btn btn-outline-warning"
             >
               View All Stories
             </Link>

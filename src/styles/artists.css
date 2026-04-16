@@ -379,6 +379,18 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  /* Make artist tabs horizontally scrollable on mobile */
+  .artist-tabs-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .artist-tabs-container .nav-tabs {
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    min-width: max-content;
+  }
+
   .gallery-controls {
     margin: 0.75rem 0 1.5rem 0;
     padding: 1rem;

@@ -14,13 +14,13 @@
 }
 
 .news-thumbnail {
-  width: 88px;
-  height: 64px;
+  width: 5.5rem;
+  height: 4rem;
   object-fit: cover;
 }
 
 .artist-card-image {
-  height: 220px;
+  height: 13.75rem;
   object-fit: cover;
 }
 
@@ -63,18 +63,18 @@
 }
 
 .hero-content h1 {
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0.125rem 0.125rem 0.25rem rgba(0,0,0,0.5);
   font-family: "AntiquaStd", serif !important;
 }
 
 /* Featured News Card */
 .featured-news-card {
   transition: var(--transition);
-  border-radius: 4px;
+  border-radius: 0.25rem;
 }
 
 .featured-news-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
 }
 
 .featured-news-card .btn.text-uppercase {
@@ -84,12 +84,12 @@
 /* Artist Card */
 .artist-card {
   transition: var(--transition);
-  border-radius: 4px;
+  border-radius: 0.25rem;
   overflow: hidden;
 }
 
 .artist-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
 }
 
 .artist-overlay {
@@ -106,14 +106,14 @@
 }
 
 .stat-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-0.3125rem);
 }
 
 /* News Items */
 .news-item {
   transition: var(--transition);
-  border-radius: 4px;
-  margin-bottom: 16px;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -129,8 +129,8 @@
 }
 
 .hero-glow {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
   background: radial-gradient(circle, rgba(255,193,7,0.3) 0%, transparent 70%);
   border-radius: 50%;
   top: 50%;
@@ -141,7 +141,7 @@
 
 /* Image Styles */
 .hero-image {
-  max-height: 400px;
+  max-height: 25rem;
   object-fit: cover;
 }
 
@@ -150,15 +150,15 @@
 }
 
 .news-thumbnail {
-  width: 88px;
-  height: 64px;
+  width: 5.5rem;
+  height: 4rem;
   object-fit: cover;
 }
 
 /* News Sidebar Styles */
 .news-sidebar .news-item {
   padding: 0;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .news-sidebar .news-item:hover {
@@ -171,7 +171,7 @@
 }
 
 .artist-card-image {
-  height: 300px;
+  height: 18.75rem;
   object-fit: cover;
 }
 
@@ -199,12 +199,12 @@
   color: #1f1f1f;
   font-weight: 700;
   text-align: center;
-  padding: 14px 18px;
-  border-radius: 4px;
+  padding: 0.875rem 1.125rem;
+  border-radius: 0.25rem;
   transition: transform 0.2s ease;
 }
 
 .cta-bar:hover {
-  transform: translateY(-2px);
+  transform: translateY(-0.125rem);
   color: #1f1f1f;
 }

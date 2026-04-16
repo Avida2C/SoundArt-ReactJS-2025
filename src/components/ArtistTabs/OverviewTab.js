@@ -35,7 +35,7 @@ export default function OverviewTab({ artist, artistDetails }) {
           <h2 className="mb-4 fw-bold" style={{ color: "#353535", fontFamily: "sans-serif" }}>
             About {artist.name}
           </h2>
-          <div style={{ color: "#353535", fontFamily: "sans-serif" }}>
+          <div className="artist-overview-text" style={{ color: "#353535", fontFamily: "sans-serif" }}>
             {bioParagraphs.length > 0 ? (
               <>
                 <p className="mb-3">{bioParagraphs[0]}</p>

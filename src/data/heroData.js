@@ -16,13 +16,13 @@ export const heroData = {
         to: "/artists",
         text: "Explore Artists",
         icon: "bi bi-music-note",
-        variant: "btn-warning"
+        variant: "btn-soundart-primary"
       },
       {
         to: "/news",
         text: "Latest News",
         icon: "bi bi-newspaper",
-        variant: "btn-outline-light"
+        variant: "btn-soundart-outline"
       }
     ]
   },

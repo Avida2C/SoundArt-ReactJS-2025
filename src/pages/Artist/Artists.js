@@ -8,6 +8,7 @@ import { searchFilterConfigs } from "../../data/searchFilterData";
 import { sectionTitles } from "../../data/sectionTitlesData";
 import artistData from "../../data/Artist/artistData";
 import UpcomingConcerts from "../../components/UpcomingConcerts";
+import { usePageTitle } from "../../hooks";
 import "../../styles/artists.css";
 
 export default function Artists() {
@@ -16,6 +17,8 @@ export default function Artists() {
   const [sortBy, setSortBy] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const [artistsPerPage] = useState(12);
+
+  usePageTitle("Artists");
 
   // Mock genres (in real app, this would come from artist data)
   const genres = ['all', 'Rock', 'Metal', 'Pop', 'Alternative', 'Punk'];
@@ -187,7 +190,7 @@ export default function Artists() {
       />
 
       {/* Artists Gallery Section */}
-      <section className="py-5">
+      <section className="pb-5">
         <div className="container">
           <ArtistGallery artists={currentArtists} />
           {renderPagination()}

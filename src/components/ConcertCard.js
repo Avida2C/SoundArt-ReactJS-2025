@@ -5,7 +5,7 @@ import { formatDateShort } from "../utils/helpers";
 /**
  * ConcertCard - Simple concert card matching the Artists page upcoming concerts style
  */
-export default function ConcertCard({ concert, isAuthenticated, hideImage = false }) {
+export default function ConcertCard({ concert, hideImage = false }) {
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Sold Out':
@@ -63,8 +63,12 @@ export default function ConcertCard({ concert, isAuthenticated, hideImage = fals
               <i className="bi bi-x-circle me-2"></i>Sold Out
             </button>
           ) : (
-            <Link to="/concerts" className="btn btn-warning w-100">
-              <IoTicketOutline className="me-1 fs-4" /> <span className="me-2">Get Tickets </span>
+            <Link
+              to={`/concerts/${concert.id}/tickets`}
+              className="btn btn-warning w-100"
+            >
+              <IoTicketOutline className="me-1 fs-4" />{" "}
+              <span className="me-2">Get Tickets</span>
             </Link>
           )}
         </div>

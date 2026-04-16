@@ -3,11 +3,14 @@ import { useAuth } from '../contexts/AuthContext';
 import { AuthModal } from '../components/auth';
 import Forum from '../components/forum/Forum';
 import UserProfile from '../components/profile/UserProfile';
+import { usePageTitle } from '../hooks';
 
 const Social = () => {
   const { user, isAuthenticated } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [activeTab, setActiveTab] = useState('forum');
+
+  usePageTitle('Community');
 
   if (!isAuthenticated) {
     return (
@@ -19,7 +22,7 @@ const Social = () => {
           <div className="container text-white">
             <div className="row align-items-center">
               <div className="col-lg-6">
-                <h1 className="display-4 fw-bold mb-4">
+                <h1 className="display-4 fw-bold mb-2">
                   Join the <span className="text-warning">Music Community</span>
                 </h1>
                 <p className="lead mb-4">

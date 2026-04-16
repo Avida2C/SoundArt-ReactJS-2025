@@ -18,6 +18,7 @@ import {
 import { formatDateShort } from "../../utils/helpers";
 import artists from "../../data/Artist/artistData";
 import { getArtistDetails } from "../../data/Artist/artistDetailsData";
+import { usePageTitle } from "../../hooks";
 import "../../styles/artists.css";
 
 export default function ArtistPage() {
@@ -25,6 +26,8 @@ export default function ArtistPage() {
   const { isAuthenticated } = useAuth();
   const [activeTab, setActiveTab] = useState("overview");
   const selectedArtist = artists.find((a) => a.id === Number(id));
+
+  usePageTitle(selectedArtist ? selectedArtist.name : "Artist");
 
   if (!selectedArtist) {
     return (

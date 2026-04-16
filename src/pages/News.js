@@ -3,7 +3,7 @@ import { HeroSection, SectionTitle, NewsletterSection } from "../components/layo
 import { ArticleCard } from "../components/News";
 import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
-import { useDebounce } from "../hooks";
+import { useDebounce, usePageTitle } from "../hooks";
 import SearchFilter from "../components/SearchFilter";
 import { searchFilterConfigs } from "../data/searchFilterData";
 import { sectionTitles } from "../data/sectionTitlesData";
@@ -17,6 +17,7 @@ export default function News() {
   const [articlesPerPage] = useState(12);
   
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  usePageTitle("News");
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -163,7 +164,7 @@ export default function News() {
       />
 
       {/* Articles Section */}
-      <section className="py-5">
+      <section className="pb-5">
         <div className="container">
           
           

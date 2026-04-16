@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { HeroSection, SectionTitle, NewsletterSection } from "../components/layout";
 import { heroData } from "../data/heroData";
-import { useAuth } from "../contexts/AuthContext";
 import SearchFilter from "../components/SearchFilter";
 import { searchFilterConfigs } from "../data/searchFilterData";
 import { sectionTitles } from "../data/sectionTitlesData";
@@ -9,14 +8,16 @@ import concertsData from "../data/concertsData";
 import { LegendaryArtistsSection } from "../components/ArtistGallery";
 import artistData from "../data/Artist/artistData";
 import ConcertCard from "../components/ConcertCard";
+import { usePageTitle } from "../hooks";
 
 export default function Concerts() {
-  const { isAuthenticated } = useAuth();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const [concertsPerPage] = useState(12);
+
+  usePageTitle("Concerts");
 
   const genres = ['all', ...new Set(concertsData.map(concert => concert.genre))];
 
@@ -167,7 +168,7 @@ export default function Concerts() {
       />
 
       {/* Concerts Section */}
-      <section className="py-5 concerts-section">
+      <section className="pb-5 concerts-section">
         <div className="container">
           {currentConcerts.length === 0 ? (
             <div className="text-center py-5">
@@ -180,10 +181,7 @@ export default function Concerts() {
               <div className="row g-4">
                 {currentConcerts.map((concert) => (
                   <div key={concert.id} className="col-lg-3 col-md-6">
-                    <ConcertCard 
-                      concert={concert} 
-                      isAuthenticated={isAuthenticated}
-                    />
+                    <ConcertCard concert={concert} />
                   </div>
                 ))}
               </div>

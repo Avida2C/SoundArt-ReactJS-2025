@@ -376,6 +376,8 @@ const Forum = () => {
             <input
               type="text"
               className="form-control"
+              id="forum-search"
+              name="forumSearch"
               placeholder="Search posts..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -393,6 +395,8 @@ const Forum = () => {
         <div className="col-lg-3">
           <select
             className="form-select"
+            id="forum-category"
+            name="forumCategory"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -405,6 +409,8 @@ const Forum = () => {
         <div className="col-lg-3">
           <select
             className="form-select"
+            id="forum-sort"
+            name="forumSort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >

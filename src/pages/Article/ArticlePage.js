@@ -7,14 +7,18 @@ import { Comment, CommentForm } from "../../components/Comments";
 import { formatNumber, formatDateShort } from "../../utils/helpers";
 import articlesData from "../../data/Articles/articlesData";
 import { getCommentsByArticleId } from "../../data/Comments/commentsData";
+import { usePageTitle } from "../../hooks";
 import "../../styles/home.css";
 import "../../styles/contact.css";
+import "../../styles/news.css";
 
 export default function ArticlePage() {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   const article = articlesData.find(a => a.id === Number(id));
   const comments = article ? getCommentsByArticleId(article.id) : [];
+
+  usePageTitle(article ? article.title : "Article");
 
   if (!article) {
     return (
@@ -44,7 +48,7 @@ export default function ArticlePage() {
         ]}
         variant="split"
         children={
-          <div className="d-flex align-items-center gap-4 mb-4">
+          <div className="article-header-meta d-flex align-items-center gap-4 mb-4">
             <div className="d-flex align-items-center">
               <i className="bi bi-person-circle me-2 text-warning"></i>
               <span className="text-white-50">By {article.author}</span>
@@ -58,7 +62,7 @@ export default function ArticlePage() {
       />
 
       {/* Article Content */}
-      <section className="py-5">
+      <section className="article-main-section py-5">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
@@ -68,8 +72,7 @@ export default function ArticlePage() {
                   <img 
                     src={article.image2} 
                     alt={article.title}
-                    className="img-fluid rounded shadow"
-                    style={{width: '100%', height: '400px', objectFit: 'cover'}}
+                    className="article-featured-image img-fluid rounded shadow"
                   />
                 </div>
 
@@ -99,7 +102,7 @@ export default function ArticlePage() {
 
             {/* Sidebar */}
             <div className="col-lg-4">
-              <div className="sticky-top" style={{top: '2rem'}}>
+              <div className="article-sidebar sticky-top">
                 {/* More Stories Sidebar */}
                 <div className="mb-4 news-sidebar">
                   <h4 className="fw-bold mb-4">More Stories</h4>
@@ -139,7 +142,7 @@ export default function ArticlePage() {
                   <div className="mt-4">
                     <Link 
                       to="/news" 
-                      className="d-block text-decoration-none w-100 text-uppercase btn-outline-warning btn"
+                      className="article-view-all-btn text-decoration-none text-uppercase btn-outline-warning btn"
                     >
                       View All Stories
                     </Link>
@@ -159,11 +162,11 @@ export default function ArticlePage() {
       </section>
 
       {/* Comments Section */}
-      <section className="py-2">
+      <section className="article-comments-section py-2">
         <div className="container">
           <div className="row">
             <div className="col-lg-8">
-              <h3 className="mb-4 fw-bold text-dark" style={{ fontSize: '2rem' }}>Comments</h3>
+              <h3 className="article-comments-title mb-4 fw-bold text-dark">Comments</h3>
               
               {/* Public Comments List */}
               <div className="comments-list mb-4">

@@ -9,12 +9,16 @@ export default function NewsletterSidebar({
   privacyText = "We respect your privacy. Unsubscribe at any time."
 }) {
   const [email, setEmail] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Newsletter subscription:", email);
-    setEmail("");
+
+    if (email.trim()) {
+      console.log("Newsletter subscription:", email);
+      setStatusMessage("You're subscribed! We'll keep you updated.");
+      setEmail("");
+    }
   };
 
   return (
@@ -30,6 +34,8 @@ export default function NewsletterSidebar({
             <input 
               type="email" 
               className="form-control form-control-lg" 
+              id="newsletter-sidebar-email"
+              name="newsletterSidebarEmail"
               placeholder={placeholder}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -40,6 +46,11 @@ export default function NewsletterSidebar({
             <i className="bi bi-envelope me-2"></i>Subscribe
           </button>
         </form>
+        {statusMessage && (
+          <div className="alert alert-success mt-3 mb-0 py-2" role="status">
+            {statusMessage}
+          </div>
+        )}
         <small className="text-muted mt-3 d-block">
           {privacyText}
         </small>

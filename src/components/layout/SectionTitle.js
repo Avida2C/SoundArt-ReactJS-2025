@@ -56,13 +56,13 @@ export default function SectionTitle({
   const content = (
     <>
       <HeadingTag
-        className={`${config.headingClass} fw-bold ${config.titleMargin} ${titleTextColor}`}
+        className={`sa-section-measure ${config.headingClass} fw-bold ${config.titleMargin} ${titleTextColor}`}
       >
         {titleElement}
       </HeadingTag>
       {subtitle && (
         <p
-          className={`${config.subtitleClass} ${subtitleTextColor} ${config.subtitleMargin}`}
+          className={`sa-section-measure ${config.subtitleClass} ${subtitleTextColor} ${config.subtitleMargin}`}
         >
           {subtitle}
         </p>

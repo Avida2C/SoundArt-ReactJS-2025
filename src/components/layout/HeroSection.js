@@ -61,7 +61,7 @@ export default function HeroSection({
         {variant === "centered" && (
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center">
-              <div className="display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
+              <div className="sa-section-measure display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
@@ -77,7 +77,7 @@ export default function HeroSection({
                 )}
               </div>
               {description && (
-                <p className="lead mb-4">{description}</p>
+                <p className="sa-section-measure lead mb-4">{description}</p>
               )}
               {buttons && buttons.length > 0 && (
                 <div className="d-flex gap-3 flex-wrap justify-content-center hero-cta-row">
@@ -120,8 +120,8 @@ export default function HeroSection({
 
         {variant === "split" && (
           <div className="row align-items-center">
-            <div className="col-lg-8">
-              <div className="display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
+            <div className="col-lg-8 hero-section-split-text">
+              <div className="sa-section-measure display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
@@ -137,7 +137,7 @@ export default function HeroSection({
                 )}
               </div>
               {description && (
-                <p className="lead mb-4">{description}</p>
+                <p className="sa-section-measure lead mb-4">{description}</p>
               )}
               {children && children}
               {buttons && buttons.length > 0 && (

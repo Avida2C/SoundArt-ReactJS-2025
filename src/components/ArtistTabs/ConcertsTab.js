@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ConcertCard from "../ConcertCard";
-import concertsData from "../../data/concertsData";
 
 /**
  * ConcertsTab - Displays upcoming concerts and subscription form
@@ -21,26 +20,6 @@ export default function ConcertsTab({ artist, artistDetails, isAuthenticated }) 
   const endIndex = startIndex + concertsPerPage;
   const currentConcerts = concerts.slice(startIndex, endIndex);
 
-  const resolveConcertId = (concert) => {
-    const exactMatch = concertsData.find(
-      (item) =>
-        item.artist === artist.name &&
-        item.date === concert.date &&
-        item.venue === concert.venue
-    );
-    if (exactMatch?.id) {
-      return exactMatch.id;
-    }
-
-    // Fallback: use any concert from the same artist.
-    const artistMatch = concertsData.find((item) => item.artist === artist.name);
-    if (artistMatch?.id) {
-      return artistMatch.id;
-    }
-
-    return concertsData[0]?.id ?? null;
-  };
-  
   const handlePageChange = (page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -103,7 +82,6 @@ export default function ConcertsTab({ artist, artistDetails, isAuthenticated }) 
             <ConcertCard 
               concert={{
                 ...concert,
-                id: concert.id ?? resolveConcertId(concert),
                 artist: artist.name,
                 image: artist.image || concert.image
               }} 

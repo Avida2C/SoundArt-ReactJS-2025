@@ -94,6 +94,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: default;
 }
 
 /* Typography Scale */
@@ -235,6 +236,19 @@ h6 + .lead {
 .sa-mb-2 { margin-bottom: var(--space-2) !important; }
 .sa-mb-3 { margin-bottom: var(--space-3) !important; }
 .sa-mb-4 { margin-bottom: var(--space-4) !important; }
+
+/* SectionTitle / Hero — title + subtitle share readable line length */
+.sa-section-measure {
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Split hero: keep measure but align blocks to the start of the column */
+.hero-section-split-text .sa-section-measure {
+  margin-left: 0;
+  margin-right: auto;
+}
 
 /* Premium Button Styles */
 .btn-warning,
@@ -643,6 +657,7 @@ section {
 /* Add bottom padding so content isn't hidden behind nav.
    Slightly taller to match header visual weight. */
 body {
+  cursor: default;
   padding-bottom: 4.75rem;
 }
 

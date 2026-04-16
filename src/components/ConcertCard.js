@@ -2,10 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoTicketOutline } from "react-icons/io5";
 import { formatDateShort } from "../utils/helpers";
+import { resolveConcertTicketId } from "../utils/resolveConcertTicketId";
+
 /**
  * ConcertCard - Simple concert card matching the Artists page upcoming concerts style
  */
 export default function ConcertCard({ concert, hideImage = false }) {
+  const ticketId = resolveConcertTicketId(concert);
   const getStatusBadge = (status) => {
     switch (status) {
       case 'Sold Out':
@@ -64,7 +67,7 @@ export default function ConcertCard({ concert, hideImage = false }) {
             </button>
           ) : (
             <Link
-              to={`/concerts/${concert.id}/tickets`}
+              to={`/concerts/${ticketId}/tickets`}
               className="btn btn-warning w-100"
             >
               <IoTicketOutline className="me-1 fs-4" />{" "}

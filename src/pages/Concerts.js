@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { HeroSection, SectionTitle, NewsletterSection } from "../components/layout";
 import { heroData } from "../data/heroData";
 import SearchFilter from "../components/SearchFilter";
@@ -11,22 +12,32 @@ import ConcertCard from "../components/ConcertCard";
 import { usePageTitle } from "../hooks";
 
 export default function Concerts() {
+  const [searchParams] = useSearchParams();
+  const qFromUrl = searchParams.get("q") ?? "";
+
   const [selectedFilter, setSelectedFilter] = useState('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(qFromUrl);
   const [sortBy, setSortBy] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const [concertsPerPage] = useState(12);
 
   usePageTitle("Concerts");
 
+  useEffect(() => {
+    setSearchTerm(qFromUrl);
+  }, [qFromUrl]);
+
   const genres = ['all', ...new Set(concertsData.map(concert => concert.genre))];
 
   const filteredConcerts = useMemo(() => {
     let filtered = concertsData.filter(concert => {
       const matchesFilter = selectedFilter === 'all' || concert.genre === selectedFilter;
-      const matchesSearch = concert.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           concert.venue.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           concert.city.toLowerCase().includes(searchTerm.toLowerCase());
+      const q = searchTerm.toLowerCase();
+      const matchesSearch =
+        concert.artist.toLowerCase().includes(q) ||
+        concert.venue.toLowerCase().includes(q) ||
+        concert.city.toLowerCase().includes(q) ||
+        (concert.country && concert.country.toLowerCase().includes(q));
       return matchesFilter && matchesSearch;
     });
 
@@ -59,7 +70,7 @@ export default function Concerts() {
   const currentConcerts = filteredConcerts.slice(startIndex, endIndex);
 
   // Reset to first page when filters change
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedFilter, sortBy]);
 

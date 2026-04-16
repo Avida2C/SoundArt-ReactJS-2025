@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { HeroSection, SectionTitle, NewsletterSection } from "../components/layout";
 import { ArticleCard } from "../components/News";
 import { heroData } from "../data/heroData";
@@ -10,7 +11,10 @@ import { sectionTitles } from "../data/sectionTitlesData";
 import "../styles/news.css";
 
 export default function News() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams] = useSearchParams();
+  const qFromUrl = searchParams.get("q") ?? "";
+
+  const [searchTerm, setSearchTerm] = useState(qFromUrl);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('date');
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +22,10 @@ export default function News() {
   
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
   usePageTitle("News");
+
+  useEffect(() => {
+    setSearchTerm(qFromUrl);
+  }, [qFromUrl]);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -65,7 +73,7 @@ export default function News() {
   const currentArticles = filteredAndSortedArticles.slice(startIndex, endIndex);
 
   // Reset to first page when filters change
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [debouncedSearchTerm, selectedCategory, sortBy]);
 

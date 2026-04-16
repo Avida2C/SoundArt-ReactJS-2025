@@ -36,13 +36,21 @@ export default function HeroSection({
     >
       <div className="container text-white">
         {breadcrumbs && (
-          <nav aria-label="breadcrumb" className="mb-4">
-            <ol className="breadcrumb mb-0" style={{ backgroundColor: 'transparent' }}>
+          <nav aria-label="breadcrumb" className="mb-4 sa-breadcrumb-nav">
+            <ol className="breadcrumb mb-0 sa-breadcrumb" style={{ backgroundColor: 'transparent' }}>
               {breadcrumbs.map((crumb, index) => {
                 if (index === breadcrumbs.length - 1) {
+                  const label = crumb.text;
+                  const fullTitle = crumb.fullTitle ?? label;
                   return (
-                    <li key={index} className="breadcrumb-item active text-warning fw-semibold" aria-current="page">
-                      {crumb.text}
+                    <li
+                      key={index}
+                      className="breadcrumb-item active text-warning fw-semibold sa-breadcrumb-active"
+                      aria-current="page"
+                      title={fullTitle !== label ? fullTitle : undefined}
+                      aria-label={fullTitle}
+                    >
+                      <span className="sa-breadcrumb-active-text">{label}</span>
                     </li>
                   );
                 }

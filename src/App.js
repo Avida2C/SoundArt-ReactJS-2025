@@ -7,7 +7,6 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import BottomNav from "./components/Navigation/BottomNav";
 import MoreSidebar from "./components/Navigation/MoreSidebar";
-import ArtistGallery from "./components/ArtistGallery/ArtistGallery";
 import ArtistPage from "./pages/Artist/ArtistPage";
 import News from "./pages/News";
 import ArticlePage from "./pages/Article/ArticlePage";
@@ -60,7 +59,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/artist-gallery" element={<ArtistGallery />} />
           <Route path="/artist/:id" element={<ArtistPage />} />
           <Route path="/article/:id" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />

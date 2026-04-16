@@ -1,16 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FEATURE_FLAGS } from "../../constants";
 import { RiInstagramFill } from "react-icons/ri";
 import { SiYoutubeshorts } from "react-icons/si";
+import { getSearchTargetPath } from "../../utils/moreSidebarSearch";
 
 export default function MoreSidebar({ open, onClose }) {
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (!open) {
+      setQuery("");
+    }
+  }, [open]);
+
   if (!open) return null;
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    navigate(getSearchTargetPath(query));
+    onClose();
   };
 
   return (
@@ -20,22 +36,43 @@ export default function MoreSidebar({ open, onClose }) {
           <h6 className="mb-0">Explore SoundArt</h6>
           <button
             type="button"
-            className="btn btn-sm btn-outline-light"
+            className="btn btn-sm btn-outline-light sa-more-close"
             onClick={onClose}
+            aria-label="Close menu"
           >
             ✕
           </button>
         </div>
 
-        <div className="sa-more-search mt-3 mb-4">
-          <input
-            type="search"
-            className="form-control"
-            id="more-sidebar-search"
-            name="moreSidebarSearch"
-            placeholder="Search artists, news, concerts..."
-          />
-        </div>
+        <form
+          className="sa-more-search mt-3 mb-4"
+          onSubmit={handleSearchSubmit}
+          role="search"
+        >
+          <label htmlFor="more-sidebar-search" className="visually-hidden">
+            Search artists, news, and concerts
+          </label>
+          <div className="input-group">
+            <input
+              type="search"
+              className="form-control"
+              id="more-sidebar-search"
+              name="moreSidebarSearch"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search artists, news, concerts..."
+              autoComplete="off"
+              enterKeyHint="search"
+            />
+            <button
+              type="submit"
+              className="btn btn-warning sa-more-search-submit"
+              aria-label="Search"
+            >
+              <i className="bi bi-search" aria-hidden="true" />
+            </button>
+          </div>
+        </form>
 
         <nav className="sa-more-links">
           <p className="sa-more-section-label">Main</p>
@@ -50,9 +87,6 @@ export default function MoreSidebar({ open, onClose }) {
           </Link>
           <Link to="/concerts" className="sa-more-link" onClick={onClose}>
             Concerts
-          </Link>
-          <Link to="/artist-gallery" className="sa-more-link" onClick={onClose}>
-            Artist Gallery
           </Link>
 
           {FEATURE_FLAGS.communityEnabled && (

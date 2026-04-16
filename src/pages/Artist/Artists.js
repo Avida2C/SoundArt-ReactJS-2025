@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { HeroSection, SectionTitle, NewsletterSection, GetFeaturedAsArtist } from "../../components/layout";
 import { heroData } from "../../data/heroData";
 import ArtistGallery from "../../components/ArtistGallery/ArtistGallery";
@@ -12,13 +12,20 @@ import { usePageTitle } from "../../hooks";
 import "../../styles/artists.css";
 
 export default function Artists() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams] = useSearchParams();
+  const qFromUrl = searchParams.get("q") ?? "";
+
+  const [searchTerm, setSearchTerm] = useState(qFromUrl);
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name');
   const [currentPage, setCurrentPage] = useState(1);
   const [artistsPerPage] = useState(12);
 
   usePageTitle("Artists");
+
+  useEffect(() => {
+    setSearchTerm(qFromUrl);
+  }, [qFromUrl]);
 
   // Mock genres (in real app, this would come from artist data)
   const genres = ['all', 'Rock', 'Metal', 'Pop', 'Alternative', 'Punk'];
@@ -57,7 +64,7 @@ export default function Artists() {
   const currentArtists = filteredAndSortedArtists.slice(startIndex, endIndex);
 
   // Reset to first page when filters change
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, selectedFilter, sortBy]);
 

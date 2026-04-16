@@ -22,6 +22,12 @@ export default function ConcertCard({ concert, hideImage = false }) {
     }
   };
 
+  const metaIconCol = {
+    width: "1.25rem",
+    marginTop: "0.125rem",
+    textAlign: "center",
+  };
+
   return (
     <div className="card h-100 border-0" style={{ boxShadow: '0 0.125rem 0.5rem rgba(0, 0, 0, 0.1)', borderRadius: '4px' }}>
       {!hideImage && (
@@ -50,16 +56,29 @@ export default function ConcertCard({ concert, hideImage = false }) {
       )}
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{concert.artist}</h5>
-        <p className="text-muted mb-2">
-          <i className="bi bi-geo-alt me-1"></i>{concert.venue}
-        </p>
-        <p className="text-muted mb-2">
-          <i className="bi bi-calendar me-1"></i>
-          {formatDateShort(concert.date)}
-        </p>
-        <p className="text-muted mb-3">
-          <i className="bi bi-currency-dollar me-1"></i>{concert.price}
-        </p>
+        <div className="d-flex gap-2 text-muted mb-2">
+          <i
+            className="bi bi-geo-alt flex-shrink-0"
+            style={metaIconCol}
+            aria-hidden="true"
+          />
+          <div className="min-w-0">
+            <div>{concert.venue}</div>
+            {(concert.city || concert.country) && (
+              <div className="small mt-1">
+                {[concert.city, concert.country].filter(Boolean).join(" · ")}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="d-flex gap-2 text-muted mb-2">
+          <i className="bi bi-calendar flex-shrink-0" style={metaIconCol} aria-hidden="true" />
+          <div className="min-w-0">{formatDateShort(concert.date)}</div>
+        </div>
+        <div className="d-flex gap-2 text-muted mb-3">
+          <i className="bi bi-currency-dollar flex-shrink-0" style={metaIconCol} aria-hidden="true" />
+          <div className="min-w-0">{concert.price}</div>
+        </div>
         <div className="mt-auto">
           {concert.status === "Sold Out" ? (
             <button className="btn btn-outline-secondary w-100" disabled>

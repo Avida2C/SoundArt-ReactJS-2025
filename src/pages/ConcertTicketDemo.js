@@ -148,7 +148,7 @@ export default function ConcertTicketDemo() {
       <HeroSection
         title={concert.artist}
         titleHighlight="SoundArt"
-        description={`Tickets for ${concert.venue}, ${concert.city}`}
+        description={`Tickets for ${[concert.venue, concert.city, concert.country].filter(Boolean).join(", ")}`}
       />
 
       <section className="py-4 bg-light">
@@ -287,26 +287,62 @@ export default function ConcertTicketDemo() {
                             >
                               Tickets in section {selectedSection}
                             </label>
-                            <input
-                              type="number"
-                              className="form-control sa-form-control"
-                              id="ticket-quantity"
-                              name="ticketQuantity"
-                              autoComplete="off"
-                              min={1}
-                              max={10}
-                              value={quantity}
-                              onChange={(e) =>
-                                setQuantity(
-                                  Math.min(
-                                    10,
-                                    Math.max(1, Number(e.target.value) || 1)
-                                  )
-                                )
-                              }
-                            />
-                            <div className="mt-2 text-danger fw-bold">
-                              Total: {formatPrice(totalPrice)}
+                            <div className="d-flex flex-wrap align-items-center gap-3">
+                              <div
+                                className="input-group sa-ticket-quantity-group"
+                                style={{ maxWidth: "11rem" }}
+                              >
+                                <button
+                                  type="button"
+                                  className="btn btn-outline-secondary"
+                                  onClick={() =>
+                                    setQuantity((q) => Math.max(1, q - 1))
+                                  }
+                                  disabled={quantity <= 1}
+                                  aria-label="Decrease ticket quantity"
+                                >
+                                  <i className="bi bi-chevron-down" aria-hidden="true" />
+                                </button>
+                                <input
+                                  type="number"
+                                  className="form-control sa-form-control text-center"
+                                  id="ticket-quantity"
+                                  name="ticketQuantity"
+                                  autoComplete="off"
+                                  min={1}
+                                  max={10}
+                                  step={1}
+                                  inputMode="numeric"
+                                  value={quantity}
+                                  onChange={(e) =>
+                                    setQuantity(
+                                      Math.min(
+                                        10,
+                                        Math.max(1, Number(e.target.value) || 1)
+                                      )
+                                    )
+                                  }
+                                />
+                                <button
+                                  type="button"
+                                  className="btn btn-outline-secondary"
+                                  onClick={() =>
+                                    setQuantity((q) => Math.min(10, q + 1))
+                                  }
+                                  disabled={quantity >= 10}
+                                  aria-label="Increase ticket quantity"
+                                >
+                                  <i className="bi bi-chevron-up" aria-hidden="true" />
+                                </button>
+                              </div>
+                              <div className="mb-0">
+                                <div className="small text-muted fw-semibold text-uppercase mb-0 lh-1">
+                                  Total
+                                </div>
+                                <div className="text-danger fw-bold fs-5 lh-sm">
+                                  {formatPrice(totalPrice)}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -455,7 +491,8 @@ export default function ConcertTicketDemo() {
                         </li>
                         <li className="mb-2">
                           <i className="bi bi-geo-alt me-2"></i>
-                          <strong>Venue:</strong> {concert.venue}, {concert.city}
+                          <strong>Venue:</strong>{" "}
+                          {[concert.venue, concert.city, concert.country].filter(Boolean).join(", ")}
                         </li>
                         <li className="mb-2">
                           <i className="bi bi-person me-2"></i>
@@ -502,7 +539,8 @@ export default function ConcertTicketDemo() {
                 <div className="card-body">
                   <h5 className="card-title mb-1">{concert.artist}</h5>
                   <p className="text-muted mb-2">
-                    {concert.venue} · {concert.city}
+                    {concert.venue} ·{" "}
+                    {[concert.city, concert.country].filter(Boolean).join(" · ")}
                   </p>
                   <p className="text-muted small mb-0">
                     {concert.description}

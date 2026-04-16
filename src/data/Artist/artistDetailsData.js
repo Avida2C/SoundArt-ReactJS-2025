@@ -40,10 +40,10 @@ const artistDetails = {
     genres: ["Rock", "Pop", "Psychedelic Rock", "Folk Rock"],
     website: "https://www.thebeatles.com",
     concerts: [
-      { date: "2024-12-15", venue: "Madison Square Garden", city: "New York, NY", status: "Sold Out", price: "150-500" },
-      { date: "2024-12-20", venue: "Hollywood Bowl", city: "Los Angeles, CA", status: "Limited", price: "200-600" },
-      { date: "2025-01-10", venue: "Royal Albert Hall", city: "London, UK", status: "Available", price: "120-400" },
-      { date: "2025-01-25", venue: "Sydney Opera House", city: "Sydney, Australia", status: "Available", price: "180-550" }
+      { date: "2024-12-15", venue: "Madison Square Garden", city: "New York, NY", country: "United States", status: "Sold Out", price: "150-500" },
+      { date: "2024-12-20", venue: "Hollywood Bowl", city: "Los Angeles, CA", country: "United States", status: "Limited", price: "200-600" },
+      { date: "2025-01-10", venue: "Royal Albert Hall", city: "London, UK", country: "United Kingdom", status: "Available", price: "120-400" },
+      { date: "2025-01-25", venue: "Sydney Opera House", city: "Sydney, Australia", country: "Australia", status: "Available", price: "180-550" }
     ],
     topTracks: [
       { title: "Hey Jude", album: "The Beatles 1967-1970", duration: "7:11", spotifyId: "4y6B8u8zO2Q42xy3e7T9QS", youtubeId: "A_MjCqQoLLA", playCount: 2840000000, weeklyPlays: 12500000, peakPosition: 1, releaseYear: 1968 },
@@ -94,10 +94,10 @@ const artistDetails = {
     genres: ["Rock", "Progressive Rock", "Arena Rock", "Pop Rock"],
     website: "https://www.queenonline.com",
     concerts: [
-      { date: "2024-12-18", venue: "Wembley Stadium", city: "London, UK", status: "Sold Out", price: "200-800" },
-      { date: "2025-02-14", venue: "Staples Center", city: "Los Angeles, CA", status: "Available", price: "250-750" },
-      { date: "2025-03-01", venue: "Tokyo Dome", city: "Tokyo, Japan", status: "Available", price: "25000-80000" },
-      { date: "2025-03-15", venue: "Accor Arena", city: "Paris, France", status: "Limited", price: "180-600" }
+      { date: "2024-12-18", venue: "Wembley Stadium", city: "London, UK", country: "United Kingdom", status: "Sold Out", price: "200-800" },
+      { date: "2025-02-14", venue: "Staples Center", city: "Los Angeles, CA", country: "United States", status: "Available", price: "250-750" },
+      { date: "2025-03-01", venue: "Tokyo Dome", city: "Tokyo, Japan", country: "Japan", status: "Available", price: "25000-80000" },
+      { date: "2025-03-15", venue: "Accor Arena", city: "Paris, France", country: "France", status: "Limited", price: "180-600" }
     ],
     topTracks: [
       { title: "Bohemian Rhapsody", album: "A Night at the Opera", duration: "5:55", spotifyId: "4u7EnebtmKWzUH433cf5Qv", youtubeId: "fJ9rUzIMcZQ", playCount: 3200000000, weeklyPlays: 18500000, peakPosition: 1, releaseYear: 1975 },
@@ -176,8 +176,8 @@ const defaultArtistDetails = {
   genres: ["Rock", "Alternative"],
   website: null,
   concerts: [
-    { date: "2025-01-15", venue: "Local Venue", city: "Your City", status: "Available", price: "50-150" },
-    { date: "2025-02-20", venue: "Concert Hall", city: "Nearby City", status: "Available", price: "75-200" }
+    { date: "2025-01-15", venue: "Local Venue", city: "Your City", country: "United States", status: "Available", price: "50-150" },
+    { date: "2025-02-20", venue: "Concert Hall", city: "Nearby City", country: "United States", status: "Available", price: "75-200" }
   ],
   topTracks: [
     { title: "Popular Song", album: "Greatest Hits", duration: "3:30", spotifyId: "sample1", youtubeId: "sample1", playCount: 50000000, weeklyPlays: 250000, peakPosition: 5, releaseYear: 2020 },

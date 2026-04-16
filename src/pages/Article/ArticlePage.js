@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { NewsletterSection, HeroSection, MoreStories, NewsletterSidebar } from "../../components/layout";
 import ArticleMeta from "../../components/Article/ArticleMeta";
 import { Comment, CommentForm } from "../../components/Comments";
-import { formatNumber, formatDateShort } from "../../utils/helpers";
+import { formatNumber, formatDateShort, truncateText } from "../../utils/helpers";
 import articlesData from "../../data/Articles/articlesData";
 import { getCommentsByArticleId } from "../../data/Comments/commentsData";
 import { usePageTitle } from "../../hooks";
@@ -12,11 +12,29 @@ import "../../styles/home.css";
 import "../../styles/contact.css";
 import "../../styles/news.css";
 
+function articleBreadcrumbTitleMax() {
+  if (typeof window === "undefined") return 24;
+  const w = window.innerWidth;
+  if (w < 400) return 16;
+  if (w < 576) return 18;
+  if (w < 768) return 26;
+  if (w < 992) return 38;
+  return 52;
+}
+
 export default function ArticlePage() {
   const { id } = useParams();
   const { isAuthenticated } = useAuth();
   const article = articlesData.find(a => a.id === Number(id));
   const comments = article ? getCommentsByArticleId(article.id) : [];
+  const [breadcrumbTitleMax, setBreadcrumbTitleMax] = useState(articleBreadcrumbTitleMax);
+
+  useEffect(() => {
+    const onResize = () => setBreadcrumbTitleMax(articleBreadcrumbTitleMax());
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   usePageTitle(article ? article.title : "Article");
 
@@ -44,7 +62,10 @@ export default function ArticlePage() {
         breadcrumbs={[
           { to: "/", text: "Home" },
           { to: "/news", text: "News" },
-          { text: article.title }
+          {
+            text: truncateText(article.title, breadcrumbTitleMax),
+            fullTitle: article.title,
+          },
         ]}
         variant="split"
         children={

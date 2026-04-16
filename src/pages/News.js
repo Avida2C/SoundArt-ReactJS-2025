@@ -4,7 +4,8 @@ import { HeroSection, SectionTitle, NewsletterSection } from "../components/layo
 import { ArticleCard } from "../components/News";
 import { heroData } from "../data/heroData";
 import articlesData from "../data/Articles/articlesData";
-import { useDebounce, usePageTitle } from "../hooks";
+import { useDebounce, usePageTitle, useInfiniteScrollBatch } from "../hooks";
+import InfiniteScrollSentinel from "../components/InfiniteScrollSentinel";
 import SearchFilter from "../components/SearchFilter";
 import { searchFilterConfigs } from "../data/searchFilterData";
 import { sectionTitles } from "../data/sectionTitlesData";
@@ -17,9 +18,6 @@ export default function News() {
   const [searchTerm, setSearchTerm] = useState(qFromUrl);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('date');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(12);
-  
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
   usePageTitle("News");
 
@@ -66,66 +64,13 @@ export default function News() {
     return filtered;
   }, [debouncedSearchTerm, selectedCategory, sortBy]);
 
-  // Pagination
-  const totalPages = Math.ceil(filteredAndSortedArticles.length / articlesPerPage);
-  const startIndex = (currentPage - 1) * articlesPerPage;
-  const endIndex = startIndex + articlesPerPage;
-  const currentArticles = filteredAndSortedArticles.slice(startIndex, endIndex);
-
-  // Reset to first page when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [debouncedSearchTerm, selectedCategory, sortBy]);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const renderPagination = () => {
-    if (totalPages <= 1) return null;
-
-    const pages = [];
-    const maxVisiblePages = 5;
-    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(
-        <button
-          key={i}
-          className={`btn ${i === currentPage ? 'btn-warning' : 'btn-outline-warning'} mx-1`}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return (
-      <div className="d-flex justify-content-end align-items-center mt-5 pagination">
-        <button
-          className="btn btn-outline-warning"
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <i className="bi bi-chevron-left"></i>
-        </button>
-        {pages}
-        <button
-          className="btn btn-outline-warning"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <i className="bi bi-chevron-right"></i>
-        </button>
-      </div>
-    );
-  };
+  const {
+    visibleItems: currentArticles,
+    sentinelRef,
+    hasMore,
+    allLoaded,
+    isLoadingMore,
+  } = useInfiniteScrollBatch(filteredAndSortedArticles, 12);
 
   return (
     <div>
@@ -202,8 +147,12 @@ export default function News() {
                 ))}
               </div>
 
-              {/* Pagination */}
-              {renderPagination()}
+              <InfiniteScrollSentinel
+                sentinelRef={sentinelRef}
+                hasMore={hasMore}
+                allLoaded={allLoaded}
+                isLoadingMore={isLoadingMore}
+              />
             </>
           )}
         </div>

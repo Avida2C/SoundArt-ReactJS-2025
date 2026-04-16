@@ -121,8 +121,8 @@ export default function ArticlePage() {
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="col-lg-4">
+            {/* Sidebar — desktop (lg+) only; mobile uses MoreStories + NewsletterSection below */}
+            <div className="col-lg-4 d-none d-lg-block">
               <div className="article-sidebar sticky-top">
                 {/* More Stories Sidebar */}
                 <div className="mb-4 news-sidebar">
@@ -170,7 +170,6 @@ export default function ArticlePage() {
                   </div>
                 </div>
 
-                {/* Newsletter Sidebar */}
                 <NewsletterSidebar />
 
                 {/* Social Share */}

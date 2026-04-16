@@ -9,7 +9,8 @@ import concertsData from "../data/concertsData";
 import { LegendaryArtistsSection } from "../components/ArtistGallery";
 import artistData from "../data/Artist/artistData";
 import ConcertCard from "../components/ConcertCard";
-import { usePageTitle } from "../hooks";
+import { usePageTitle, useInfiniteScrollBatch } from "../hooks";
+import InfiniteScrollSentinel from "../components/InfiniteScrollSentinel";
 
 export default function Concerts() {
   const [searchParams] = useSearchParams();
@@ -18,9 +19,6 @@ export default function Concerts() {
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState(qFromUrl);
   const [sortBy, setSortBy] = useState('name');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [concertsPerPage] = useState(12);
-
   usePageTitle("Concerts");
 
   useEffect(() => {
@@ -63,79 +61,13 @@ export default function Concerts() {
     return filtered;
   }, [selectedFilter, searchTerm, sortBy]);
 
-  // Pagination
-  const totalPages = Math.ceil(filteredConcerts.length / concertsPerPage);
-  const startIndex = (currentPage - 1) * concertsPerPage;
-  const endIndex = startIndex + concertsPerPage;
-  const currentConcerts = filteredConcerts.slice(startIndex, endIndex);
-
-  // Reset to first page when filters change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm, selectedFilter, sortBy]);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const renderPagination = () => {
-    if (totalPages <= 1) return null;
-
-    const pages = [];
-    const maxVisiblePages = 5;
-    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(
-        <button
-          key={i}
-          className={`btn ${i === currentPage ? 'btn-warning' : 'btn-outline-warning'} mx-1`}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return (
-      <div className="d-flex justify-content-end align-items-center mt-5 pagination">
-        <button
-          className="btn btn-outline-warning"
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          <i className="bi bi-chevron-left"></i>
-        </button>
-        {pages}
-        <button
-          className="btn btn-outline-warning"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <i className="bi bi-chevron-right"></i>
-        </button>
-      </div>
-    );
-  };
-
-  const getStatusBadge = (status) => {
-    switch (status) {
-      case 'Sold Out':
-        return 'bg-danger';
-      case 'Limited':
-        return 'bg-warning text-dark';
-      case 'Available':
-        return 'bg-success';
-      default:
-        return 'bg-secondary';
-    }
-  };
+  const {
+    visibleItems: currentConcerts,
+    sentinelRef,
+    hasMore,
+    allLoaded,
+    isLoadingMore,
+  } = useInfiniteScrollBatch(filteredConcerts, 12);
 
   return (
     <div>
@@ -197,8 +129,12 @@ export default function Concerts() {
                 ))}
               </div>
 
-              {/* Pagination */}
-              {renderPagination()}
+              <InfiniteScrollSentinel
+                sentinelRef={sentinelRef}
+                hasMore={hasMore}
+                allLoaded={allLoaded}
+                isLoadingMore={isLoadingMore}
+              />
             </>
           )}
         </div>

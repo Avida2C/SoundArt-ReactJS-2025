@@ -36,16 +36,17 @@ export default function Artists() {
       return matchesSearch && matchesFilter;
     });
 
-    // Sort artists
+    // Featured artists stay at the top; then apply chosen sort within each group
     filtered.sort((a, b) => {
+      const aFeat = a.featured ? 1 : 0;
+      const bFeat = b.featured ? 1 : 0;
+      if (bFeat !== aFeat) return bFeat - aFeat;
       switch (sortBy) {
         case 'name':
           return a.name.localeCompare(b.name);
         case 'popularity':
-          // Mock popularity - could use actual data
           return b.id - a.id;
         case 'year':
-          // Mock year - could use actual data
           return b.id - a.id;
         default:
           return 0;
@@ -71,7 +72,7 @@ export default function Artists() {
       venue: "Madison Square Garden", 
       city: "New York, NY", 
       price: "$150-500",
-      image: "/images/thebeatles1967.jpg"
+      image: "/images/beatles/thebeatles1967.jpg"
     },
     { 
       artist: "Queen", 
@@ -79,7 +80,7 @@ export default function Artists() {
       venue: "Wembley Stadium", 
       city: "London, UK", 
       price: "£200-800",
-      image: "/images/Queen_band.jpg"
+      image: "/images/queen/Queen_band.jpg"
     },
     { 
       artist: "Metallica", 
@@ -87,7 +88,7 @@ export default function Artists() {
       venue: "Staples Center", 
       city: "Los Angeles, CA", 
       price: "$200-600",
-      image: "/images/Metallica.jpg"
+      image: "/images/roster/Metallica.jpg"
     },
     { 
       artist: "AC/DC", 
@@ -95,7 +96,7 @@ export default function Artists() {
       venue: "Sydney Opera House", 
       city: "Sydney, Australia", 
       price: "A$180-550",
-      image: "/images/ACDC.jpg"
+      image: "/images/roster/ACDC.jpg"
     }
   ];
 

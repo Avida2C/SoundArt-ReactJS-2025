@@ -42,6 +42,11 @@
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
+/* Article detail hero: title one step smaller than site display-4; keep Aptos */
+.hero-section-split-text .display-5 {
+  font-family: var(--font-family-base) !important;
+}
+
 /* Article page responsive spacing */
 .article-main-section {
   padding-top: 2.75rem !important;

@@ -59,6 +59,7 @@ export default function ArticlePage() {
       {/* Article Header */}
       <HeroSection
         title={article.title}
+        titleClassName="sa-section-measure display-5 fw-bold mb-2"
         breadcrumbs={[
           { to: "/", text: "Home" },
           { to: "/news", text: "News" },

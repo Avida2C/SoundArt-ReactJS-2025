@@ -12,7 +12,7 @@ const concertsData = [
     city: "New York, NY",
     country: "United States",
     price: "150-500",
-    image: "/images/thebeatles1967.jpg",
+    image: "/images/beatles/thebeatles1967.jpg",
     status: "Sold Out",
     genre: "Rock",
     description: "Experience the magic of The Beatles in this once-in-a-lifetime tribute concert featuring rare performances and classic hits."
@@ -25,7 +25,7 @@ const concertsData = [
     city: "London, UK",
     country: "United Kingdom",
     price: "200-800",
-    image: "/images/Queen_band.jpg",
+    image: "/images/queen/Queen_band.jpg",
     status: "Limited",
     genre: "Rock",
     description: "Join us for an epic Queen tribute featuring the greatest hits and spectacular stage production."
@@ -38,7 +38,7 @@ const concertsData = [
     city: "Los Angeles, CA",
     country: "United States",
     price: "200-600",
-    image: "/images/Metallica.jpg",
+    image: "/images/roster/Metallica.jpg",
     status: "Available",
     genre: "Metal",
     description: "Heavy metal legends Metallica bring their thunderous sound to Los Angeles in this must-see concert."
@@ -51,7 +51,7 @@ const concertsData = [
     city: "Sydney, Australia",
     country: "Australia",
     price: "180-550",
-    image: "/images/ACDC.jpg",
+    image: "/images/roster/ACDC.jpg",
     status: "Available",
     genre: "Rock",
     description: "Rock and roll thunder down under! AC/DC tribute band brings the high voltage energy to Sydney."
@@ -64,7 +64,7 @@ const concertsData = [
     city: "London, UK",
     country: "United Kingdom",
     price: "180-600",
-    image: "/images/police.jpg",
+    image: "/images/roster/police.jpg",
     status: "Available",
     genre: "Rock",
     description: "Experience the fusion of rock, reggae, and new wave with The Police tribute."
@@ -77,7 +77,7 @@ const concertsData = [
     city: "Los Angeles, CA",
     country: "United States",
     price: "200-650",
-    image: "/images/pinkfloyd.jpg",
+    image: "/images/roster/pinkfloyd.jpg",
     status: "Limited",
     genre: "Progressive Rock",
     description: "A mesmerizing tribute to Pink Floyd with stunning visual effects and iconic songs."
@@ -90,7 +90,7 @@ const concertsData = [
     city: "London, UK",
     country: "United Kingdom",
     price: "150-500",
-    image: "/images/coldplay.jpg",
+    image: "/images/roster/coldplay.jpg",
     status: "Available",
     genre: "Pop Rock",
     description: "An anthemic celebration of Coldplay's greatest hits and infectious energy."
@@ -103,7 +103,7 @@ const concertsData = [
     city: "New York, NY",
     country: "United States",
     price: "180-550",
-    image: "/images/foofighters.jpg",
+    image: "/images/roster/foofighters.jpg",
     status: "Available",
     genre: "Rock",
     description: "High-energy rock performance featuring Foo Fighters' greatest hits."
@@ -116,7 +116,7 @@ const concertsData = [
     city: "Los Angeles, CA",
     country: "United States",
     price: "220-700",
-    image: "/images/linkinpark.jpg",
+    image: "/images/roster/linkinpark.jpg",
     status: "Limited",
     genre: "Alternative Rock",
     description: "Powerful tribute blending rock, metal, and hip-hop in Linkin Park style."
@@ -129,7 +129,7 @@ const concertsData = [
     city: "San Francisco, CA",
     country: "United States",
     price: "160-480",
-    image: "/images/redhotchillipeppers.jpg",
+    image: "/images/roster/redhotchillipeppers.jpg",
     status: "Available",
     genre: "Funk Rock",
     description: "California vibes meet funk rock in this high-energy tribute performance."
@@ -142,7 +142,7 @@ const concertsData = [
     city: "Columbia, MD",
     country: "United States",
     price: "140-400",
-    image: "/images/rem.jpg",
+    image: "/images/roster/rem.jpg",
     status: "Available",
     genre: "Alternative Rock",
     description: "Jangly guitars and introspective lyrics in this R.E.M. tribute."
@@ -155,7 +155,7 @@ const concertsData = [
     city: "London, UK",
     country: "United Kingdom",
     price: "170-520",
-    image: "/images/greenday.jpg",
+    image: "/images/roster/greenday.jpg",
     status: "Available",
     genre: "Punk Rock",
     description: "Punk rock brought to the mainstream with Green Day's infectious energy."
@@ -168,7 +168,7 @@ const concertsData = [
     city: "Morrison, CO",
     country: "United States",
     price: "180-580",
-    image: "/images/blink182.jpg",
+    image: "/images/roster/blink182.jpg",
     status: "Limited",
     genre: "Pop Punk",
     description: "Irreverent pop-punk anthems that defined a generation."
@@ -181,7 +181,7 @@ const concertsData = [
     city: "George, WA",
     country: "United States",
     price: "130-380",
-    image: "/images/3doorsdown.jpg",
+    image: "/images/roster/3doorsdown.jpg",
     status: "Available",
     genre: "Post-Grunge",
     description: "Post-grunge hooks with radio-ready rock anthems."
@@ -194,7 +194,7 @@ const concertsData = [
     city: "London, UK",
     country: "United Kingdom",
     price: "220-750",
-    image: "/images/ozzy.jpg",
+    image: "/images/roster/ozzy.jpg",
     status: "Limited",
     genre: "Heavy Metal",
     description: "The Prince of Darkness delivers heavy metal legend status."
@@ -207,7 +207,7 @@ const concertsData = [
     city: "Minneapolis, MN",
     country: "United States",
     price: "150-450",
-    image: "/images/breakingbenjamin.jpg",
+    image: "/images/roster/breakingbenjamin.jpg",
     status: "Available",
     genre: "Alternative Rock",
     description: "Powerful alternative rock with emotional depth and heavy riffs."

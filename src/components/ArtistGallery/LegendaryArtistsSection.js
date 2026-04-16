@@ -17,7 +17,7 @@ export default function LegendaryArtistsSection({
   return (
     <section className="py-5 bg-light">
       <div className="container">
-        <div className="row mb-3">
+        <div className="row mb-4">
           <div className="col-12 text-center">
             <SectionTitle
               title={title}
@@ -27,7 +27,7 @@ export default function LegendaryArtistsSection({
           </div>
         </div>
         
-        <div className="row g-4 mb-5">
+        <div className="row g-4 mb-4">
           {artists.map((artist) => (
             <ArtistCard key={artist.id} artist={artist} />
           ))}

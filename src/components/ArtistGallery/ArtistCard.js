@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { isArtistProfilePublic } from "../../utils/artistAccess";
 
 /**
  * ArtistCard - Reusable artist card component
@@ -7,9 +8,24 @@ import { Link } from "react-router-dom";
  * @param {string} className - Additional CSS classes
  */
 export default function ArtistCard({ artist, className = "" }) {
+  const isFeatured = Boolean(artist.featured);
+  const isPublic = isArtistProfilePublic(artist);
+  const wrapMods = [
+    "col-lg-4 col-md-6",
+    className,
+    isFeatured ? "artist-card-wrap--featured" : "",
+    !isPublic ? "artist-card-wrap--locked" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
   return (
-    <div className={`col-lg-4 col-md-6 ${className}`}>
+    <div className={wrapMods}>
       <div className="artist-card card border-0 overflow-hidden position-relative" style={{ minHeight: '280px', height: '280px', padding: '8px' }}>
+        {isFeatured && (
+          <span className="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-0" style={{ zIndex: 2 }}>
+            Featured
+          </span>
+        )}
         {/* Background Image - fills entire card */}
         <img 
           src={artist.image} 
@@ -48,18 +64,35 @@ export default function ArtistCard({ artist, className = "" }) {
         
         {/* Button - bottom with 8px padding on sides */}
         <div className="position-absolute bottom-0 start-0 w-100" style={{ zIndex: 1, padding: '8px' }}>
-          <Link 
-            to={`/artist/${artist.id}`} 
-            className="cta-bar text-decoration-none text-uppercase d-block w-100 text-center"
-            style={{ 
-              color: '#353535',
-              fontWeight: '700',
-              padding: '14px 18px',
-              borderRadius: '4px'
-            }}
-          >
-            Explore Artist
-          </Link>
+          {isPublic ? (
+            <Link
+              to={`/artist/${artist.id}`}
+              className="cta-bar text-decoration-none text-uppercase d-block w-100 text-center"
+              style={{
+                color: "#353535",
+                fontWeight: "700",
+                padding: "14px 18px",
+                borderRadius: "4px",
+              }}
+            >
+              Explore Artist
+            </Link>
+          ) : (
+            <span
+              className="d-block w-100 text-center text-uppercase user-select-none"
+              style={{
+                color: "#6c757d",
+                fontWeight: "700",
+                padding: "14px 18px",
+                borderRadius: "4px",
+                background: "#e9ecef",
+                cursor: "not-allowed",
+              }}
+              aria-disabled="true"
+            >
+              Unavailable
+            </span>
+          )}
         </div>
       </div>
     </div>

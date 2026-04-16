@@ -6,12 +6,13 @@ import { heroData } from "../data/heroData";
 import { sectionTitles } from "../data/sectionTitlesData";
 import articlesData from "../data/Articles/articlesData";
 import artistData from "../data/Artist/artistData";
+import { getLegendarySectionDisplayArtists } from "../utils/artistAccess";
 import { usePageTitle } from "../hooks";
 import "../styles/home.css";
 
 export default function Home() {
   const featuredArticle = articlesData[0];
-  const featuredArtists = artistData.slice(0, 3);
+  const featuredArtists = getLegendarySectionDisplayArtists(artistData);
 
   usePageTitle("Home");
 

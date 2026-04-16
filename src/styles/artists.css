@@ -1,5 +1,23 @@
 /* Artist Gallery and Artist Page Styles */
 
+/* All Artists — featured cards (Beatles, Queen) */
+.artist-gallery-item--featured .article-card {
+  box-shadow: 0 0 0 3px #ffc107, 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.artist-card-wrap--featured .artist-card {
+  box-shadow: 0 0 0 3px #ffc107, 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Artists without a public profile (non-featured) */
+.artist-gallery-item--locked .article-card {
+  opacity: 0.78;
+}
+
+.artist-card-wrap--locked .artist-card {
+  opacity: 0.78;
+}
+
 /* Gallery Controls */
 .gallery-controls {
   background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-bg-dark) 100%);
@@ -461,6 +479,24 @@
 }
 
 /* Artist Gallery and Artist Page Styles */
+
+/* All Artists — featured cards (Beatles, Queen) */
+.artist-gallery-item--featured .article-card {
+  box-shadow: 0 0 0 3px #ffc107, 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.artist-card-wrap--featured .artist-card {
+  box-shadow: 0 0 0 3px #ffc107, 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* Artists without a public profile (non-featured) */
+.artist-gallery-item--locked .article-card {
+  opacity: 0.78;
+}
+
+.artist-card-wrap--locked .artist-card {
+  opacity: 0.78;
+}
 
 /* Gallery Controls */
 .gallery-controls {

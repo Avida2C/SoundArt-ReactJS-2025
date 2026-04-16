@@ -28,7 +28,7 @@ export default function CommentForm({ onSubmit }) {
   };
 
   return (
-    <div className="contact-form-card mb-4" style={{ boxShadow: '0 0.125rem 0.5rem rgba(0, 0, 0, 0.1)' }}>
+    <div className="contact-form-card" style={{ boxShadow: '0 0.125rem 0.5rem rgba(0, 0, 0, 0.1)' }}>
       <h6 className="contact-form-title mb-4">Leave a Comment</h6>
       <form onSubmit={handleSubmit}>
         <div className="row g-3">

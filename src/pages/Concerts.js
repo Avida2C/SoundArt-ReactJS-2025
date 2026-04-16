@@ -8,6 +8,7 @@ import { sectionTitles } from "../data/sectionTitlesData";
 import concertsData from "../data/concertsData";
 import { LegendaryArtistsSection } from "../components/ArtistGallery";
 import artistData from "../data/Artist/artistData";
+import { getLegendarySectionDisplayArtists } from "../utils/artistAccess";
 import ConcertCard from "../components/ConcertCard";
 import { usePageTitle, useInfiniteScrollBatch } from "../hooks";
 import InfiniteScrollSentinel from "../components/InfiniteScrollSentinel";
@@ -142,7 +143,7 @@ export default function Concerts() {
 
 
       {/* Legendary Artists Section */}
-      <LegendaryArtistsSection artists={artistData.slice(0, 3)} />
+      <LegendaryArtistsSection artists={getLegendarySectionDisplayArtists(artistData)} />
 
       {/* Newsletter Section */}
       <NewsletterSection />

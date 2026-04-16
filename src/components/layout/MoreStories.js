@@ -20,7 +20,7 @@ export default function MoreStories({
   }
 
   return (
-    <section className={`py-5 ${className}`}>
+    <section className={`mt-2 mb-4 ${className}`}>
       <div className="container">
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-4">

@@ -16,6 +16,7 @@ import {
   ConcertsTab,
 } from "../../components/ArtistTabs";
 import { formatDateShort } from "../../utils/helpers";
+import { isArtistProfilePublic, getLegendarySectionDisplayArtists } from "../../utils/artistAccess";
 import artists from "../../data/Artist/artistData";
 import { getArtistDetails } from "../../data/Artist/artistDetailsData";
 import { usePageTitle } from "../../hooks";
@@ -27,7 +28,13 @@ export default function ArtistPage() {
   const [activeTab, setActiveTab] = useState("overview");
   const selectedArtist = artists.find((a) => a.id === Number(id));
 
-  usePageTitle(selectedArtist ? selectedArtist.name : "Artist");
+  usePageTitle(
+    selectedArtist
+      ? isArtistProfilePublic(selectedArtist)
+        ? selectedArtist.name
+        : "Profile Unavailable"
+      : "Artist"
+  );
 
   if (!selectedArtist) {
     return (
@@ -36,6 +43,24 @@ export default function ArtistPage() {
           <div className="col-12 text-center">
             <h2 className="display-4 text-muted">Artist Not Found</h2>
             <p className="lead">The artist you're looking for doesn't exist.</p>
+            <Link to="/artists" className="btn btn-warning">
+              Back to Artists
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isArtistProfilePublic(selectedArtist)) {
+    return (
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-12 text-center">
+            <h2 className="display-4 text-muted">Profile Unavailable</h2>
+            <p className="lead">
+              This artist does not have a public profile yet. Browse featured artists from the directory.
+            </p>
             <Link to="/artists" className="btn btn-warning">
               Back to Artists
             </Link>
@@ -68,7 +93,7 @@ export default function ArtistPage() {
     <div>
       {/* Artist Header */}
       <section
-        className="py-5"
+        className="py-4"
         style={{
           background: "#191919",
         }}
@@ -149,24 +174,32 @@ export default function ArtistPage() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="d-flex gap-3 flex-wrap">
-                <button className="btn btn-warning btn-lg">
-                  <i className="bi bi-play-circle me-2"></i>
-                  Listen Now
-                </button>
-                {isAuthenticated && (
-                  <button className="btn btn-outline-warning btn-lg">
-                    <i className="bi bi-heart me-2"></i>
-                    Follow
+              {/* Action Buttons: mobile — Listen+Follow share one row; website full width below. lg+ — inline row */}
+              <div className="d-flex flex-column flex-lg-row gap-2 gap-lg-3 align-items-stretch">
+                <div className="d-flex gap-2 w-100 w-lg-auto">
+                  <button
+                    type="button"
+                    className="btn btn-warning btn-lg flex-fill flex-lg-grow-0 text-nowrap"
+                  >
+                    <i className="bi bi-play-circle me-2"></i>
+                    Listen Now
                   </button>
-                )}
+                  {isAuthenticated && (
+                    <button
+                      type="button"
+                      className="btn btn-outline-warning btn-lg flex-fill flex-lg-grow-0 text-nowrap"
+                    >
+                      <i className="bi bi-heart me-2"></i>
+                      Follow
+                    </button>
+                  )}
+                </div>
                 {artistDetails.website && (
                   <a
                     href={artistDetails.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn btn-outline-light btn-lg"
+                    className="btn btn-outline-light btn-lg w-100 w-lg-auto text-center"
                   >
                     <i className="bi bi-globe me-2"></i>
                     Visit Official Website
@@ -277,9 +310,9 @@ export default function ArtistPage() {
 
       {/* Legendary Artists Section */}
       <LegendaryArtistsSection
-        artists={artists
-          .filter((artist) => artist.id !== selectedArtist.id)
-          .slice(0, 3)}
+        artists={getLegendarySectionDisplayArtists(artists, {
+          excludeId: selectedArtist.id,
+        })}
       />
 
       {/* Newsletter Section */}

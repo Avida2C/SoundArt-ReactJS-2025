@@ -7,17 +7,17 @@ const artistDetails = {
   1: { // The Beatles
     fullBio: "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr. They are regarded as the most influential band of all time and were integral to the development of 1960s counterculture and popular music's recognition as an art form. Rooted in skiffle, beat and 1950s rock 'n' roll, their sound incorporated elements of classical music and traditional pop in innovative ways; the band also explored music styles ranging from folk and Indian music to psychedelia and hard rock. As pioneers in recording, songwriting and artistic presentation, the Beatles revolutionised many aspects of the music industry and were often publicized as leaders of the era's youth and sociocultural movements. Led by primary songwriters Lennon and McCartney, the Beatles evolved from Lennon's previous group, the Quarrymen, and built their reputation playing clubs in Liverpool and Hamburg over three years from 1960, initially with Stuart Sutcliffe playing bass. The core trio of Lennon, McCartney and Harrison, together since 1958, went through a succession of drummers, including Pete Best, before asking Starr to join them in 1962. Manager Brian Epstein moulded them into a professional act, and producer George Martin guided and developed their recordings, greatly expanding their domestic success after signing to EMI Records and achieving their first hit, 'Love Me Do', in late 1962. Throughout their career, the Beatles released a series of groundbreaking albums that showcased their evolution from a pop band to experimental artists. Their early work featured infectious melodies and harmonies that captured the hearts of millions worldwide. As they matured, their music became more complex and innovative, incorporating diverse influences from around the globe. The band's creative partnership between Lennon and McCartney produced some of the most memorable songs in popular music history, while Harrison's songwriting contributions and interest in Indian music added unique dimensions to their sound. The Beatles' influence extended far beyond music, impacting fashion, culture, and social movements of the 1960s. Their studio innovations, particularly with producer George Martin at Abbey Road Studios, pushed the boundaries of what was possible in popular music recording. From the raw energy of their early performances in Liverpool and Hamburg to their final masterpieces, the Beatles consistently reinvented themselves while maintaining their distinctive identity. Even after their breakup in 1970, their music continues to resonate with new generations of listeners, cementing their status as one of the greatest and most beloved bands in history.",
     discography: [
-      { year: "1963", title: "Please Please Me", type: "Studio Album", image: "/images/beatles01.jpg", releaseDate: "March 22, 1963" },
-      { year: "1963", title: "With the Beatles", type: "Studio Album", image: "/images/beatles02.jpg", releaseDate: "November 22, 1963" },
-      { year: "1964", title: "A Hard Day's Night", type: "Studio Album", image: "/images/thebeatles1967.jpg", releaseDate: "July 10, 1964" },
-      { year: "1964", title: "Beatles for Sale", type: "Studio Album", image: "/images/The_Fabs.JPG", releaseDate: "December 4, 1964" },
-      { year: "1965", title: "Help!", type: "Studio Album", image: "/images/beatles01.jpg", releaseDate: "August 6, 1965" },
-      { year: "1965", title: "Rubber Soul", type: "Studio Album", image: "/images/beatles02.jpg", releaseDate: "December 3, 1965" },
-      { year: "1966", title: "Revolver", type: "Studio Album", image: "/images/thebeatles1967.jpg", releaseDate: "August 5, 1966" },
-      { year: "1967", title: "Sgt. Pepper's Lonely Hearts Club Band", type: "Studio Album", image: "/images/The_Fabs.JPG", releaseDate: "May 26, 1967" },
-      { year: "1968", title: "The Beatles (White Album)", type: "Studio Album", image: "/images/beatles01.jpg", releaseDate: "November 22, 1968" },
-      { year: "1969", title: "Abbey Road", type: "Studio Album", image: "/images/beatles02.jpg", releaseDate: "September 26, 1969" },
-      { year: "1970", title: "Let It Be", type: "Studio Album", image: "/images/thebeatles1967.jpg", releaseDate: "May 8, 1970" }
+      { year: "1963", title: "Please Please Me", type: "Studio Album", image: "/images/beatles/btld11.jpg", releaseDate: "March 22, 1963" },
+      { year: "1963", title: "With the Beatles", type: "Studio Album", image: "/images/beatles/btld010.jpg", releaseDate: "November 22, 1963" },
+      { year: "1964", title: "A Hard Day's Night", type: "Studio Album", image: "/images/beatles/btld09.jpg", releaseDate: "July 10, 1964" },
+      { year: "1964", title: "Beatles for Sale", type: "Studio Album", image: "/images/beatles/btld08.jpg", releaseDate: "December 4, 1964" },
+      { year: "1965", title: "Help!", type: "Studio Album", image: "/images/beatles/btld07.jpg", releaseDate: "August 6, 1965" },
+      { year: "1965", title: "Rubber Soul", type: "Studio Album", image: "/images/beatles/btld06.jpg", releaseDate: "December 3, 1965" },
+      { year: "1966", title: "Revolver", type: "Studio Album", image: "/images/beatles/btld05.jpg", releaseDate: "August 5, 1966" },
+      { year: "1968", title: "The Beatles (White Album)", type: "Studio Album", image: "/images/beatles/btld04.jpg", releaseDate: "November 22, 1968" },
+      { year: "1969", title: "Yellow Submarine", type: "Soundtrack", image: "/images/beatles/btld03.jpg", releaseDate: "January 17, 1969" },
+      { year: "1969", title: "Abbey Road", type: "Studio Album", image: "/images/beatles/btld02.jpg", releaseDate: "September 26, 1969" },
+      { year: "1970", title: "Let It Be", type: "Studio Album", image: "/images/beatles/btld01.jpg", releaseDate: "May 8, 1970" }
     ],
     media: [
       { type: "Video", title: "A Hard Day's Night (1964)", description: "Musical comedy film" },
@@ -27,12 +27,12 @@ const artistDetails = {
       { type: "Video", title: "Let It Be (1970)", description: "Documentary film" }
     ],
     photos: [
-      { title: "Early Days in Liverpool", image: "/images/beatles01.jpg", description: "The Beatles performing at the Cavern Club" },
-      { title: "Studio Session", image: "/images/beatles02.jpg", description: "Recording at Abbey Road Studios" },
-      { title: "Live Performance", image: "/images/thebeatles1967.jpg", description: "Concert at Shea Stadium" },
-      { title: "Backstage", image: "/images/The_Fabs.JPG", description: "Behind the scenes moments" },
-      { title: "Press Conference", image: "/images/beatles01.jpg", description: "Media interviews and press events" },
-      { title: "Rehearsal", image: "/images/beatles02.jpg", description: "Practice sessions and preparation" }
+      { title: "Early Days in Liverpool", image: "/images/beatles/BTL01.jpg", description: "The Beatles performing at the Cavern Club" },
+      { title: "Studio Session", image: "/images/beatles/BTL02.jpg", description: "Recording at Abbey Road Studios" },
+      { title: "Live Performance", image: "/images/beatles/BTL03.jpg", description: "Concert at Shea Stadium" },
+      { title: "Backstage", image: "/images/beatles/BTL04.jpg", description: "Behind the scenes moments" },
+      { title: "Press Conference", image: "/images/beatles/BTL05.png", description: "Media interviews and press events" },
+      { title: "Rehearsal", image: "/images/beatles/BTL06.jpg", description: "Practice sessions and preparation" }
     ],
     members: ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"],
     formed: "1960",
@@ -59,20 +59,21 @@ const artistDetails = {
   2: { // Queen
     fullBio: "Queen are a British rock band formed in London in 1970. The band comprised Freddie Mercury (lead vocals, piano), Brian May (guitar, vocals), Roger Taylor (drums, vocals) and John Deacon (bass). Their earliest works were influenced by progressive rock, hard rock and heavy metal, but the band gradually ventured into more conventional and radio-friendly works by incorporating further styles, such as arena rock and pop rock. Before forming Queen, May and Taylor had played together in a band named Smile. Mercury was a fan of Smile and encouraged them to experiment with more elaborate stage and recording techniques. He joined in 1970 and suggested the name 'Queen'. Deacon was recruited in March 1971, before the band released their eponymous debut album in 1973. Queen first charted in the UK with their second album, Queen II, in 1974, but it was their third album, Sheer Heart Attack, in 1974 and A Night at the Opera in 1975 that brought them international success. The latter featured 'Bohemian Rhapsody', which stayed at number one in the UK for nine weeks and helped popularise the music video.",
     discography: [
-      { year: "1973", title: "Queen", type: "Studio Album", image: "/images/Queen01.jpg", releaseDate: "July 13, 1973" },
-      { year: "1974", title: "Queen II", type: "Studio Album", image: "/images/Queen02.jpg", releaseDate: "March 8, 1974" },
-      { year: "1974", title: "Sheer Heart Attack", type: "Studio Album", image: "/images/Queen03.jpg", releaseDate: "November 8, 1974" },
-      { year: "1975", title: "A Night at the Opera", type: "Studio Album", image: "/images/Queen04.jpg", releaseDate: "November 21, 1975" },
-      { year: "1976", title: "A Day at the Races", type: "Studio Album", image: "/images/Queen05.jpg", releaseDate: "December 10, 1976" },
-      { year: "1977", title: "News of the World", type: "Studio Album", image: "/images/Queen06.jpg", releaseDate: "October 28, 1977" },
-      { year: "1978", title: "Jazz", type: "Studio Album", image: "/images/Queen07.jpg", releaseDate: "November 10, 1978" },
-      { year: "1980", title: "The Game", type: "Studio Album", image: "/images/Queen08.jpg", releaseDate: "June 30, 1980" },
-      { year: "1982", title: "Hot Space", type: "Studio Album", image: "/images/Queen09.jpeg", releaseDate: "May 21, 1982" },
-      { year: "1984", title: "The Works", type: "Studio Album", image: "/images/Queen10.jpeg", releaseDate: "February 27, 1984" },
-      { year: "1986", title: "A Kind of Magic", type: "Studio Album", image: "/images/Queen11.jpg", releaseDate: "June 2, 1986" },
-      { year: "1989", title: "The Miracle", type: "Studio Album", image: "/images/Queen12.jpg", releaseDate: "May 22, 1989" },
-      { year: "1991", title: "Innuendo", type: "Studio Album", image: "/images/Queen13.jpg", releaseDate: "February 4, 1991" },
-      { year: "1995", title: "Made in Heaven", type: "Studio Album", image: "/images/Queen14.jpg", releaseDate: "November 6, 1995" }
+      { year: "1973", title: "Queen", type: "Studio Album", image: "/images/queen/Queen01.jpg", releaseDate: "July 13, 1973" },
+      { year: "1974", title: "Queen II", type: "Studio Album", image: "/images/queen/Queen02.jpg", releaseDate: "March 8, 1974" },
+      { year: "1974", title: "Sheer Heart Attack", type: "Studio Album", image: "/images/queen/Queen03.jpg", releaseDate: "November 8, 1974" },
+      { year: "1975", title: "A Night at the Opera", type: "Studio Album", image: "/images/queen/Queen04.jpg", releaseDate: "November 21, 1975" },
+      { year: "1976", title: "A Day at the Races", type: "Studio Album", image: "/images/queen/Queen05.jpg", releaseDate: "December 10, 1976" },
+      { year: "1977", title: "News of the World", type: "Studio Album", image: "/images/queen/Queen06.jpg", releaseDate: "October 28, 1977" },
+      { year: "1978", title: "Jazz", type: "Studio Album", image: "/images/queen/Queen07.jpg", releaseDate: "November 10, 1978" },
+      { year: "1980", title: "The Game", type: "Studio Album", image: "/images/queen/Queen08.jpg", releaseDate: "June 30, 1980" },
+      { year: "1982", title: "Hot Space", type: "Studio Album", image: "/images/queen/Queen09.jpeg", releaseDate: "May 21, 1982" },
+      { year: "1984", title: "The Works", type: "Studio Album", image: "/images/queen/Queen10.jpeg", releaseDate: "February 27, 1984" },
+      { year: "1986", title: "A Kind of Magic", type: "Studio Album", image: "/images/queen/Queen11.jpg", releaseDate: "June 2, 1986" },
+      { year: "1989", title: "The Miracle", type: "Studio Album", image: "/images/queen/Queen12.jpg", releaseDate: "May 22, 1989" },
+      { year: "1991", title: "Innuendo", type: "Studio Album", image: "/images/queen/Queen13.jpg", releaseDate: "February 4, 1991" },
+      { year: "1995", title: "Made in Heaven", type: "Studio Album", image: "/images/queen/Queen14.jpg", releaseDate: "November 6, 1995" },
+      { year: "2014", title: "Queen Forever", type: "Compilation", image: "/images/queen/Queen15.jpg", releaseDate: "November 10, 2014" }
     ],
     media: [
       { type: "Video", title: "We Will Rock You (1977)", description: "Music video" },
@@ -81,12 +82,12 @@ const artistDetails = {
       { type: "Video", title: "The Freddie Mercury Tribute Concert (1992)", description: "Tribute concert" }
     ],
     photos: [
-      { title: "Live Performance", image: "/images/Queen01.jpg", description: "Queen performing at Wembley Stadium" },
-      { title: "Studio Recording", image: "/images/Queen02.jpg", description: "Recording sessions at Mountain Studios" },
-      { title: "Backstage", image: "/images/Queen03.jpg", description: "Behind the scenes moments" },
-      { title: "Press Event", image: "/images/Queen04.jpg", description: "Media interviews and press conferences" },
-      { title: "Concert", image: "/images/Queen05.jpg", description: "Live concert performance" },
-      { title: "Rehearsal", image: "/images/Queen06.jpg", description: "Practice sessions and preparation" }
+      { title: "Live Performance", image: "/images/queen/queenimg01.jpg", description: "Queen performing at Wembley Stadium" },
+      { title: "Studio Recording", image: "/images/queen/queenimg02.jpg", description: "Recording sessions at Mountain Studios" },
+      { title: "Backstage", image: "/images/queen/queenimg03.jpg", description: "Behind the scenes moments" },
+      { title: "Press Event", image: "/images/queen/queenimg04.jpg", description: "Media interviews and press conferences" },
+      { title: "Concert", image: "/images/queen/queenimg05.jpg", description: "Live concert performance" },
+      { title: "Rehearsal", image: "/images/queen/queenimg06.jpg", description: "Practice sessions and preparation" }
     ],
     members: ["Freddie Mercury", "Brian May", "Roger Taylor", "John Deacon"],
     formed: "1970",
@@ -148,27 +149,75 @@ const artistDetails = {
   },
   15: { // Ozzy Osbourne
     website: "https://www.ozzy.com"
-  },
-  16: { // The Police (Live)
-    website: "https://www.thepolice.com"
   }
+};
+
+/**
+ * When an artist has no custom discography/photos, reuse their gallery hero image
+ * so each artist page does not all show the same generic thumbnails.
+ */
+const placeholderMediaFromArtist = (artist) => {
+  const img = artist.image;
+  const name = artist.name;
+  return {
+    discography: [
+      {
+        year: "—",
+        title: "Catalog highlight",
+        type: "Release",
+        image: img,
+        releaseDate: "See official discography",
+      },
+      {
+        year: "—",
+        title: "Live & sessions",
+        type: "Live",
+        image: img,
+        releaseDate: "See official discography",
+      },
+      {
+        year: "—",
+        title: "Deep cuts",
+        type: "Studio",
+        image: img,
+        releaseDate: "See official discography",
+      },
+    ],
+    photos: [
+      {
+        title: `${name} — spotlight`,
+        image: img,
+        description: "From the artist gallery (add more photos in artist data when you have them).",
+      },
+      {
+        title: `${name} — performance`,
+        image: img,
+        description: "Placeholder entry using the same image until a photo set is added.",
+      },
+      {
+        title: `${name} — era`,
+        image: img,
+        description: "Placeholder entry using the same image until a photo set is added.",
+      },
+    ],
+  };
 };
 
 const defaultArtistDetails = {
   fullBio: "",
   discography: [
-    { year: "2020", title: "Greatest Hits", type: "Compilation", image: "/images/thumbnail01.jpg", releaseDate: "January 1, 2020" },
-    { year: "2019", title: "Live Album", type: "Live Album", image: "/images/thumbnail02.jpg", releaseDate: "January 1, 2019" },
-    { year: "2018", title: "Studio Album", type: "Studio Album", image: "/images/thumbnail03.jpg", releaseDate: "January 1, 2018" }
+    { year: "2020", title: "Greatest Hits", type: "Compilation", image: "/images/ui/thumbnail01.jpg", releaseDate: "January 1, 2020" },
+    { year: "2019", title: "Live Album", type: "Live Album", image: "/images/ui/thumbnail02.jpg", releaseDate: "January 1, 2019" },
+    { year: "2018", title: "Studio Album", type: "Studio Album", image: "/images/ui/thumbnail03.jpg", releaseDate: "January 1, 2018" }
   ],
   media: [
     { type: "Video", title: "Music Video", description: "Official music video" },
     { type: "Video", title: "Live Performance", description: "Concert footage" }
   ],
   photos: [
-    { title: "Live Performance", image: "/images/thumbnail04.jpg", description: "Concert performance" },
-    { title: "Studio Session", image: "/images/thumbnail05.jpg", description: "Recording session" },
-    { title: "Behind the Scenes", image: "/images/thumbnail06.jpg", description: "Behind the scenes moments" }
+    { title: "Live Performance", image: "/images/ui/thumbnail04.jpg", description: "Concert performance" },
+    { title: "Studio Session", image: "/images/ui/thumbnail05.jpg", description: "Recording session" },
+    { title: "Behind the Scenes", image: "/images/ui/thumbnail06.jpg", description: "Behind the scenes moments" }
   ],
   members: ["Lead Singer", "Guitarist", "Bassist", "Drummer"],
   formed: "2000",
@@ -202,13 +251,15 @@ export const getArtistDetails = (artist) => {
     return {
       ...defaultArtistDetails,
       ...details,
-      fullBio: details.fullBio || artist.bio
+      ...placeholderMediaFromArtist(artist),
+      fullBio: details.fullBio || artist.bio,
     };
   }
   // Fallback to defaults
   return {
     ...defaultArtistDetails,
-    fullBio: artist.bio
+    ...placeholderMediaFromArtist(artist),
+    fullBio: artist.bio,
   };
 };
 

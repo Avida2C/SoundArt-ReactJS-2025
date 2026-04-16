@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
  * @param {React.ReactNode} image - Optional image element
  * @param {React.ReactNode} children - Optional custom content (rendered after description)
  * @param {boolean} variant - "centered" (default) or "split" (for detail pages with image)
+ * @param {string} titleClassName - Classes for the main title block (default: display-4)
  */
 export default function HeroSection({
   title,
@@ -24,7 +25,8 @@ export default function HeroSection({
   breadcrumbs = null,
   image = null,
   children = null,
-  variant = "centered"
+  variant = "centered",
+  titleClassName = "sa-section-measure display-4 fw-bold mb-2",
 }) {
   const isSoundartVariant = (variantClass) =>
     typeof variantClass === "string" && variantClass.includes("btn-soundart");
@@ -69,7 +71,10 @@ export default function HeroSection({
         {variant === "centered" && (
           <div className="row justify-content-center">
             <div className="col-lg-8 text-center">
-              <div className="sa-section-measure display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
+              <div
+                className={titleClassName}
+                style={{ fontFamily: "Aptos, sans-serif" }}
+              >
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
@@ -129,7 +134,10 @@ export default function HeroSection({
         {variant === "split" && (
           <div className="row align-items-center">
             <div className="col-lg-8 hero-section-split-text">
-              <div className="sa-section-measure display-4 fw-bold mb-2" style={{ fontFamily: 'Aptos, sans-serif' }}>
+              <div
+                className={titleClassName}
+                style={{ fontFamily: "Aptos, sans-serif" }}
+              >
                 {titleHighlight ? (
                   titleHighlight === "SoundArt" ? (
                     <>
